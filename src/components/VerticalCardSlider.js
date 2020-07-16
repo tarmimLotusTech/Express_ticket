@@ -33,6 +33,11 @@ export default class VerticalCardSlider extends React.Component {
           <FlatList
           showsHorizontalScrollIndicator={false}
           numColumns={3}
+          ListFooterComponent={()=><View
+          style={{
+            height:100
+          }}
+          /> }
           data={this.props.data}
           contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
           renderItem={({ item: rowData }) => {
