@@ -38,7 +38,7 @@ export default class SmallH2 extends React.Component {
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                // onPress={() => this._handlePress(this.props.itemClick,rowData.id)}
+                onPress={() => this.props.navigation.navigate("CategoryDetails",{id:rowData.title})}
                 style={{
                   width: window.width /8,
                   height: window.height / 7,
