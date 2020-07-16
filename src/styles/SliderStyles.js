@@ -41,9 +41,9 @@ export default {
         marginHorizontal: 10,
         backgroundColor:"#4834d4",
         borderRadius:10,
-        borderBottomColor:"#dff9fb",
+        borderBottomColor:"#9385f2",
         borderBottomWidth:2,
-        borderLeftColor:"#dff9fb",
+        borderLeftColor:"#9385f2",
         borderLeftWidth:2,
         
     },
