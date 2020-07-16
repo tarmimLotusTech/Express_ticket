@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,14 +9,31 @@ import {
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import SmallH2 from '../components/SmallH2'
 
 const App: () => React$Node = ({navigation}) => {
+  const [data,setData]= useState([
+    {
+      id:"1",
+      image: "https://app.imagineradio.io/media/album/art/default.jpg",
+      brand:"Bata",
+      title:"A great event"
+    },
+    {
+      id:"2",
+      image: "https://app.imagineradio.io/media/album/art/default.jpg",
+      brand:"Samsung",
+      title:"event at ICCB"
+    },
+    {
+      id:"3",
+      image: "https://app.imagineradio.io/media/album/art/default.jpg",
+      brand:"Apple",
+      title:"Basundhara city"
+    }
+  ])
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -24,22 +41,10 @@ const App: () => React$Node = ({navigation}) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>{navigation.state.name}</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            
-          </View>
+            <SmallH2
+            data={data}
+            />
+          
         </ScrollView>
       </SafeAreaView>
     </>
@@ -48,14 +53,11 @@ const App: () => React$Node = ({navigation}) => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: "#100746",
   },
   engine: {
     position: 'absolute',
     right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
   },
   sectionContainer: {
     marginTop: 32,
