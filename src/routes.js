@@ -1,5 +1,5 @@
 import React from "react";
-
+import {StyleSheet,SafeAreaView,TouchableOpacity,Image,Text,Dimensions} from "react-native"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { createCompatNavigatorFactory, createSwitchNavigator } from '@react-navigation/compat';
@@ -12,6 +12,94 @@ import Category from './screens/App'
 import Login from './screens/Login'
 import EventDetails from './screens/App'
 
+const window = Dimensions.get('window');
+
+import iconHome from './assets/icons/iconHome.png';
+import iconCategory from './assets/icons/iconCategory.png';
+import iconProfile from './assets/icons/iconProfile.png';
+import iconSearch from './assets/icons/iconSearch.png';
+
+
+function MyTabBar({ state,navigation }) {
+	return (
+    <SafeAreaView 
+    style={styles.footer}
+    >
+			<TouchableOpacity
+				
+				style={styles.footerTab}
+				onPress={() =>
+					
+						navigation.navigate("Home")
+					
+				}
+			>
+				<Image
+					style={styles.footerIcon}
+					source={iconHome}
+				/>
+				<Text
+					style={styles.footerTxt}
+				>
+					Home
+				</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				style={styles.footerTab}
+				onPress={() =>
+					
+						navigation.navigate("Category")
+      }
+			>
+				<Image
+					style={styles.footerIcon}
+					source={iconCategory}
+				/>
+				<Text
+					style={styles.footerTxt}
+				>
+					Categories
+				</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				style={styles.footerTab}
+				onPress={() =>
+            navigation.navigate("Profile")
+          }
+			>
+				<Image
+					style={styles.footerIcon}
+					source={iconProfile}
+				/>
+				<Text
+					style={styles.footerTxt}
+				>
+					Profile
+				</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				style={styles.footerTab}
+				onPress={() =>
+            navigation.navigate("Search")
+          }
+			>
+				<Image
+					style={styles.footerIcon}
+					source={iconSearch}
+				/>
+				<Text
+					style={styles.footerTxt}
+				>
+					Search
+				</Text>
+			</TouchableOpacity>
+		</SafeAreaView>
+	);
+}
+
 // three stacks under three tabs of app tab navigator
 const HomeStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
@@ -23,7 +111,7 @@ const HomeStack = createCompatNavigatorFactory(createStackNavigator)(
 
 const ProfileStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
-		Search: { screen: Profile, navigationOptions:{headerShown:false}  },
+		Profile: { screen: Profile, navigationOptions:{headerShown:false}  },
 		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  }
 	},
 	options
@@ -50,20 +138,11 @@ const Tab = createBottomTabNavigator();
 // App Tab navigator
 function HomeContainer() {
     return (
-      <Tab.Navigator screenOptions={options} tabBarOptions={
-        {
-          activeTintColor:'red',
-          activeBackgroundColor:'#bdc3c7',
-          labelStyle:{
-              fontSize:20,
-              fontWeight:'bold',
-              marginBottom:10 
-            }
-        }
-      }
+      <Tab.Navigator screenOptions={options} 
+      tabBar={props => <MyTabBar {...props} />}
       >
           <Tab.Screen name="Home" component={HomeStack} />
-          <Tab.Screen name="category" component={CategoryStack} />
+          <Tab.Screen name="Category" component={CategoryStack} />
           <Tab.Screen name="Profile" component={ProfileStack}/>
           <Tab.Screen name="Search" component={SearchStack} />
         </Tab.Navigator>
@@ -106,3 +185,66 @@ export default function Routes(){
         <NavigationContainer><AppNavigator/></NavigationContainer>
     )
 }
+const styles = StyleSheet.create({
+	footer: {
+    width: window.width,
+    paddingHorizontal:10,
+    height: window.width * 75.5 / 375,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		backgroundColor: '#100746',
+		borderTopWidth: 0.5,
+		borderTopColor: '#cfcfcf',
+		shadowColor: 'rgba(0, 0, 0, 0.25)',
+		shadowOffset: {width: 0, height: -4},
+		shadowOpacity: 1,
+		shadowRadius: 4,
+		elevation: 9,
+	},
+	footerTab: {
+    width: window.width / 6.5,
+		height: window.width / 6.5,
+    justifyContent: 'center',
+		alignItems: 'center',
+    backgroundColor: '#4834d4',
+    borderRadius:10
+	},
+	activeTab: {
+		width: window.width / 4,
+		height: window.height / 12,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#FF0000'
+	},
+	footerIcon: {
+		width: window.height / 45,
+		height: window.height / 45,
+		marginBottom: 5
+	},
+	footerTxt: {
+		fontSize: 8,
+		color: '#fff'
+	},
+	activeTxt: {
+		fontSize: 12,
+		fontWeight: 'bold',
+		color: '#fff'
+	},
+	countHolder: {
+		width: window.height / 20,
+		height: window.height / 20,
+		borderRadius: window.height / 40,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#fff000',
+		position: 'absolute',
+		right: 1,
+		top: 1
+	},
+	messageCount: {
+		color: '#333',
+		fontSize: 12,
+		fontWeight: 'bold'
+	}
+});
