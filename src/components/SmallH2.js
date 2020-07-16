@@ -22,7 +22,13 @@ export default class SmallH2 extends React.Component {
 
   render() {
     return (
-        <FlatList
+        <View>
+          <Text
+          style={GlobalStyles.headerText}
+          >
+            {this.props.title}
+          </Text>
+          <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
           data={this.props.data}
@@ -54,6 +60,7 @@ export default class SmallH2 extends React.Component {
           keyExtractor={(item,index) => {
             return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
+        </View>
     );
   }
 }

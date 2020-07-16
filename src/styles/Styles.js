@@ -21,7 +21,12 @@ export default {
         marginVertical: 15
     },
     // wraper styles
-
+    headerText:{
+        fontSize:17,
+        color:'yellow',
+        marginTop:10,
+        marginLeft: 20
+      },
     // typo styles
     pageTitle: {
         fontSize: 22
