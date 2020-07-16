@@ -40,21 +40,20 @@ export default class SmallH2 extends React.Component {
               <TouchableOpacity
                 // onPress={() => this._handlePress(this.props.itemClick,rowData.id)}
                 style={{
-                  width: window.width /8 +4,
+                  width: window.width /8,
                   height: window.height / 7,
                   justifyContent: 'space-between',
-                  alignItems: 'flex-start',
+                  alignItems: 'center',
                   marginHorizontal: 25,
                   backgroundColor:"#fff",
-                  borderRadius:25
+                  borderRadius:window.width / 16
                   
               }}
               >
                 <View style={{
-                  width: window.width /8,
-                  height: window.width / 8,
-                  margin:2,
-                  borderRadius: 25,
+                  width: window.width /8 +8,
+                  height: window.width / 8 +8,
+                  borderRadius: window.width / 16 +3,
                   overflow: 'hidden',
                   marginBottom: 9
               }}>
