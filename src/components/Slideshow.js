@@ -76,23 +76,8 @@ export default class Slideshow extends React.Component {
                         </TouchableOpacity>
                     </View>
                 )}
-                customButtons={(position, move) => (
-                    <View style={styles.indicatorHolder}>
-                    {slides.map((slide, index) => {
-                        return (
-                        <TouchableOpacity
-                            key={index}
-                            underlayColor="transparent"
-                            onPress={() => move(index)}
-                            style={styles.indicator}
-                        >
-                            <View
-                                style={position === index && styles.indicatorSelected}
-                            />
-                        </TouchableOpacity>
-                        );
-                    })}
-                    </View>
+                customButtons={() => (
+                    <View/>
                 )}
                 style={{
                     backgroundColor:'#100746'
