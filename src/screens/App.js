@@ -3,8 +3,6 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
-  Text,
   StatusBar,
 } from 'react-native';
 
@@ -13,6 +11,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import SmallH2 from '../components/SmallH2'
 import Slideshow from '../components/Slideshow';
+import CategoryList from "../components/CategoryList";
+import SmallSquareSlider from "../components/SmallSquareSlider";
 
 const App: () => React$Node = ({navigation}) => {
   const [data,setData]= useState([
@@ -33,6 +33,24 @@ const App: () => React$Node = ({navigation}) => {
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"Apple",
       title:"Basundhara city"
+    },
+    {
+      id:"4",
+      image: "https://app.imagineradio.io/media/album/art/default.jpg",
+      brand:"Xiaomi",
+      title:"A bad event"
+    },
+    {
+      id:"5",
+      image: "https://app.imagineradio.io/media/album/art/default.jpg",
+      brand:"NMH",
+      title:"event at dit"
+    },
+    {
+      id:"6",
+      image: "https://app.imagineradio.io/media/album/art/default.jpg",
+      brand:"DHT",
+      title:"Basundhara complex"
     }
   ])
   return (
@@ -45,9 +63,21 @@ const App: () => React$Node = ({navigation}) => {
             <Slideshow
             data={data}
             />
+            <CategoryList
+            title="Categories"
+            data={data}
+            />
             <SmallH2
             data={data}
             title="Upcoming events"
+            />
+            <SmallH2
+            data={data}
+            title="Popular Now"
+            />
+            <SmallSquareSlider
+            data={data}
+            title="Partners"
             />
           
         </ScrollView>
