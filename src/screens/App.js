@@ -12,6 +12,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import SmallH2 from '../components/SmallH2'
+import Slideshow from '../components/Slideshow';
 
 const App: () => React$Node = ({navigation}) => {
   const [data,setData]= useState([
@@ -41,8 +42,12 @@ const App: () => React$Node = ({navigation}) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
+            <Slideshow
+            data={data}
+            />
             <SmallH2
             data={data}
+            title="Upcoming events"
             />
           
         </ScrollView>
