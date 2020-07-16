@@ -65,6 +65,7 @@ const App: () => React$Node = ({navigation}) => {
             />
             <CategoryList
             title="Categories"
+            navigation={navigation}
             data={data}
             />
             <SmallH2

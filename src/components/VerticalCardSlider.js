@@ -26,7 +26,9 @@ export default class VerticalCardSlider extends React.Component {
     return (
         <View>
           <Text
-          style={GlobalStyles.headerText}
+          style={[GlobalStyles.headerText,{
+            color: this.props.darkText? 'black':'yellow'
+          } ]}
           >
             {this.props.title}
           </Text>

@@ -24,7 +24,6 @@ export default {
     headerText:{
         fontSize:17,
         color:'yellow',
-        marginTop:10,
         marginLeft: 20
       },
     // typo styles

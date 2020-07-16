@@ -118,6 +118,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       >
         <VerticalCardSlider
         data={data}
+        darkText={true}
         title={navigation.state.params.id}
         />
       </SafeAreaView>
@@ -127,7 +128,8 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: "#100746",
+    paddingTop:20,
+    backgroundColor: "#fff",
   },
   engine: {
     position: 'absolute',
