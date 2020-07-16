@@ -11,6 +11,7 @@ import Search from './screens/App'
 import Category from './screens/App'
 import Login from './screens/Login'
 import EventDetails from './screens/App'
+import CategoryDetails from "./screens/CategoryDetails";
 
 const window = Dimensions.get('window');
 
@@ -104,7 +105,9 @@ function MyTabBar({ state,navigation }) {
 const HomeStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Home: { screen: Home, navigationOptions:{headerShown:false}  },
-		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  }
+		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		CategoryDetails: { screen: CategoryDetails, navigationOptions:{headerShown:false}  }
+
 	},
 	options
 );
@@ -120,7 +123,8 @@ const ProfileStack = createCompatNavigatorFactory(createStackNavigator)(
 const CategoryStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Category: { screen: Category, navigationOptions:{headerShown:false}  },
-		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  }
+		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		CategoryDetails: { screen: CategoryDetails, navigationOptions:{headerShown:false}  }
 	},
 	options
 );
