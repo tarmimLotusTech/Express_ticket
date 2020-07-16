@@ -42,9 +42,9 @@ export default {
         backgroundColor:"#4834d4",
         borderRadius:10,
         borderBottomColor:"#9385f2",
-        borderBottomWidth:2,
+        borderBottomWidth:1,
         borderLeftColor:"#9385f2",
-        borderLeftWidth:2,
+        borderLeftWidth:1,
         
     },
     imageSH2: {
