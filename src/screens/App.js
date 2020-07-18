@@ -20,37 +20,48 @@ const App: () => React$Node = ({navigation}) => {
       id:"1",
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"Bata",
-      title:"A great event"
+      title:"A great event",
+      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
     },
     {
       id:"2",
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"Samsung",
-      title:"event at ICCB"
+      title:"event at ICCB",
+      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+    
     },
     {
       id:"3",
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"Apple",
-      title:"Basundhara city"
+      title:"Basundhara city",
+      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+    
     },
     {
       id:"4",
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"Xiaomi",
-      title:"A bad event"
+      title:"A bad event",
+      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+    
     },
     {
       id:"5",
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"NMH",
-      title:"event at dit"
+      title:"event at dit",
+      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+    
     },
     {
       id:"6",
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"DHT",
-      title:"Basundhara complex"
+      title:"Basundhara complex",
+      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+    
     }
   ])
   return (
