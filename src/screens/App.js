@@ -62,6 +62,7 @@ const App: () => React$Node = ({navigation}) => {
           style={styles.scrollView}>
             <Slideshow
             data={data}
+            navigation={navigation}
             />
             <CategoryList
             title="Categories"
@@ -70,14 +71,17 @@ const App: () => React$Node = ({navigation}) => {
             />
             <SmallH2
             data={data}
+            navigation={navigation}
             title="Upcoming events"
             />
             <SmallH2
             data={data}
+            navigation={navigation}
             title="Popular Now"
             />
             <SmallSquareSlider
             data={data}
+            navigation={navigation}
             title="Partners"
             />
           
