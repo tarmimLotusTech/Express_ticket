@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/App'
 import Profile from './screens/App'
 import Search from './screens/App'
-import Category from './screens/App'
+import Category from './screens/AllCategories'
 import Login from './screens/Login'
 import EventDetails from './screens/EventDetails'
 import CategoryDetails from "./screens/CategoryDetails";
