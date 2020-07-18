@@ -18,16 +18,14 @@ import {
 import SmallH2 from "../components/SmallH2";
 import CategoryList from "../components/CategoryList"
 
-import { color } from 'react-native-reanimated';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EventDetails: () => React$Node = ({navigation}) => {
   useEffect(()=>{
     setEventData({
       ...eventData,
-      // ...navigation.state.params.item, 
-      // details: navigation.state.params.item.details.substring(0, 40) 
-      details: eventData.details.substring(0, 90)+"..."
+      ...navigation.state.params.item,
+      details: navigation.state.params.item?navigation.state.params.item.details.substring(0, 90)+"...":""
     })
   },[navigation])
   const [eventData,setEventData]= useState(
@@ -36,7 +34,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"",
       title:"",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+      details:"",
       topCategory:[
         {
           id:"1",
