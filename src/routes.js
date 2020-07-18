@@ -10,7 +10,7 @@ import Profile from './screens/App'
 import Search from './screens/App'
 import Category from './screens/App'
 import Login from './screens/Login'
-import EventDetails from './screens/App'
+import EventDetails from './screens/EventDetails'
 import CategoryDetails from "./screens/CategoryDetails";
 
 const window = Dimensions.get('window');
@@ -40,7 +40,7 @@ function MyTabBar({ state,navigation }) {
 					source={iconHome}
 				/>
 				<Text
-					style={styles.footerTxt}
+					style={state.index==0?styles.activeTxt:styles.footerTxt}
 				>
 					Home
 				</Text>
@@ -58,7 +58,7 @@ function MyTabBar({ state,navigation }) {
 					source={iconCategory}
 				/>
 				<Text
-					style={styles.footerTxt}
+					style={state.index==1?styles.activeTxt:styles.footerTxt}
 				>
 					Categories
 				</Text>
@@ -75,7 +75,7 @@ function MyTabBar({ state,navigation }) {
 					source={iconProfile}
 				/>
 				<Text
-					style={styles.footerTxt}
+					style={state.index==2?styles.activeTxt:styles.footerTxt}
 				>
 					Profile
 				</Text>
@@ -92,7 +92,7 @@ function MyTabBar({ state,navigation }) {
 					source={iconSearch}
 				/>
 				<Text
-					style={styles.footerTxt}
+					style={state.index==3?styles.activeTxt:styles.footerTxt}
 				>
 					Search
 				</Text>
@@ -231,9 +231,9 @@ const styles = StyleSheet.create({
 		color: '#fff'
 	},
 	activeTxt: {
-		fontSize: 12,
+		fontSize: 8,
 		fontWeight: 'bold',
-		color: '#fff'
+		color: '#100746'
 	},
 	countHolder: {
 		width: window.height / 20,
