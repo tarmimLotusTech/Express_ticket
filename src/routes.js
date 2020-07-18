@@ -30,9 +30,9 @@ function MyTabBar({ state,navigation }) {
 				
 				style={styles.footerTab}
 				onPress={() =>
-					
-						navigation.navigate("Home")
-					
+					state.index==0?
+					navigation.navigate("Home")
+					:navigation.navigate("HomeStack")					
 				}
 			>
 				<Image
@@ -49,9 +49,10 @@ function MyTabBar({ state,navigation }) {
 			<TouchableOpacity
 				style={styles.footerTab}
 				onPress={() =>
-					
-						navigation.navigate("Category")
-      }
+				state.index==1?
+				navigation.navigate("Category")
+				:navigation.navigate("CategoryStack")
+			}
 			>
 				<Image
 					style={styles.footerIcon}
@@ -67,8 +68,10 @@ function MyTabBar({ state,navigation }) {
 			<TouchableOpacity
 				style={styles.footerTab}
 				onPress={() =>
-            navigation.navigate("Profile")
-          }
+					state.index==2?
+					navigation.navigate("Profile")
+					:navigation.navigate("ProfileStack")
+				}
 			>
 				<Image
 					style={styles.footerIcon}
@@ -84,8 +87,10 @@ function MyTabBar({ state,navigation }) {
 			<TouchableOpacity
 				style={styles.footerTab}
 				onPress={() =>
-            navigation.navigate("Search")
-          }
+					state.index==3?
+					navigation.navigate("Search")
+					:navigation.navigate("SearchStack")
+				}
 			>
 				<Image
 					style={styles.footerIcon}
@@ -145,10 +150,10 @@ function HomeContainer() {
       <Tab.Navigator screenOptions={options} 
       tabBar={props => <MyTabBar {...props} />}
       >
-          <Tab.Screen name="Home" component={HomeStack} />
-          <Tab.Screen name="Category" component={CategoryStack} />
-          <Tab.Screen name="Profile" component={ProfileStack}/>
-          <Tab.Screen name="Search" component={SearchStack} />
+          <Tab.Screen name="HomeStack" component={HomeStack} />
+          <Tab.Screen name="CategoryStack" component={CategoryStack} />
+          <Tab.Screen name="ProfileStack" component={ProfileStack}/>
+          <Tab.Screen name="SearchStack" component={SearchStack} />
         </Tab.Navigator>
     );
   }
