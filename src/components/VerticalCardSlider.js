@@ -36,7 +36,7 @@ export default class VerticalCardSlider extends React.Component {
           numColumns={3}
           ListFooterComponent={()=><View
           style={{
-            height:100
+            height:50
           }}
           /> }
           data={this.props.data}
