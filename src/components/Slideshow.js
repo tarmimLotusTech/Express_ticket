@@ -16,8 +16,8 @@ export default class Slideshow extends React.Component {
   constructor(props) {
     super(props);
   }
-  _handlePress(id) {
-      console.log(id)
+  _handlePress(item) {
+      this.props.navigation.navigate("EventDetails",{item})
 
   }
   render() {
@@ -54,7 +54,7 @@ export default class Slideshow extends React.Component {
                             </Text>
                         <TouchableOpacity
                         key={index}
-                        onPress={() => this._handlePress(item.id)}
+                        onPress={() => this._handlePress(item)}
                         >
 
                         <View

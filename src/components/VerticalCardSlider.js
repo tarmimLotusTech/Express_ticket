@@ -17,9 +17,8 @@ export default class VerticalCardSlider extends React.Component {
     super(props);
   }
 
-  _handlePress(value,id) {
-    const pushAction = StackActions.push(value,{id});
-    this.props.navigation.dispatch(pushAction)
+  _handlePress(item) {
+    this.props.navigation.navigate("EventDetails",{item})
   }
 
   render() {
@@ -45,7 +44,7 @@ export default class VerticalCardSlider extends React.Component {
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                // onPress={() => this._handlePress(this.props.itemClick,rowData.id)}
+                onPress={() => this._handlePress(rowData)}
                 style={{
                   width: window.width * 90 / 375,
                   height: window.width * 150 / 375,
