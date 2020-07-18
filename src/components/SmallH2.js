@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     FlatList,
     Image,
@@ -10,35 +10,31 @@ import {
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
 
-export default class SmallH2 extends React.Component {
-  constructor(props) {
-    super(props);
+export default function SmallH2 (props) {
+  useEffect(()=>{},[props])
+  function _handlePress(item) {
+    console.log(item)
+    props.navigation.navigate("EventDetails",{item})
   }
 
-  _handlePress(value,id) {
-    const pushAction = StackActions.push(value,{id});
-    this.props.navigation.dispatch(pushAction)
-  }
-
-  render() {
     return (
         <View>
           <Text
             style={[GlobalStyles.headerText,{
-              color: this.props.darkText? 'black':'yellow'
+              color: props.darkText? 'black':'yellow'
             } ]}
             >
-            {this.props.title}
+            {props.title}
           </Text>
           <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={this.props.data}
+          data={props.data}
           contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                // onPress={() => this._handlePress(this.props.itemClick,rowData.id)}
+                onPress={() => _handlePress(rowData)}
                 style={SliderStyles.itemSH2}
               >
                 <View style={SliderStyles.imageSH2}>
@@ -65,5 +61,4 @@ export default class SmallH2 extends React.Component {
         </View>
     );
   }
-}
 
