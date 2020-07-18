@@ -6,7 +6,7 @@ import { createCompatNavigatorFactory, createSwitchNavigator } from '@react-navi
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from './screens/App'
-import Profile from './screens/App'
+import Profile from './screens/Profile'
 import Search from './screens/App'
 import Category from './screens/AllCategories'
 import Login from './screens/Login'
