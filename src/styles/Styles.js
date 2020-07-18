@@ -22,6 +22,7 @@ export default {
     },
     // wraper styles
     headerText:{
+        fontWeight:'bold',
         fontSize:17,
         color:'yellow',
         marginLeft: 20
