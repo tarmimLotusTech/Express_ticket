@@ -65,9 +65,6 @@ export default {
     height: window.width*56/375,
     fontSize: 16,
     marginTop:150,
-    borderWidth: 1,
-    borderColor: '#8d8d8d',
-    borderRadius: 10,
     paddingLeft: window.width*28/375,
     marginVertical: 10
   },
