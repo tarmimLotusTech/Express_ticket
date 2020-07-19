@@ -1,10 +1,20 @@
-import React, { useState } from "react";
-import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View ,BackHandler} from "react-native";
 import loginStyles from "../styles/loginStyles";
 
 function Login (props) {
 
   const [name,setName]=useState('')
+  useEffect(()=>{
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      ()=>BackHandler.exitApp()
+    );
+
+    return () => {
+      backHandler.remove();
+    }
+  },[])
 
   function handleSubmit() {
     props.navigation.navigate("AppStack")
