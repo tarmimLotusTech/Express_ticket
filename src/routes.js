@@ -10,6 +10,7 @@ import Profile from './screens/Profile'
 import Search from './screens/Search'
 import Category from './screens/AllCategories'
 import Login from './screens/Login'
+import Signup from './screens/Signup'
 import EventDetails from './screens/EventDetails'
 import CategoryDetails from "./screens/CategoryDetails";
 
@@ -177,11 +178,19 @@ const options = {
     gesturesEnabled: true
   }
 };
-
+const AuthStack = createCompatNavigatorFactory(createStackNavigator)(
+	{
+	  Login: { screen: Login },
+	  Signup: { screen: Signup }
+	},
+	{
+	  headerMode: "none"
+	}
+  );
 const AppNavigator = createSwitchNavigator(
     {
         AppStack,
-        Login
+        AuthStack
     },
     {
       initialRouteName: "AppStack",

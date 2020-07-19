@@ -6,6 +6,7 @@ const window = Dimensions.get('window');
 function Login (props) {
   const [keyFocus,setKeyFocus]=useState(true)
 
+  const[password,setPassword]=useState('')
   const [name,setName]=useState('')
   const _keyboardDidShow = () => {
     setKeyFocus(true)
@@ -82,13 +83,12 @@ function Login (props) {
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="Password"
-                autoFocus={true}
-                value={name}
-                keyboardType="default"
+                value={password}
+                secureTextEntry={true}
                 style={[loginStyles.txtInput,{
                   marginTop:90
                 } ]}
-                onChangeText={setName}
+                onChangeText={setPassword}
                 blurOnSubmit={false}
                 />
             </KeyboardAvoidingView>
@@ -97,12 +97,38 @@ function Login (props) {
         </View>
         <TouchableOpacity
         style={{
+          height:window.height/20,
+          width:window.width/2,
+          alignSelf:'center',
+          backgroundColor:"transparent",
+          justifyContent:'center',
+          marginBottom:10,
+          borderBottomWidth:1,
+          borderBottomColor:'grey'
+        }}
+        onPress={()=>props.navigation.navigate("Signup")}
+        >
+          <Text
+          style={{
+            fontSize:10,
+            color:'#100746',
+            alignSelf:'center',
+            fontWeight:'bold'
+          }}
+          >
+            Signup
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={{
           height:window.height/8,
           width:window.width,
           backgroundColor:"#313E55",
           justifyContent:'center'
         }}
-        onPress={()=>props.navigation.navigate("AppStack")}
+        onPress={()=>
+          props.navigation.navigate("AppStack")
+      }
         >
           <Text
           style={{

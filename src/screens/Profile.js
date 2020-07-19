@@ -33,7 +33,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
     setModalText(txt)
   }
   function logOut(){
-    navigation.navigate("Login")
+    navigation.navigate("AuthStack")
   }
 
   const [eventData,setEventData]= useState(
