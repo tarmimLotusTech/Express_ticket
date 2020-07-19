@@ -32,6 +32,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
     setModalVisible(true)
     setModalText(txt)
   }
+  function logOut(){
+    navigation.navigate("Login")
+  }
 
   const [eventData,setEventData]= useState(
     {
@@ -335,6 +338,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           backgroundColor:"#313E55",
           justifyContent:'center'
         }}
+        onPress={logOut}
         >
           <Text
           style={{
