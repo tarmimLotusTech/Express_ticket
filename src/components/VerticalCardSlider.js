@@ -31,6 +31,20 @@ export default class VerticalCardSlider extends React.Component {
           >
             {this.props.title}
           </Text>
+          {
+            this.props.viewMore?
+            <Text
+              style={{
+                alignSelf:'flex-end',
+                marginRight:20,
+                marginTop:-20,
+                fontSize:20,
+                fontWeight:'bold'
+              }}
+              onPress={()=>this.props.navigation.navigate("CategoryDetails",{id:this.props.title})}
+              >{"\u281B"}</Text>:<View/>
+          }
+          
           <FlatList
           showsHorizontalScrollIndicator={false}
           numColumns={3}

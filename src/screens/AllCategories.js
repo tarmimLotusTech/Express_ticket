@@ -17,6 +17,7 @@ import VerticalCardSlider from "../components/VerticalCardSlider";
 const CategoryDetails: () => React$Node = ({navigation}) => {
   const [data,setData]= useState([
     {
+      id:1,
       title:"Movies",
       events:[
         {
@@ -42,57 +43,11 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
           title:"Basundhara city",
           details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
 
-        },
-        {
-          id:"4",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Xiaomi",
-          title:"A bad event",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-        },
-        {
-          id:"5",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"NMH",
-          title:"event at dit",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-        },{
-          id:"6",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          title:"A great event",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-        },
-        {
-          id:"7",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Samsung",
-          title:"event at ICCB",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-        },
-        {
-          id:"8",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Apple",
-          title:"Basundhara city",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-        },
-        {
-          id:"9",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Xiaomi",
-          title:"A bad event",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
         }
   ]
 },
 {
+  id:2,
   title:"Concerts",
   events:[
     {
@@ -118,57 +73,11 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       title:"Basundhara city",
       details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
 
-    },
-    {
-      id:"4",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"5",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"NMH",
-      title:"event at dit",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },{
-      id:"6",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Bata",
-      title:"A great event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"7",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Samsung",
-      title:"event at ICCB",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"8",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Apple",
-      title:"Basundhara city",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"9",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
     }
 ]
 },
 {
+  id:3,
   title:"Conferences",
   events:[
     {
@@ -194,57 +103,11 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       title:"Basundhara city",
       details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
 
-    },
-    {
-      id:"4",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"5",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"NMH",
-      title:"event at dit",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },{
-      id:"6",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Bata",
-      title:"A great event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"7",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Samsung",
-      title:"event at ICCB",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"8",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Apple",
-      title:"Basundhara city",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"9",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
     }
 ]
 },
 {
+  id:4,
   title:"Parties",
   events:[
     {
@@ -270,57 +133,11 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       title:"Basundhara city",
       details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
 
-    },
-    {
-      id:"4",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"5",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"NMH",
-      title:"event at dit",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },{
-      id:"6",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Bata",
-      title:"A great event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"7",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Samsung",
-      title:"event at ICCB",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"8",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Apple",
-      title:"Basundhara city",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"9",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
     }
 ]
 },
 {
+  id:5,
   title:"Movies",
   events:[
     {
@@ -344,53 +161,6 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       image: "https://app.imagineradio.io/media/album/art/default.jpg",
       brand:"Apple",
       title:"Basundhara city",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"4",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"5",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"NMH",
-      title:"event at dit",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },{
-      id:"6",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Bata",
-      title:"A great event",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"7",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Samsung",
-      title:"event at ICCB",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"8",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Apple",
-      title:"Basundhara city",
-      details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
-
-    },
-    {
-      id:"9",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Xiaomi",
-      title:"A bad event",
       details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
 
     }
@@ -429,6 +199,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
             data={item.events}
             navigation={navigation}
             darkText
+            viewMore
             title={item.title}
             />
         )
