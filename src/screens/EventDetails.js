@@ -7,7 +7,9 @@ import {
   ScrollView,
   View,
   Image,
-  Text
+  Text,
+  TouchableHighlight,
+  Modal
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconPlay from '../assets/icons/iconPlay.png';
@@ -21,6 +23,8 @@ import CategoryList from "../components/CategoryList"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EventDetails: () => React$Node = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(()=>{
     setEventData({
       ...eventData,
@@ -28,6 +32,13 @@ const EventDetails: () => React$Node = ({navigation}) => {
       details: navigation.state.params.item?navigation.state.params.item.details.substring(0, 90)+"...":""
     })
   },[navigation])
+  function closeModal(){
+    setModalVisible(false)
+    navigation.navigate("Home")
+  }
+  function confirmBooking(){
+    setModalVisible(true)
+  }
   const [eventData,setEventData]= useState(
     {
       id:"1",
@@ -179,6 +190,25 @@ const EventDetails: () => React$Node = ({navigation}) => {
           </View>
         </View>
         {/* Timer card ends */}
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+          <Text style={styles.modalText}>Confirmed your booking. Enjoy!</Text>
+
+                <TouchableHighlight
+                  style={{ ...styles.openButton, backgroundColor: "#100746" }}
+                  onPress={closeModal}
+                >
+                  <Text style={styles.textStyle}>Close</Text>
+                </TouchableHighlight>
+              </View>
+            </View>
+          </Modal>
         <View
         style={{
           marginHorizontal:40,
@@ -260,6 +290,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               borderRadius:7,
               backgroundColor: '#fbc531'
             }}
+            onPress={confirmBooking}
             >
               <Text
               style={{
@@ -295,6 +326,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           backgroundColor:"#313E55",
           justifyContent:'center'
         }}
+        onPress={confirmBooking}
         >
           <Text
           style={{
@@ -390,6 +422,42 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '600',
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
 });
 
 export default EventDetails;
