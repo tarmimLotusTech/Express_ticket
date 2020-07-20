@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -18,7 +18,7 @@ import {
 import iconSearchDark from '../assets/icons/iconSearchDark.png';
 import SliderStyles from '../styles/SliderStyles';
 import GlobalStyles from '../styles/Styles';
-
+import AsyncStorage from '@react-native-community/async-storage'
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
@@ -204,7 +204,36 @@ events:[
 const CategoryDetails: () => React$Node = ({navigation}) => {
   const [searchtext, setSearchText]=useState('')
   const [viewHeight,setViewHeight]=useState(window.width-30)
-  const [data,setData]= useState([])
+  const [history,setHistory]=useState([])
+  const [data, setData]=useState([])
+  useEffect(()=>{
+    AsyncStorage.getItem('myHistory').then(token=>{
+      try {
+      if (token!==null){
+        setHistory(JSON.parse(token))
+        setData(JSON.parse(token))
+      }
+    } catch (error) {
+      console.log("parse error", error)
+    }
+    })
+    
+  },[])
+
+  async function onSubmit(){
+    try {
+      if (!history.includes(searchtext.toLowerCase())){
+        let arr = history
+        arr.push(searchtext.toLowerCase())
+        setSearchText('')
+        await AsyncStorage.setItem('myHistory',JSON.stringify(arr))
+        setData(arr)
+        setHistory(arr)
+      }
+    } catch (error) {
+      console.log( "submit error",error)
+    }
+  }
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -267,20 +296,27 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
             onChangeText={
             (t)=>{
               setSearchText(t)
-              if (!t){
-                setData([])
-              }
-              else {
-                setData(searchData[0].events)}
+              // if (!t){
+              //   setData([])
+              // }
+              // else {
+              //   setData(searchData[0].events)}
+              let tempArr=history.filter(item=>item.includes(t.toLowerCase()))
+              setData(tempArr)
               }
             }
+            onSubmitEditing={onSubmit}
             blurOnSubmit={false}
             // onBlur={()=>setViewHeight(window.width/2)}
           />
+          <TouchableOpacity
+          onPress={onSubmit}
+          >
           <Image
 					style={styles.footerIcon}
 					source={iconSearchDark}
 				  />
+          </TouchableOpacity>
         </View>
         </View>
         <FlatList
@@ -294,10 +330,10 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate("EventDetails",{item})}
+                onPress={() => navigation.navigate("SearchResult",{item})}
                 style={{
                   width: window.width -40,
-                  height: window.width * 80 / 375,
+                  height: window.width * 40 / 375,
                   justifyContent: 'space-between',
                   marginVertical:10,
                   alignItems: 'flex-start',
@@ -312,43 +348,25 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
               }}
               >
                 <View style={{
-                  width: window.width * 70 / 375,
-                  height: window.width * 70 / 375,
-                  borderRadius: 5,
-                  margin:5,
-                  overflow: 'hidden',
-              }}>
-                  <Image
-                    style={{
-                      flex: 1,
-                      width: undefined,
-                      height: undefined,
-                      resizeMode: 'cover',
-                      borderRadius:8
-                  }}
-                    source={{uri:item.image}}
-                  />
-                </View>
-                <View style={{
                   width: window.width -40,
-                  height: window.width * 70 / 375,
+                  height: window.width * 35 / 375,
                   justifyContent: 'flex-end',
                   alignItems: 'flex-start',
                   padding:5
                 }}>
-                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#100746'}]}>
-                    {item.brand}
-                    </Text>
-                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#100746'}]}
+                    
+                    <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
+                      alignSelf:'center',
+                      color: '#100746'}]}
                     numberOfLines={1}>
-                    {item.title}
+                    {item}
                     </Text>
                 </View>
               </TouchableOpacity>
             );
           }}
           keyExtractor={(item,index) => {
-            return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return item.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
         
         
