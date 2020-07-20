@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard} from "react-native";
+import { Dimensions, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 
@@ -54,7 +54,21 @@ function Login (props) {
           backgroundColor:'#100746',
           borderBottomLeftRadius:130,
           borderBottomRightRadius:130
-        }}/>:<View/>
+        }}>
+
+        <Image
+            style={{
+              flex: 1,
+              width: 200,
+              marginBottom:20,
+              alignSelf:'center',
+              resizeMode: 'cover',
+              borderRadius:8
+          }}
+            source={{uri:"https://app.imagineradio.io/media/album/art/default.jpg"}}
+          />
+          </View>
+          :<View/>
         }
 
 
