@@ -38,11 +38,11 @@ export default class VerticalCardSlider extends React.Component {
                 alignSelf:'flex-end',
                 marginRight:20,
                 marginTop:-20,
-                fontSize:20,
+                fontSize:12,
                 fontWeight:'bold'
               }}
               onPress={()=>this.props.navigation.navigate("CategoryDetails",{id:this.props.title})}
-              >{"\u281B"}</Text>:<View/>
+              > {"\u281B"}See all</Text>:<View/>
           }
           
           <FlatList
