@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard, ScrollView, Image} from "react-native";
+import { Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard, ScrollView, Image} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
+
+import { 
+  systemWeights
+} from 'react-native-typography';
 
 function Login (props) {
   const [keyFocus,setKeyFocus]=useState(true)
@@ -39,14 +43,46 @@ function Login (props) {
   },[])
 
   function handleSubmit() {
-    props.navigation.navigate("AppStack")
+
+    if (fName.length<1){
+      setSignupError('insert first name')
+    }
+    else if (lName.length<1){
+      setSignupError('insert last name')
+    }
+    else if (country.length<1){
+      setSignupError('insert country')
+    }
+    else if (city.length<1){
+      setSignupError('insert city')
+    }
+    else if (address1.length<1 && address2.length<1){
+      setSignupError('insert address')
+    }
+    else if (phone.length<1){
+      setSignupError('insert phone number')
+    }
+    else if (email.length<1){
+      setSignupError('insert email')
+    }
+    else if (password.length<1){
+      setSignupError('insert password')
+    }
+    else if (password.length<8){
+      setSignupError('password at least 8 characters')
+    }
+    else if (password!==password2){
+      setSignupError('passwords do not match')
+    }
+    else{
+      props.navigation.navigate("AppStack")
+    }
+
   }
     return (
-      <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
+      <View
       style={loginStyles.loginCont}
       >
-        
         {
           !keyFocus?
           <View
@@ -73,6 +109,17 @@ function Login (props) {
         
         :<View/>
         }
+        <Text
+          style={{
+            color:'red'
+          }}>
+            {signupError}
+          </Text>
+      <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      >
+        
+        
           <View
           style={{
             height:window.height/10,
@@ -82,13 +129,7 @@ function Login (props) {
             justifyContent:'center'
           }}
           >
-          {/* title and input starts */}
-          <Text
-          style={{
-            color:'red'
-          }}>
-            {signupError}
-          </Text>
+          {/* title and input starts */}   
           <Text
           style={{
             color:'#100746',
@@ -101,7 +142,7 @@ function Login (props) {
           </Text>
           </View>
           <View style={loginStyles.signupEmailTop}>
-            <KeyboardAvoidingView
+            <View
             style={{
               flexDirection:'row'
             }}
@@ -132,8 +173,8 @@ function Login (props) {
                 blurOnSubmit={false}
 
                 />
-            </KeyboardAvoidingView>
-            <KeyboardAvoidingView
+            </View>
+            <View
             style={{
               flexDirection:'row'
             }}
@@ -166,8 +207,8 @@ function Login (props) {
                 blurOnSubmit={false}
 
                 />
-            </KeyboardAvoidingView>
-            <KeyboardAvoidingView>
+            </View>
+            <View>
               <TextInput
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
@@ -179,8 +220,8 @@ function Login (props) {
                 blurOnSubmit={false}
 
                 />
-            </KeyboardAvoidingView>
-            <KeyboardAvoidingView>
+            </View>
+            <View>
               <TextInput
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
@@ -190,7 +231,7 @@ function Login (props) {
                 onChangeText={setAddress2}
                 blurOnSubmit={false}
                 />
-            </KeyboardAvoidingView>
+            </View>
           
             <Text
             style={{
@@ -203,7 +244,7 @@ function Login (props) {
             > 
             Contact Info
           </Text>
-            <KeyboardAvoidingView
+            <View
             style={{
               flexDirection:'row'
             }}
@@ -213,7 +254,7 @@ function Login (props) {
                 placeholderTextColor="#212121"
                 placeholder="Phone"
                 value={phone}
-                keyboardType="default"
+                keyboardType='phone-pad'
                 style={[loginStyles.txtInputSignup,{
                   width: window.width*150/375,
 
@@ -227,7 +268,7 @@ function Login (props) {
                 placeholderTextColor="#212121"
                 placeholder="Email"
                 value={email}
-                keyboardType="default"
+                keyboardType='email-address'
                 style={[loginStyles.txtInputSignup,{
                   width: window.width*150/375,
 
@@ -236,8 +277,8 @@ function Login (props) {
                 blurOnSubmit={false}
 
                 />
-            </KeyboardAvoidingView>
-            <KeyboardAvoidingView
+            </View>
+            <View
             style={{
               flexDirection:'row'
             }}
@@ -264,15 +305,19 @@ function Login (props) {
                 secureTextEntry={true}
                 value={password2}
                 keyboardType="default"
-                style={[loginStyles.txtInputSignup,{
+                style={{
+                  ...systemWeights.light,
+                  color: '#616161',
                   width: window.width*150/375,
-
-                }]}
+                  height: window.width*56/375,
+                  fontSize: 16,
+                  marginVertical: 10
+                }}
                 onChangeText={setPassword2}
                 blurOnSubmit={false}
 
                 />
-            </KeyboardAvoidingView>
+            </View>
           </View>
           {/* title and input ends */}
         <TouchableOpacity
@@ -299,6 +344,7 @@ function Login (props) {
             Already have account? Login
           </Text>
         </TouchableOpacity>
+        </ScrollView>
         <TouchableOpacity
         style={{
           height:window.height/8,
@@ -306,7 +352,7 @@ function Login (props) {
           backgroundColor:"#313E55",
           justifyContent:'center'
         }}
-        onPress={()=>props.navigation.navigate("AppStack")}
+        onPress={handleSubmit}
         >
           <Text
           style={{
@@ -318,8 +364,7 @@ function Login (props) {
             Signup
           </Text>
         </TouchableOpacity>
-        
-      </ScrollView>
+      </View>
     );
   }
   export default Login
