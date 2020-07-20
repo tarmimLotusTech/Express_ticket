@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
+import { Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 
 function Login (props) {
   const [keyFocus,setKeyFocus]=useState(true)
+  const [signupError, setSignupError]=useState('')
 
   const[password,setPassword]=useState('')
   const [name,setName]=useState('')
@@ -34,7 +35,19 @@ function Login (props) {
   },[])
 
   function handleSubmit() {
-    props.navigation.navigate("AppStack")
+
+    if (name.length<1){
+      setSignupError('insert email or username')
+    }
+    else if (password.length<1){
+      setSignupError('insert password')
+    }
+    else if (password.length<8){
+      setSignupError('password at least 8 characters')
+    }
+    else{
+      props.navigation.navigate("AppStack")
+    }
   }
     return (
       <View style={loginStyles.loginCont}>
@@ -70,13 +83,20 @@ function Login (props) {
           </View>
           :<View/>
         }
-
+        <Text
+          style={{
+            color:'red',
+            alignSelf:'flex-start',
+            alignSelf:'center',
+            marginTop:10,        
+          }}>
+            {signupError}
+          </Text>
 
         <View style={loginStyles.loginContent}>
 
           {/* title and input starts */}
           <View style={loginStyles.loginEmailTop}>
-            <KeyboardAvoidingView>
               <TextInput
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
@@ -89,10 +109,8 @@ function Login (props) {
                 blurOnSubmit={false}
 
                 />
-            </KeyboardAvoidingView>
           </View>
           <View style={loginStyles.loginEmailTop}>
-            <KeyboardAvoidingView>
               <TextInput
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
@@ -105,7 +123,6 @@ function Login (props) {
                 onChangeText={setPassword}
                 blurOnSubmit={false}
                 />
-            </KeyboardAvoidingView>
           </View>
           {/* title and input ends */}
         </View>
@@ -140,9 +157,7 @@ function Login (props) {
           backgroundColor:"#313E55",
           justifyContent:'center'
         }}
-        onPress={()=>
-          props.navigation.navigate("AppStack")
-      }
+        onPress={handleSubmit}
         >
           <Text
           style={{
