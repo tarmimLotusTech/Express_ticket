@@ -58,6 +58,12 @@ export default {
     alignItems: 'center',
     alignSelf: 'center'
   },
+  signupEmailTop: {
+    width: window.width,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center'
+  },
   txtInput: {
     ...systemWeights.light,
     color: '#616161',
@@ -65,6 +71,15 @@ export default {
     height: window.width*56/375,
     fontSize: 16,
     marginTop:150,
+    paddingLeft: window.width*28/375,
+    marginVertical: 10
+  },
+  txtInputSignup: {
+    ...systemWeights.light,
+    color: '#616161',
+    width: window.width*305/375,
+    height: window.width*56/375,
+    fontSize: 16,
     paddingLeft: window.width*28/375,
     marginVertical: 10
   },
