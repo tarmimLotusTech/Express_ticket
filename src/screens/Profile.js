@@ -7,9 +7,7 @@ import {
   ScrollView,
   View,
   Image,
-  Text,
-  Modal,
-  TouchableHighlight
+  Text
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconCountry from '../assets/icons/iconCountry.png';
@@ -26,12 +24,6 @@ import CategoryList from "../components/CategoryList"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EventDetails: () => React$Node = ({navigation}) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalText, setModalText] = useState ('')
-  function showAddressInfo (txt){
-    setModalVisible(true)
-    setModalText(txt)
-  }
   function logOut(){
     navigation.navigate("AuthStack")
   }
@@ -88,6 +80,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         }
       ]
     })
+    const [ profDetail , setProfDetail ] = useState(eventData.address)
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -104,27 +97,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
               alignItems:'center'
           }}
           />
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            
-          >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-          <Text style={styles.modalText}> {modalText}</Text>
-
-                <TouchableHighlight
-                  style={{ ...styles.openButton, backgroundColor: "#100746" }}
-                  onPress={() => {
-                    setModalVisible(!modalVisible);
-                  }}
-                >
-                  <Text style={styles.textStyle}>Close</Text>
-                </TouchableHighlight>
-              </View>
-            </View>
-          </Modal>
         <View
         style={styles.slideHolder}
         >
@@ -202,7 +174,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 alignItems:'center'
 
               }}
-              onPress={()=> showAddressInfo(eventData.country) }
+              onPress={()=> setProfDetail(eventData.country) }
               >
                 
                 <Image
@@ -228,7 +200,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 alignItems:'center'
 
               }}
-              onPress={()=>showAddressInfo(eventData.city) }
+              onPress={()=>setProfDetail(eventData.city) }
               >
                 
                 <Image
@@ -254,7 +226,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 alignItems:'center'
 
               }}
-              onPress={()=>showAddressInfo(eventData.address) }
+              onPress={()=>setProfDetail(eventData.address) }
               >
                 
                 <Image
@@ -280,7 +252,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 alignItems:'center'
 
               }}
-              onPress={()=>showAddressInfo(eventData.phone) }
+              onPress={()=>setProfDetail(eventData.phone) }
               >
                 
                 <Image
@@ -306,7 +278,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 alignItems:'center'
 
               }}
-              onPress={()=>showAddressInfo(eventData.mail) }
+              onPress={()=>setProfDetail(eventData.mail) }
               >
                 
                 <Image
@@ -324,6 +296,28 @@ const EventDetails: () => React$Node = ({navigation}) => {
           </View>
         </View>
         {/* Timer card ends */}
+        <View
+        style={{
+          backgroundColor:'#6c5ce7',
+          height:30,
+          width:window.width/1.3,
+          borderRadius:5,
+          marginBottom:5,
+          alignSelf:'center',
+          justifyContent:'center',
+          marginTop:-20,
+        }}
+        >
+            <Text
+            style={{
+              color:'#fff',
+              alignSelf:'center',
+              fontStyle:'italic',
+              fontSize:15,
+              fontWeight:'bold',
+            }}
+            >{profDetail}</Text>
+            </View>
         
         <CategoryList
         title="Event summary"
