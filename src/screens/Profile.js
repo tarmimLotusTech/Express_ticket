@@ -19,7 +19,7 @@ import iconPhone from '../assets/icons/iconPhone.png';
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import CategoryList from "../components/CategoryList"
+import SmallH2 from "../components/SmallH2"
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -37,48 +37,142 @@ const EventDetails: () => React$Node = ({navigation}) => {
       age:21,
       country:'Bangladesh',
       city:'Dhaka',
-      address:'Dhaka,bangladesh,Dhaka',
+      address:'Dhaka, bangladesh, Dhaka',
       phone:'0987654',
       mail:'sdhb@hk',
       details:"",
-      topCategory:[
+      history:[
         {
           id:"1",
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"Bata",
-          title:"A great event"
+          date:"10-10-20",
+          city:'Dhaka',
+          title:"Dhaka-10-sports",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"sports"
         },
         {
           id:"2",
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Samsung",
-          title:"event at ICCB"
+          brand:"Bata",
+          date:"11-10-20",
+          city:'Dhaka',
+          title:"Dhaka-11-sports",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"sports"
         },
         {
           id:"3",
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Apple",
-          title:"Basundhara city"
+          brand:"Bata",
+          date:"10-10-20",
+          city:'Dhaka',
+          title:"Dhaka -10-concert",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"concert"
         },
         {
           id:"4",
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Xiaomi",
-          title:"A bad event"
+          brand:"Bata",
+          date:"20-10-20",
+          city:'Dhaka',
+          title:"Dhaka-20-concert",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"concert"
         },
         {
           id:"5",
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"NMH",
-          title:"event at dit"
+          date:"20-10-20",
+          brand:"Bata",
+          city:'Dhaka',
+          title:"Dhaka-20-sports",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"sports"
         },
         {
           id:"6",
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"DHT",
-          title:"Basundhara complex"
+          brand:"Samsung",
+          city:'Khulna',
+          date:"11-10-20",
+          title:"Khulna-11-concert",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"concert"
+        },
+        {
+          id:"7",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Samsung",
+          city:'Khulna',
+          date:"11-10-20",
+          title:"Khulna -11-sports",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"sports"
+        },
+        {
+          id:"8",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Apple",
+          city:'Sylhet',
+          date:"11-10-20",
+          title:"Sylhet-11-party",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"party"
+        },
+        {
+          id:"9",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Apple",
+          city:'Sylhet',
+          date:"20-10-20",
+          title:"Sylhet-20-party",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"party"
+        },
+        {
+          id:"10",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Apple",
+          city:'Sylhet',
+          date:"20-10-20",
+          title:"Sylhet-20-meeting",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"meeting"
+        },
+        {
+          id:"11",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Bata",
+          date:"20-10-20",
+          city:'Ctg',
+          title:"Ctg-20-meeting",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"meeting"
+        },
+        {
+          id:"12",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Bata",
+          date:"10-10-20",
+          city:'Ctg',
+          title:"Ctg-20-meeting",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"meeting"
+        },
+        {
+          id:"13",
+          image: "https://app.imagineradio.io/media/album/art/default.jpg",
+          brand:"Bata",
+          date:"20-10-20",
+          city:'Ctg',
+          title:"Ctg-20-concert",
+          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          type:"concert"
         }
-      ]
+  ]
     })
     const [ profDetail , setProfDetail ] = useState(eventData.address)
   return (
@@ -319,12 +413,18 @@ const EventDetails: () => React$Node = ({navigation}) => {
             >{profDetail}</Text>
             </View>
         
-        <CategoryList
-        title="Event summary"
-        navigation={navigation}
-        darkText
-        data={eventData.topCategory}
-        />
+        <View
+        
+        style={{
+          marginVertical:10
+        }}>
+          <SmallH2
+          title="Previous Events"
+          navigation={navigation}
+          darkText
+          data={eventData.history}
+          />
+        </View>
         <TouchableOpacity
         style={{
           height:window.height/8,
