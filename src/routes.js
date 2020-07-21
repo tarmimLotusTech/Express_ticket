@@ -13,6 +13,7 @@ import Login from './screens/Login'
 import Signup from './screens/Signup'
 import EventDetails from './screens/EventDetails'
 import CategoryDetails from "./screens/CategoryDetails";
+import SearchResult from "./screens/SearchResult";
 
 const window = Dimensions.get('window');
 
@@ -138,7 +139,8 @@ const CategoryStack = createCompatNavigatorFactory(createStackNavigator)(
 const SearchStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Search: { screen: Search, navigationOptions:{headerShown:false}  },
-		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  }
+		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		SearchResult: { screen: SearchResult, navigationOptions:{headerShown:false}  }
 	},
 	options
 );
