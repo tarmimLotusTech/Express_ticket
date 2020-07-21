@@ -15,7 +15,18 @@ import iconCity from '../assets/icons/iconCity.png';
 import iconAddress from '../assets/icons/iconAddress.png';
 import iconMail from '../assets/icons/iconMail.png';
 import iconPhone from '../assets/icons/iconPhone.png';
-
+import ImagePicker from 'react-native-image-picker';
+const options = {
+  title: 'Select Image',
+  cancelButtonTitle:'Go back',
+  cameraType:'front',
+  mediaType:'photo',
+  quality:1,
+  storageOptions: {
+    skipBackup: true,
+    path: 'express_ticket',
+  },
+};
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
@@ -24,6 +35,9 @@ import SmallH2 from "../components/SmallH2"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EventDetails: () => React$Node = ({navigation}) => {
+  useEffect(()=>{
+
+  },[navigation])
   function logOut(){
     navigation.navigate("AuthStack")
   }
@@ -174,7 +188,28 @@ const EventDetails: () => React$Node = ({navigation}) => {
         }
   ]
     })
+    const [profileImage, setProfileImage]=useState({uri:eventData.image})
     const [ profDetail , setProfDetail ] = useState(eventData.address)
+    function uploadImage(){
+      ImagePicker.showImagePicker(options, (response) => {
+        console.log('Response = ', response);
+      
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          const source = { uri: response.uri };
+      
+          // You can also display the image using data:
+          // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+          setProfileImage(source)
+        }
+      });
+      
+    }
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -195,7 +230,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         style={styles.slideHolder}
         >
           <Image
-            source={{uri:eventData.image}}
+            source={profileImage}
             style={styles.imgFit}
           />
 
@@ -211,6 +246,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
             justifyContent:'center'
           }}
           >
+            <TouchableOpacity
+              onPress={uploadImage}
+            >
             <Text
             style={{
               alignSelf:'center',
@@ -221,6 +259,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
             >
               {"\u002B"}
             </Text>
+            </TouchableOpacity>
           </View>
           <View
           style={{
