@@ -47,10 +47,11 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       if (!history.includes(searchtext.toLowerCase())){
         let arr = history
         arr.push(searchtext.toLowerCase())
-        setSearchText('')
         await AsyncStorage.setItem('myHistory',JSON.stringify(arr))
         setData(arr)
         setHistory(arr)
+        navigation.navigate("SearchResult",{item:searchtext})
+        setSearchText('')
       }
     } catch (error) {
       console.log( "submit error",error)
@@ -141,6 +142,16 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
           </TouchableOpacity>
         </View>
         </View>
+        <Text
+        style={{
+          color:'white',
+          alignSelf:'center',
+          fontSize:15,
+          marginTop:5,
+          marginBottom:-15,
+          fontWeight:'bold'
+        }}
+        >Previous searches</Text>
         <FlatList
           data={data}
           contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
@@ -219,7 +230,7 @@ const styles = StyleSheet.create({
     alignSelf:'center'
   },
   scrollView: {
-    backgroundColor: "#313E55",
+    backgroundColor: "grey",
     height:window.height
   },
   engine: {
