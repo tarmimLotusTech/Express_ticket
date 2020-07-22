@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
+import { ImageBackground, Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 
@@ -60,35 +60,68 @@ function Login (props) {
 
         {
           !keyFocus?
+          <View>
           <View
-        
-        style={{
-          height:200,
-          backgroundColor:'#00163D',
-          borderBottomLeftRadius:130,
-          borderBottomRightRadius:130
-        }}>
+            style={{
+              height:window.width-130,
+              backgroundColor:'#130A56',
+              borderBottomLeftRadius:window.width/2.5,
+              borderBottomRightRadius:window.width/2.5
+            }}>
 
         <Image
             style={{
               flex: 1,
-              width: 200,
+              width: 150,
+              height: 150,
               marginBottom:20,
               alignSelf:'center',
-              resizeMode: 'cover',
+              resizeMode:'contain',
               borderRadius:8
           }}
-            source={{uri:"https://app.imagineradio.io/media/album/art/default.jpg"}}
+            source={require("../assets/images/loginTop.png")}
           />
           </View>
+          <Text
+          style={{
+            color:'black',
+            fontSize:40,
+            alignSelf:'flex-start',
+            alignSelf:'center',
+            marginTop:10,
+            fontWeight:'bold',
+          }}>
+            Express 
+            <Text
+            style={{
+              color:'#FDDF68'
+            }}
+            > Ticket</Text>
+            
+          </Text></View>
           :<View/>
         }
+        <ImageBackground
+        source={require('../assets/images/loginBG.png')}
+        style={{
+          flex: 1,
+        }}
+        imageStyle={{
+          resizeMode:'contain',
+          height:250,
+          width:300,
+          marginLeft:130,
+          marginTop:50
+        }}
+        >
         <Text
           style={{
             color:'red',
             alignSelf:'flex-start',
             alignSelf:'center',
-            marginTop:10,        
+            marginTop:10,
+            marginBottom:-40
+  
           }}>
             {signupError}
           </Text>
@@ -150,9 +183,10 @@ function Login (props) {
             Signup
           </Text>
         </TouchableOpacity>
+        </ImageBackground>
         <TouchableOpacity
         style={{
-          height:window.height/8,
+          height:window.height/10,
           width:window.width,
           backgroundColor:"#313E55",
           justifyContent:'center'

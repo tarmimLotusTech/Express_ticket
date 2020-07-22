@@ -49,7 +49,7 @@ export default {
     height: window.height,
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: 'rgba(249,249,249,0.9)'
+    backgroundColor: 'transparent'
   },
   loginEmailTop: {
     width: window.width,

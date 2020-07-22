@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard, ScrollView, Image} from "react-native";
+import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard, ScrollView, Image} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 
@@ -8,7 +8,7 @@ import {
 } from 'react-native-typography';
 
 function Login (props) {
-  const [keyFocus,setKeyFocus]=useState(true)
+  const [keyFocus,setKeyFocus]=useState(false)
   
   const [fName,setFName]=useState('')
   const [lName,setLName]=useState('')
@@ -88,33 +88,50 @@ function Login (props) {
           <View
         
         style={{
-          height:120,
-          backgroundColor:'#00163D',
+          height:window.height/3.5,
+          marginBottom:20,
+          backgroundColor:'#130A56',
           borderBottomLeftRadius:130,
           borderBottomRightRadius:130
         }}>
 
           <Image
-              style={{
-                flex: 1,
-                width: 150,
-                height: 100,
-                alignSelf:'center',
-                resizeMode: 'cover',
-                borderRadius:8
-            }}
-              source={{uri:"https://app.imagineradio.io/media/album/art/default.jpg"}}
-            />
+            style={{
+              flex: 1,
+              width: 150,
+              height: 150,
+              marginBottom:20,
+              alignSelf:'center',
+              resizeMode:'contain',
+              borderRadius:8
+          }}
+            source={require("../assets/images/loginTop.png")}
+          />
+          
         </View>
         
         :<View/>
         }
         <Text
           style={{
-            color:'red'
+            color:'red', 
+            alignSelf:'center'            
           }}>
             {signupError}
           </Text>
+      <ImageBackground
+        source={require('../assets/images/loginBG.png')}
+        style={{
+          flex: 1,
+        }}
+        imageStyle={{
+          resizeMode:'contain',
+          height:250,
+          width:300,
+          marginLeft:130,
+          marginTop:100
+        }}
+        >
       <ScrollView
       contentInsetAdjustmentBehavior="automatic"
       >
@@ -345,6 +362,7 @@ function Login (props) {
           </Text>
         </TouchableOpacity>
         </ScrollView>
+        </ImageBackground>
         <TouchableOpacity
         style={{
           height:window.height/8,
