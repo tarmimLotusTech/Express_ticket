@@ -42,16 +42,24 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
   },[])
 
   async function onSubmit(){
+    let today=new Date().toLocaleDateString()
     try {
-      if (!history.includes(searchtext.toLowerCase())){
+      if (
+        !(history.findIndex(item=>item.term.toLowerCase()===searchtext.toLowerCase())>=0)
+        ){
         let arr = history
-        arr.push(searchtext.toLowerCase())
-        await AsyncStorage.setItem('myHistory',JSON.stringify(arr))
+        arr.push(
+          {
+            term:searchtext.toLowerCase(),
+            date: today
+          })
+        await AsyncStorage.setItem('myHistory',JSON.stringify(arr)) //set this arr value to empty for resetting search history
         setData(arr)
         setHistory(arr)
-        navigation.navigate("SearchResult",{item:searchtext})
-        setSearchText('')
       }
+      navigation.navigate("SearchResult",{item:searchtext})
+      setSearchText('')
+      setData(history)
     } catch (error) {
       console.log( "submit error",error)
     }
@@ -89,7 +97,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
             onChangeText={
             (t)=>{
               setSearchText(t)
-              let tempArr=history.filter(item=>item.includes(t.toLowerCase()))
+              let tempArr=history.filter(item=>item.term.includes(t.toLowerCase()))
               setData(tempArr)
               }
             }
@@ -126,7 +134,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate("SearchResult",{item})}
+                onPress={() => navigation.navigate("SearchResult",{item:item.term})}
                 style={{
                   width: window.width -40,
                   height: window.width * 40 / 375,
@@ -146,7 +154,9 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
                 <View style={{
                   width: window.width -40,
                   height: window.width * 35 / 375,
-                  justifyContent: 'flex-end',
+                  flexDirection:'row',
+                  paddingHorizontal:40,
+                  justifyContent:'space-between',
                   alignItems: 'flex-start',
                   padding:5
                 }}>
@@ -155,14 +165,21 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
                       alignSelf:'center',
                       color: '#00102D'}]}
                     numberOfLines={1}>
-                    {item}
+                    {item.term}
                     </Text>
+                    <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
+                      alignSelf:'center',
+                      color: '#00102D'}]}
+                    numberOfLines={1}>
+                    {item.date}
+                    </Text>
+                    
                 </View>
               </TouchableOpacity>
             );
           }}
           keyExtractor={(item,index) => {
-            return item.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return item.date.toString()+item.term.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
         
         
