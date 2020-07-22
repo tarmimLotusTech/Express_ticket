@@ -63,10 +63,10 @@ function Login (props) {
           <View>
           <View
             style={{
-              height:window.width-130,
+              height:window.height/4,
               backgroundColor:'#130A56',
-              borderBottomLeftRadius:window.width/2.5,
-              borderBottomRightRadius:window.width/2.5
+              borderBottomLeftRadius:window.width/12,
+              borderBottomRightRadius:window.width/12
             }}>
 
         <Image
@@ -85,10 +85,10 @@ function Login (props) {
           <Text
           style={{
             color:'black',
-            fontSize:40,
+            fontSize:30,
             alignSelf:'flex-start',
             alignSelf:'center',
-            marginTop:10,
+            marginTop:30,
             fontWeight:'bold',
           }}>
             Express 
@@ -108,10 +108,11 @@ function Login (props) {
         }}
         imageStyle={{
           resizeMode:'contain',
-          height:250,
+          height:450,
           width:300,
-          marginLeft:130,
-          marginTop:50
+          marginLeft:100,
+          marginTop:50,
+          opacity:0.5
         }}
         >
         <Text
@@ -151,7 +152,7 @@ function Login (props) {
                 value={password}
                 secureTextEntry={true}
                 style={[loginStyles.txtInput,{
-                  marginTop:90
+                  marginTop:40
                 } ]}
                 onChangeText={setPassword}
                 blurOnSubmit={false}
@@ -159,35 +160,19 @@ function Login (props) {
           </View>
           {/* title and input ends */}
         </View>
-        <TouchableOpacity
-        style={{
-          height:window.height/20,
-          width:window.width/2,
-          alignSelf:'center',
-          backgroundColor:"transparent",
-          justifyContent:'center',
-          marginBottom:10,
-          borderBottomWidth:1,
-          borderBottomColor:'grey'
-        }}
-        onPress={()=>props.navigation.navigate("Signup")}
-        >
-          <Text
-          style={{
-            fontSize:10,
-            color:'#00163D',
-            alignSelf:'center',
-            fontWeight:'bold'
-          }}
-          >
-            Signup
-          </Text>
-        </TouchableOpacity>
         </ImageBackground>
+        <View
+        style={{
+          flexDirection:'row',
+          margin:15,
+          justifyContent:'space-between'
+        }}
+        >
         <TouchableOpacity
         style={{
-          height:window.height/10,
-          width:window.width,
+          height:window.height/15,
+          width:window.width/2.5,
+          borderRadius:5,
           backgroundColor:"#130A56",
           justifyContent:'center'
         }}
@@ -195,7 +180,7 @@ function Login (props) {
         >
           <Text
           style={{
-            fontSize:35,
+            fontSize:15,
             color:'white',
             alignSelf:'center'
           }}
@@ -203,7 +188,29 @@ function Login (props) {
             Login
           </Text>
         </TouchableOpacity>
-        
+        <TouchableOpacity
+        style={{
+          height:window.height/20,
+          width:window.width/2.5,
+          alignSelf:'center',
+          backgroundColor:"transparent",
+          justifyContent:'center',
+          marginBottom:10
+        }}
+        onPress={()=>props.navigation.navigate("Signup")}
+        >
+          <Text
+          style={{
+            fontSize:12,
+            color:'#00163D',
+            alignSelf:'center',
+            fontWeight:'bold'
+          }}
+          >
+            Create Account
+          </Text>
+        </TouchableOpacity>
+        </View>
       </View>
     );
   }

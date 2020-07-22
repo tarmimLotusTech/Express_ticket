@@ -71,7 +71,7 @@ export default {
     height: window.width*56/375,
     fontSize: 16,
     marginTop:130,
-    paddingLeft: window.width*28/375,
+    paddingLeft: window.width*15/375,
     marginVertical: 10
   },
   txtInputSignup: {
@@ -80,7 +80,7 @@ export default {
     width: window.width*305/375,
     height: window.width*56/375,
     fontSize: 16,
-    paddingLeft: window.width*28/375,
+    paddingLeft: window.width*15/375,
     marginVertical: 10
   },
   loginEmailBottom: {

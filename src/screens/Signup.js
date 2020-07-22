@@ -88,11 +88,11 @@ function Login (props) {
           <View
         
         style={{
-          height:window.height/3.5,
-          marginBottom:20,
+          marginBottom:0,
+          height:window.height/4,
           backgroundColor:'#130A56',
-          borderBottomLeftRadius:130,
-          borderBottomRightRadius:130
+          borderBottomLeftRadius:window.width/12,
+          borderBottomRightRadius:window.width/12
         }}>
 
           <Image
@@ -100,7 +100,7 @@ function Login (props) {
               flex: 1,
               width: 150,
               height: 150,
-              marginBottom:20,
+              marginBottom:0,
               alignSelf:'center',
               resizeMode:'contain',
               borderRadius:8
@@ -126,10 +126,11 @@ function Login (props) {
         }}
         imageStyle={{
           resizeMode:'contain',
-          height:250,
+          height:350,
           width:300,
           marginLeft:130,
-          marginTop:100
+          marginTop:100,
+          opacity:0.5
         }}
         >
       <ScrollView
@@ -256,7 +257,7 @@ function Login (props) {
               fontSize:20,
               alignSelf:'flex-start',
               marginLeft:40,
-              marginTop:30
+              marginVertical:10
             }}
             > 
             Contact Info
@@ -337,16 +338,41 @@ function Login (props) {
             </View>
           </View>
           {/* title and input ends */}
+          <View
+            style={{
+              flexDirection:'row',
+              margin:15,
+              justifyContent:'space-between'
+            }}
+            >
+          <TouchableOpacity
+        style={{
+          height:window.height/15,
+          width:window.width/2.5,
+          borderRadius:5,
+          backgroundColor:"#130A56",
+          justifyContent:'center'
+        }}
+        onPress={handleSubmit}
+        >
+          <Text
+          style={{
+            fontSize:15,
+            color:'white',
+            alignSelf:'center'
+          }}
+          >
+            Register
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity
         style={{
           height:window.height/20,
-          width:window.width/2,
+          width:window.width/2.5,
           alignSelf:'center',
           backgroundColor:"transparent",
           justifyContent:'center',
-          marginBottom:10,
-          borderBottomWidth:1,
-          borderBottomColor:'grey'
+          marginBottom:10
         }}
         onPress={()=>props.navigation.navigate("Login")}
         >
@@ -361,27 +387,10 @@ function Login (props) {
             Already have account? Login
           </Text>
         </TouchableOpacity>
+        </View>
         </ScrollView>
         </ImageBackground>
-        <TouchableOpacity
-        style={{
-          height:window.height/8,
-          width:window.width,
-          backgroundColor:"#130A56",
-          justifyContent:'center'
-        }}
-        onPress={handleSubmit}
-        >
-          <Text
-          style={{
-            fontSize:35,
-            color:'white',
-            alignSelf:'center'
-          }}
-          >
-            Register
-          </Text>
-        </TouchableOpacity>
+        
       </View>
     );
   }
