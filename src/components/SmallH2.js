@@ -4,17 +4,19 @@ import {
     Image,
     Text,
     TouchableOpacity,
-    View
+    View,
+    Dimensions
 } from "react-native";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
+const window = Dimensions.get('window');
 
 export default function SmallH2 (props) {
   useEffect(()=>{},[props])
-  function _handlePress(item) {
-    console.log(item)
-    props.navigation.navigate("EventDetails",{item})
+  function _handlePress(id) {
+    console.log(id)
+    props.navigation.navigate("EventDetails",{id})
   }
 
     return (
@@ -39,13 +41,22 @@ export default function SmallH2 (props) {
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                onPress={() => _handlePress(rowData)}
+                onPress={() => _handlePress(rowData._id)}
                 style={SliderStyles.itemSH2}
               >
-                <View style={SliderStyles.imageSH2}>
+                <View style={{
+                    width: window.width * 140 / 375,
+                    height: window.width * 150 / 375,
+                    overflow: 'hidden',
+                    marginBottom: 9
+                }}>
                   <Image
-                    style={[GlobalStyles.imgFit,{
-                      borderRadius:0,
+                    style={[{
+                      
+                      flex: 1,
+                      width: undefined,
+                      height: undefined,
+                      resizeMode:'cover',
                       borderTopLeftRadius:20,
                       borderTopRightRadius:20,
                       margin:1
