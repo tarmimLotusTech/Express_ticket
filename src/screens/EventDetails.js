@@ -21,10 +21,11 @@ import SmallH2 from "../components/SmallH2";
 import CategoryList from "../components/CategoryList"
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import VideoComponent from '../components/VIdeoComponent';
 
 const EventDetails: () => React$Node = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [vSource, setvSource]=useState('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')
   useEffect(()=>{
     setEventData({
       ...eventData,
@@ -196,18 +197,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
           visible={modalVisible}
           
         >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-        <Text style={styles.modalText}>Confirmed your booking. Enjoy!</Text>
-
-              <TouchableHighlight
-                style={{ ...styles.openButton, backgroundColor: "#00102D" }}
-                onPress={closeModal}
-              >
-                <Text style={styles.textStyle}>Close</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
+          <VideoComponent
+          vSource={vSource}
+          onBack={()=>setModalVisible(false)}
+          />
         </Modal>
         <View
         style={{
@@ -227,6 +220,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
             margin:window.width/50,
             borderRadius:25,
           }}
+          onPress={()=>setModalVisible(true)}
           >
           <Image
             source={{uri:eventData.image}}
