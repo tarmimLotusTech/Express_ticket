@@ -43,7 +43,7 @@ export default class SmallH2 extends React.Component {
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("CategoryDetails",{id:rowData.brand})}
                 style={{
-                  borderColor:'#00102D',
+                  borderColor:'#00163D',
                   borderWidth:1,
                   width: window.width /8,
                   height: window.height / 7,

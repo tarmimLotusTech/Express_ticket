@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		backgroundColor: '#00102D',
+		backgroundColor: '#00163D',
 		borderTopWidth: 0.5,
 		borderTopColor: '#cfcfcf',
 		shadowColor: 'rgba(0, 0, 0, 0.25)',
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
 	activeTxt: {
 		fontSize: 8,
 		fontWeight: 'bold',
-		color: '#00102D'
+		color: '#00163D'
 	},
 	countHolder: {
 		width: window.height / 20,

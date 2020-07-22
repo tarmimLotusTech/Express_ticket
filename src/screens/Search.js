@@ -163,13 +163,13 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
                     
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
                       alignSelf:'center',
-                      color: '#00102D'}]}
+                      color: '#00163D'}]}
                     numberOfLines={1}>
                     {item.term}
                     </Text>
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
                       alignSelf:'center',
-                      color: '#00102D'}]}
+                      color: '#00163D'}]}
                     numberOfLines={1}>
                     {item.date}
                     </Text>

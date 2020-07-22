@@ -89,7 +89,7 @@ function Login (props) {
         
         style={{
           height:120,
-          backgroundColor:'#00102D',
+          backgroundColor:'#00163D',
           borderBottomLeftRadius:130,
           borderBottomRightRadius:130
         }}>
@@ -132,7 +132,7 @@ function Login (props) {
           {/* title and input starts */}   
           <Text
           style={{
-            color:'#00102D',
+            color:'#00163D',
             fontSize:20,
             alignSelf:'flex-start',
             marginLeft:10
@@ -235,7 +235,7 @@ function Login (props) {
           
             <Text
             style={{
-              color:'#00102D',
+              color:'#00163D',
               fontSize:20,
               alignSelf:'flex-start',
               marginLeft:40,
@@ -336,7 +336,7 @@ function Login (props) {
           <Text
           style={{
             fontSize:10,
-            color:'#00102D',
+            color:'#00163D',
             alignSelf:'center',
             fontWeight:'bold'
           }}

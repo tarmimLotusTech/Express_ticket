@@ -310,10 +310,10 @@ class SearchResult extends Component  {
                   alignItems: 'flex-start',
                   padding:5
                 }}>
-                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00102D'}]}>
+                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00163D'}]}>
                     {item.brand}
                     </Text>
-                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#00102D'}]}
+                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#00163D'}]}
                     numberOfLines={1}>
                     {item.title}
                     </Text>

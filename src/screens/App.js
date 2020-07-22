@@ -104,7 +104,7 @@ const App: () => React$Node = ({navigation}) => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: "#00102D",
+    backgroundColor: "#00163D",
   },
   engine: {
     position: 'absolute',

@@ -169,7 +169,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           <View
           style={{
               height:window.height /10,
-              backgroundColor:'#00102D',
+              backgroundColor:'#00163D',
               borderRadius:window.height/25,
               justifyContent:'center',
               position:"absolute",
@@ -207,7 +207,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           marginHorizontal:10,
           marginTop: -window.height/12,
           marginBottom:window.height/18,
-          backgroundColor:'#00102D',
+          backgroundColor:'#00163D',
           borderRadius: 25,
           height:window.height/4,
           flexDirection:'row'
@@ -298,7 +298,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         <Text
             style={{
               fontSize: 12,
-              color:'#00102D',
+              color:'#00163D',
               textAlign:'center',
               margin:20,
               marginTop:-10

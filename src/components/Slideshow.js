@@ -80,7 +80,7 @@ export default class Slideshow extends React.Component {
                     <View/>
                 )}
                 style={{
-                    backgroundColor:'#00102D'
+                    backgroundColor:'#00163D'
                 }}
             />
         </View>
