@@ -184,7 +184,8 @@ const EventDetails: () => React$Node = ({navigation}) => {
               position:"absolute",
               top:window.height/2.2,
               width:window.width,
-              alignItems:'center'
+              alignItems:'center',
+              opacity:0.8
           }}
           >
             <Text

@@ -7,6 +7,7 @@ import {
     View,
     Dimensions
 } from "react-native";
+import { BaseUrl } from "../env";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
@@ -61,23 +62,23 @@ export default function SmallH2 (props) {
                       borderTopRightRadius:20,
                       margin:1
                     }]}
-                    source={{uri:rowData.image}}
+                    source={{uri:BaseUrl+rowData.cover.full}}
                   />
                 </View>
                 <View style={SliderStyles.contentSH2}>
                 <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}numberOfLines={1}>
-                    {rowData.brand}
+                    {rowData.name}
                     </Text>
                     <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#fff'}]}>
 
-                    {rowData.title}
+                    {rowData.model}
                     </Text>
                 </View>
               </TouchableOpacity>
             );
           }}
           keyExtractor={(item,index) => {
-            return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return item._id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
         </View>
     );

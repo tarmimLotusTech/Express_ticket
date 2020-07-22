@@ -7,6 +7,7 @@ import {
     View,
     Dimensions
 } from "react-native";
+import { BaseUrl } from "../env";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
@@ -65,14 +66,14 @@ export default class SmallH2 extends React.Component {
               }}>
                   <Image
                     style={GlobalStyles.imgFit}
-                    source={{uri:rowData.image}}
+                    source={{uri:BaseUrl+rowData.cover.full}}
                   />
                 </View>
               </TouchableOpacity>
             );
           }}
           keyExtractor={(item,index) => {
-            return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return item._id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
         </View>
     );

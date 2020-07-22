@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import ImageSlider from 'react-native-image-slider';
+import { BaseUrl } from "../env";
 
 const window = Dimensions.get('window');
 
@@ -16,8 +17,8 @@ export default class Slideshow extends React.Component {
   constructor(props) {
     super(props);
   }
-  _handlePress(item) {
-      this.props.navigation.navigate("EventDetails",{item})
+  _handlePress(id) {
+      this.props.navigation.navigate("EventDetails",{id})
 
   }
   render() {
@@ -35,7 +36,7 @@ export default class Slideshow extends React.Component {
                     style={[style, styles.slideHolder]}
                     >
                         <Image
-                            source={{uri:item.image}}
+                            source={{uri:BaseUrl+item.cover.full}}
                             style={styles.imgFit}
                         />
                         <Text
@@ -43,18 +44,18 @@ export default class Slideshow extends React.Component {
                             top:window.height/3.5,
                         }, styles.sliderTextAbsolute,styles.sliderLargeText]}
                         >
-                            {item.brand}
+                            {item.name}
                         </Text>
                         <Text
                             style={[{
                                 top:window.height/3.5 +25
                             }, styles.sliderTextAbsolute]}
                             >
-                                {item.title}
+                                {item.model}
                         </Text>
                         <TouchableOpacity
                         key={index}
-                        onPress={() => this._handlePress(item)}
+                        onPress={() => this._handlePress(item._id)}
                         >
 
                         <View
