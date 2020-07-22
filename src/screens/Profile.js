@@ -63,7 +63,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"10-10-20",
           city:'Dhaka',
           title:"Dhaka-10-sports",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"sports"
         },
         {
@@ -73,7 +73,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"11-10-20",
           city:'Dhaka',
           title:"Dhaka-11-sports",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"sports"
         },
         {
@@ -83,7 +83,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"10-10-20",
           city:'Dhaka',
           title:"Dhaka -10-concert",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"concert"
         },
         {
@@ -93,7 +93,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"20-10-20",
           city:'Dhaka',
           title:"Dhaka-20-concert",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"concert"
         },
         {
@@ -103,7 +103,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           brand:"Bata",
           city:'Dhaka',
           title:"Dhaka-20-sports",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"sports"
         },
         {
@@ -113,7 +113,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           city:'Khulna',
           date:"11-10-20",
           title:"Khulna-11-concert",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"concert"
         },
         {
@@ -123,7 +123,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           city:'Khulna',
           date:"11-10-20",
           title:"Khulna -11-sports",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"sports"
         },
         {
@@ -133,7 +133,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           city:'Sylhet',
           date:"11-10-20",
           title:"Sylhet-11-party",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"party"
         },
         {
@@ -143,7 +143,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           city:'Sylhet',
           date:"20-10-20",
           title:"Sylhet-20-party",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"party"
         },
         {
@@ -153,7 +153,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           city:'Sylhet',
           date:"20-10-20",
           title:"Sylhet-20-meeting",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"meeting"
         },
         {
@@ -163,7 +163,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"20-10-20",
           city:'Ctg',
           title:"Ctg-20-meeting",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"meeting"
         },
         {
@@ -173,7 +173,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"10-10-20",
           city:'Ctg',
           title:"Ctg-20-meeting",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"meeting"
         },
         {
@@ -183,13 +183,13 @@ const EventDetails: () => React$Node = ({navigation}) => {
           date:"20-10-20",
           city:'Ctg',
           title:"Ctg-20-concert",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
           type:"concert"
         }
   ]
     })
     const [profileImage, setProfileImage]=useState({uri:eventData.image})
-    const [ profDetail , setProfDetail ] = useState(eventData.address)
+    const [ profDetail , setProfDetail ] = useState(eventData.mail)
     function uploadImage(){
       ImagePicker.showImagePicker(options, (response) => {
         console.log('Response = ', response);
@@ -236,13 +236,13 @@ const EventDetails: () => React$Node = ({navigation}) => {
 
           <View
           style={{
-            width:window.height/10,
-            height:window.height/10,
-            borderRadius: window.height/20,
-            backgroundColor:'#fff',
+            width:window.height/18,
+            height:window.height/18,
+            borderRadius: window.height/36,
+            backgroundColor:'#100746',
             position:'absolute',
-            top:window.height/60,
-            left:window.width/9,
+            top:window.height/40,
+            left:window.width/7.5,
             justifyContent:'center'
           }}
           >
@@ -252,9 +252,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
             <Text
             style={{
               alignSelf:'center',
-              color:"#100746",
+              color:"#fff",
               fontWeight:'bold',
-              fontSize:45
+              fontSize:35
             }}
             >
               {"\u002B"}
@@ -264,7 +264,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           <View
           style={{
               height:window.height /8,
-              backgroundColor:'#100746',
+              backgroundColor:'#1E174A',
               borderTopLeftRadius:50,
               borderTopRightRadius:50,
               opacity:0.7,
@@ -431,8 +431,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
         {/* Timer card ends */}
         <View
         style={{
-          backgroundColor:'#6c5ce7',
+          backgroundColor:'#E6E8EA',
           height:30,
+          borderWidth:1,
+          borderColor:'#6c5ce7',
           width:window.width/1.3,
           borderRadius:5,
           marginBottom:5,
@@ -443,7 +445,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         >
             <Text
             style={{
-              color:'#fff',
+              color:'#6c5ce7',
               alignSelf:'center',
               fontStyle:'italic',
               fontSize:15,
@@ -464,11 +466,13 @@ const EventDetails: () => React$Node = ({navigation}) => {
           data={eventData.history}
           />
         </View>
-        <TouchableOpacity
+        {/* <TouchableOpacity
         style={{
-          height:window.height/8,
-          width:window.width,
-          backgroundColor:"#313E55",
+          height:window.height/10,
+          width:window.width/1.5,
+          alignSelf:'center',
+          borderRadius:10,
+          backgroundColor:"#182744",
           justifyContent:'center'
         }}
         onPress={logOut}
@@ -482,7 +486,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           >
             Logout
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         </ScrollView>
       </SafeAreaView>
     </>

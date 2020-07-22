@@ -64,7 +64,7 @@ function Login (props) {
         
         style={{
           height:200,
-          backgroundColor:'#100746',
+          backgroundColor:'#00102D',
           borderBottomLeftRadius:130,
           borderBottomRightRadius:130
         }}>
@@ -142,7 +142,7 @@ function Login (props) {
           <Text
           style={{
             fontSize:10,
-            color:'#100746',
+            color:'#00102D',
             alignSelf:'center',
             fontWeight:'bold'
           }}

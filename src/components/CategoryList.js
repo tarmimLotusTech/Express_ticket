@@ -27,7 +27,8 @@ export default class SmallH2 extends React.Component {
         <View>
           <Text
             style={[GlobalStyles.headerText,{
-              color: this.props.darkText? 'black':'yellow'
+              marginTop:10,
+              color: this.props.darkText? 'black':'#FADC62'
             } ]}
           >
             {this.props.title}
@@ -42,13 +43,13 @@ export default class SmallH2 extends React.Component {
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("CategoryDetails",{id:rowData.brand})}
                 style={{
-                  borderColor:'#100746',
+                  borderColor:'#00102D',
                   borderWidth:1,
                   width: window.width /8,
                   height: window.height / 7,
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginHorizontal: 25,
+                  margin:15,
                   backgroundColor:"#bdc3c7",
                   borderRadius:window.width / 16
                   

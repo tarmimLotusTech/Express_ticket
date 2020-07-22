@@ -29,7 +29,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
     setEventData({
       ...eventData,
       ...navigation.state.params.item,
-      details: navigation.state.params.item?navigation.state.params.item.details.substring(0, 90)+"...":""
+      // details: navigation.state.params.item?navigation.state.params.item.details.substring(0, 90)+"...":""
     })
   },[navigation])
   function closeModal(){
@@ -90,7 +90,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"Bata",
           title:"A great event",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, ",
     
         },
         {
@@ -98,7 +98,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"Samsung",
           title:"event at ICCB",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, ",
     
         },
         {
@@ -106,7 +106,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"Apple",
           title:"Basundhara city",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, ",
     
         },
         {
@@ -114,7 +114,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"Xiaomi",
           title:"A bad event",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, ",
     
         },
         {
@@ -122,7 +122,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"NMH",
           title:"event at dit",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, ",
     
         },
         {
@@ -130,7 +130,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           image: "https://app.imagineradio.io/media/album/art/default.jpg",
           brand:"DHT",
           title:"Basundhara complex",
-          details:" A great event A great event A great event A great event A great event A great event A great event A great event A great eventA great event A great event A great event A great event  A great event  A great event  A great event ",
+          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, ",
     
         }
       ],
@@ -152,14 +152,14 @@ const EventDetails: () => React$Node = ({navigation}) => {
           />
           <Text
             style={[{
-                top:window.height/5,
+                top:window.height/3,
             }, styles.sliderTextAbsolute,styles.sliderLargeText]}
           >
             {eventData.brand}
           </Text>
           <Text
             style={[{
-                top:window.height/5 +25
+                top:window.height/3 +25
             }, styles.sliderTextAbsolute]}
             >
               {eventData.title}
@@ -167,12 +167,12 @@ const EventDetails: () => React$Node = ({navigation}) => {
           
           <View
           style={{
-              height:window.height /6,
-              backgroundColor:'#100746',
-              borderRadius:50,
+              height:window.height /10,
+              backgroundColor:'#00102D',
+              borderRadius:window.height/25,
               justifyContent:'center',
               position:"absolute",
-              top:window.height/3,
+              top:window.height/2.2,
               width:window.width,
               alignItems:'center'
           }}
@@ -191,61 +191,60 @@ const EventDetails: () => React$Node = ({navigation}) => {
         </View>
         {/* Timer card ends */}
         <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            
-          >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-          <Text style={styles.modalText}>Confirmed your booking. Enjoy!</Text>
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+        <Text style={styles.modalText}>Confirmed your booking. Enjoy!</Text>
 
-                <TouchableHighlight
-                  style={{ ...styles.openButton, backgroundColor: "#100746" }}
-                  onPress={closeModal}
-                >
-                  <Text style={styles.textStyle}>Close</Text>
-                </TouchableHighlight>
-              </View>
+              <TouchableHighlight
+                style={{ ...styles.openButton, backgroundColor: "#00102D" }}
+                onPress={closeModal}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </TouchableHighlight>
             </View>
-          </Modal>
+          </View>
+        </Modal>
         <View
         style={{
-          marginHorizontal:40,
-          marginVertical: 30,
-          backgroundColor:'#100746',
+          marginHorizontal:10,
+          marginTop: -window.height/12,
+          marginBottom:window.height/18,
+          backgroundColor:'#00102D',
           borderRadius: 25,
           height:window.height/4,
-
           flexDirection:'row'
         }}
         >
           <TouchableOpacity
           style={{
-            width: window.width/3.5,
-            height: window.width/3.5,
-            margin:30,
+            width: window.width/2.5,
+            height: window.width/2.5,
+            margin:window.width/50,
             borderRadius:25,
           }}
           >
           <Image
             source={{uri:eventData.image}}
           style={{
-            width: window.width/3.5,
-            height:window.width/3.5,
+            width: window.width/2.5,
+            height:window.width/2.5,
             resizeMode: 'cover',
-            borderRadius:24,
+            borderRadius:25,
 
         }}
           />
           <Image
 					style={{
             position:'absolute',
-            top:window.height / 18,
-            left:window.height / 18,
-            width: window.height / 20,
-            height: window.height / 20,
-            marginBottom: 5
+            top:window.height / 12.5,
+            left:window.height / 12.5,
+            width: window.height / 15,
+            height: window.height / 15,
           }}
 					source={iconPlay}
 				/>
@@ -260,7 +259,11 @@ const EventDetails: () => React$Node = ({navigation}) => {
           >
           <View
           style={{
-            width:window.width/3.5,
+            width:window.width/2.2,
+            height:window.height/15,
+            justifyContent:'center',
+            margin:20,
+            paddingTop:window.height/15
           }}
           >
             <Text
@@ -268,44 +271,47 @@ const EventDetails: () => React$Node = ({navigation}) => {
               fontSize:15,
               color:'white',
               fontWeight:'700',
-              marginTop: window.height/18,
           }}
             >
               {eventData.brand}{"\n"}
-                <Text
-                style={{
-                  fontSize: 7,
-                  color:'#fff'
-                }}
-                >
-                  {eventData.details}
-                </Text>
             </Text>
           </View>
           <TouchableOpacity
             style={{
-              height:window.width/13,
-              width: window.width/5.5,
-              marginTop:15,
+              height:window.width/10,
+              width: window.width/2.4,
+              marginLeft:10,
               borderRadius:7,
-              backgroundColor: '#fbc531'
+              backgroundColor: '#fbc531',
+              justifyContent:'center',
+              alignItems:'center'
             }}
             onPress={confirmBooking}
             >
               <Text
               style={{
                 color:'black',
-                fontSize:8,
-                margin: window.width/40,
+                fontSize:18,
                 fontWeight:'bold'
               }}
               >
-                Book now{"\u21AC"}
+                Book now
               </Text>
             </TouchableOpacity>
           </View>
           
         </View>
+        <Text
+            style={{
+              fontSize: 12,
+              color:'#00102D',
+              textAlign:'center',
+              margin:20,
+              marginTop:-10
+            }}
+            >
+              {eventData.details}
+          </Text>
         {/* preview card ends */}
         <SmallH2
             data={eventData.relatedEvents}
@@ -319,25 +325,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
         darkText
         data={eventData.topCategory}
         />
-        <TouchableOpacity
-        style={{
-          height:window.height/8,
-          width:window.width,
-          backgroundColor:"#313E55",
-          justifyContent:'center'
-        }}
-        onPress={confirmBooking}
-        >
-          <Text
-          style={{
-            fontSize:35,
-            color:'white',
-            alignSelf:'center'
-          }}
-          >
-            Book Now
-          </Text>
-        </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </>
@@ -347,17 +334,17 @@ const EventDetails: () => React$Node = ({navigation}) => {
 const styles = StyleSheet.create({
   slideShow: {
     width: window.width,
-    height: window.height /2.5,
+    height: window.height /2.4,
     justifyContent: 'center',
     alignItems: 'center',
   },
   slideHolder: {
       width: window.width,
-      height: window.height /2
+      height: window.height /1.5
   },
   imgFit: {
       width: window.width,
-      height:window.height /2.4,
+      height:window.height /2,
       resizeMode: 'cover'
   },
   indicatorHolder: {
@@ -390,7 +377,7 @@ const styles = StyleSheet.create({
   sliderTextAbsolute: {
       position:"absolute",
       color:'white',
-      left:window.width/3,
+      left:window.width/10,
       
   },
   scrollView: {

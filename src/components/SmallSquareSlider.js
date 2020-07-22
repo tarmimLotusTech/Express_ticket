@@ -45,7 +45,7 @@ export default class SmallH2 extends React.Component {
                   justifyContent: 'space-between',
                   alignItems: 'flex-start',
                   marginHorizontal: 10,
-                  backgroundColor:"#4834d4",
+                  backgroundColor:"#1A2A47",
                   borderRadius:10,
                   
               }}

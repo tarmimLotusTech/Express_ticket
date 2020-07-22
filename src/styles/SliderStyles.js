@@ -35,30 +35,30 @@ export default {
     // smallH2
     itemSH2: {
         width: window.width * 123 / 375,
-        height: window.width * 159 / 375,
+        height: window.width * 200 / 375,
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         marginHorizontal: 10,
         backgroundColor:"#313E55",
-        borderRadius:10,
-        borderBottomColor:"#95a5a6",
+        borderRadius:20,
+        borderBottomColor:"#415D94",
         borderBottomWidth:1,
-        borderLeftColor:"#95a5a6",
+        borderLeftColor:"#415D94",
         borderLeftWidth:1,
         
     },
     imageSH2: {
         width: window.width * 123 / 375,
-        height: window.width * 120 / 375,
-        borderRadius: 5,
+        height: window.width * 160 / 375,
         overflow: 'hidden',
         marginBottom: 9
     },
     contentSH2: {
         width: window.width * 123 / 375,
-        height: window.width * 30 / 375,
+        height: window.width * 10 / 375,
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
+        paddingLeft:10,
         padding:5
     },
 

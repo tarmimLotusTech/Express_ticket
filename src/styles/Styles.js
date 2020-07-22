@@ -24,7 +24,7 @@ export default {
     headerText:{
         fontWeight:'bold',
         fontSize:17,
-        color:'yellow',
+        color:'#FADC62',
         marginLeft: 20
       },
     // typo styles

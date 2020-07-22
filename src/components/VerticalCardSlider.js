@@ -26,7 +26,7 @@ export default class VerticalCardSlider extends React.Component {
         <View>
           <Text
           style={[GlobalStyles.headerText,{
-            color: this.props.darkText? 'black':'yellow'
+            color: this.props.darkText? 'black':'#FADC62'
           } ]}
           >
             {this.props.title}
@@ -49,9 +49,6 @@ export default class VerticalCardSlider extends React.Component {
           showsHorizontalScrollIndicator={false}
           numColumns={3}
           ListFooterComponent={()=><View
-          style={{
-            height:50
-          }}
           /> }
           data={this.props.data}
           contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
@@ -66,7 +63,7 @@ export default class VerticalCardSlider extends React.Component {
                   alignItems: 'flex-start',
                   marginHorizontal: 14,
                   marginVertical:20,
-                  backgroundColor:"#4834d4",
+                  backgroundColor:"#1A2A47",
                   borderRadius:10
                   
               }}

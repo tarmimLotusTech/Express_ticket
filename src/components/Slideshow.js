@@ -40,18 +40,18 @@ export default class Slideshow extends React.Component {
                         />
                         <Text
                         style={[{
-                            top:window.height/5,
+                            top:window.height/3.5,
                         }, styles.sliderTextAbsolute,styles.sliderLargeText]}
                         >
                             {item.brand}
                         </Text>
                         <Text
                             style={[{
-                                top:window.height/5 +25
+                                top:window.height/3.5 +25
                             }, styles.sliderTextAbsolute]}
                             >
                                 {item.title}
-                            </Text>
+                        </Text>
                         <TouchableOpacity
                         key={index}
                         onPress={() => this._handlePress(item)}
@@ -59,8 +59,8 @@ export default class Slideshow extends React.Component {
 
                         <View
                         style={{
-                            height:window.width * 70/ 375,
-                            backgroundColor:'#4834d4',
+                            height:window.width * 50/ 375,
+                            backgroundColor:'#1A2A47',
                             borderBottomLeftRadius:25,
                             borderBottomRightRadius:25,
                             justifyContent:'center',
@@ -80,7 +80,7 @@ export default class Slideshow extends React.Component {
                     <View/>
                 )}
                 style={{
-                    backgroundColor:'#100746'
+                    backgroundColor:'#00102D'
                 }}
             />
         </View>
@@ -90,13 +90,13 @@ export default class Slideshow extends React.Component {
 const styles = StyleSheet.create({
     slideShow: {
         width: window.width,
-        height: window.height /2.5,
+        height: window.height /2,
         justifyContent: 'center',
         alignItems: 'center',
     },
     slideHolder: {
         width: window.width,
-        height: window.height /2.5
+        height: window.height /2.2
     },
     imgFit: {
         flex: 1,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     sliderTextAbsolute: {
         position:"absolute",
         color:'white',
-        left:window.width/3,
+        left:window.width/12,
         
     }
 });

@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		backgroundColor: '#100746',
+		backgroundColor: '#00102D',
 		borderTopWidth: 0.5,
 		borderTopColor: '#cfcfcf',
 		shadowColor: 'rgba(0, 0, 0, 0.25)',
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
 		height: window.width / 6.5,
     justifyContent: 'center',
 		alignItems: 'center',
-    backgroundColor: '#4834d4',
+    backgroundColor: '#323E55',
     borderRadius:10
 	},
 	activeTab: {
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
 	activeTxt: {
 		fontSize: 8,
 		fontWeight: 'bold',
-		color: '#100746'
+		color: '#00102D'
 	},
 	countHolder: {
 		width: window.height / 20,

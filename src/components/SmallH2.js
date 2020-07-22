@@ -21,7 +21,7 @@ export default function SmallH2 (props) {
         <View>
           <Text
             style={[GlobalStyles.headerText,{
-              color: props.darkText? 'black':'yellow'
+              color: props.darkText? 'black':'#FADC62'
             } ]}
             >
             {props.title}
@@ -39,7 +39,12 @@ export default function SmallH2 (props) {
               >
                 <View style={SliderStyles.imageSH2}>
                   <Image
-                    style={GlobalStyles.imgFit}
+                    style={[GlobalStyles.imgFit,{
+                      borderRadius:0,
+                      borderTopLeftRadius:20,
+                      borderTopRightRadius:20,
+                      margin:1
+                    }]}
                     source={{uri:rowData.image}}
                   />
                 </View>

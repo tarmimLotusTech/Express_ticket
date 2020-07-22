@@ -25,7 +25,6 @@ import {
 
 const CategoryDetails: () => React$Node = ({navigation}) => {
   const [searchtext, setSearchText]=useState('')
-  const [viewHeight,setViewHeight]=useState(window.width-30)
   const [history,setHistory]=useState([])
   const [data, setData]=useState([])
   useEffect(()=>{
@@ -63,47 +62,19 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
       <KeyboardAvoidingView
       style={styles.scrollView}
       >
-        <View
-        style={{
-          height:window.height/8,
-          width:window.width,
-          backgroundColor:"#100746",
-          justifyContent:'center',
-          marginBottom:30
-        }}
-        >
-          <Text
-        style={{
-          fontWeight:'bold',
-          fontSize:20,
-          color:'white',
-          alignSelf:'center'
-        }}
-        >Search </Text>
-        </View>
-        <View
-        style={{
-          backgroundColor:"#fff",
-          height:viewHeight,
-          width:window.width-30,
-          alignSelf:'center',
-          borderRadius:20,
-          borderBottomColor:'grey',
-          borderBottomWidth:2,
-          borderLeftColor:'grey',
-          borderLeftWidth:2,
-          justifyContent:'center',
-          alignItems:'center'
-        }}
-        >
           <View
           style={{
+            backgroundColor:"#fff",
             flexDirection:'row',
-            height: window.width*56/375,
+            height: window.width*50/375,
+            alignSelf:'center',
             width:window.width-40,
-            borderRadius:15,
-            borderColor:'grey',
+            borderRadius:10,
+            marginTop:15,
+            borderColor:'#EAECEE',
             borderWidth:1,
+            justifyContent:'center',
+            alignItems:'center',
             alignSelf:'center'
           }}
           >
@@ -111,7 +82,6 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
             underlineColorAndroid="transparent"
             placeholderTextColor="#212121"
             placeholder="  Search"
-            onFocus={()=>setViewHeight(window.width*66/375)}
             autoFocus={true}
             value={searchtext}
             keyboardType="default"
@@ -119,18 +89,12 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
             onChangeText={
             (t)=>{
               setSearchText(t)
-              // if (!t){
-              //   setData([])
-              // }
-              // else {
-              //   setData(searchData[0].events)}
               let tempArr=history.filter(item=>item.includes(t.toLowerCase()))
               setData(tempArr)
               }
             }
             onSubmitEditing={onSubmit}
             blurOnSubmit={false}
-            // onBlur={()=>setViewHeight(window.width/2)}
           />
           <TouchableOpacity
           onPress={onSubmit}
@@ -141,10 +105,9 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
 				  />
           </TouchableOpacity>
         </View>
-        </View>
         <Text
         style={{
-          color:'white',
+          color:'black',
           alignSelf:'center',
           fontSize:15,
           marginTop:5,
@@ -190,7 +153,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
                     
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
                       alignSelf:'center',
-                      color: '#100746'}]}
+                      color: '#00102D'}]}
                     numberOfLines={1}>
                     {item}
                     </Text>
@@ -230,7 +193,7 @@ const styles = StyleSheet.create({
     alignSelf:'center'
   },
   scrollView: {
-    backgroundColor: "grey",
+    backgroundColor: "#EAECEE",
     height:window.height
   },
   engine: {
