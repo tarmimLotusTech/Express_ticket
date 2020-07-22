@@ -34,32 +34,32 @@ export default {
 
     // smallH2
     itemSH2: {
-        width: window.width * 123 / 375,
+        width: window.width * 140 / 375,
         height: window.width * 200 / 375,
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         marginHorizontal: 10,
         backgroundColor:"#001232",
         borderRadius:20,
-        borderBottomColor:"rgba(129, 236, 236,0.7)",
+        borderBottomColor:"#00011B",
         borderBottomWidth:1,
-        borderLeftColor:"rgba(129, 236, 236,0.7)",
+        borderLeftColor:"#00011B",
         borderLeftWidth:1,
         
     },
     imageSH2: {
-        width: window.width * 123 / 375,
-        height: window.width * 160 / 375,
+        width: window.width * 140 / 375,
+        height: window.width * 150 / 375,
         overflow: 'hidden',
         marginBottom: 9
     },
     contentSH2: {
-        width: window.width * 123 / 375,
+        width: window.width * 140 / 375,
         height: window.width * 10 / 375,
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
         paddingLeft:10,
-        padding:5
+        padding:12
     },
 
     // mediumH1

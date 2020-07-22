@@ -24,9 +24,15 @@ export default class SmallH2 extends React.Component {
 
   render() {
     return (
-        <View>
+        <View
+        style={{
+          marginVertical:5
+        }}
+        >
           <Text
-          style={GlobalStyles.headerText}
+          style={[GlobalStyles.headerText,{
+            marginVertical:20
+          }]}
           >
             {this.props.title}
           </Text>

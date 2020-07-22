@@ -42,7 +42,7 @@ export default class VerticalCardSlider extends React.Component {
                 fontWeight:'bold'
               }}
               onPress={()=>this.props.navigation.navigate("CategoryDetails",{id:this.props.title})}
-              > {"\u281B"}See all</Text>:<View/>
+              >See all</Text>:<View/>
           }
           
           <FlatList
@@ -57,19 +57,21 @@ export default class VerticalCardSlider extends React.Component {
               <TouchableOpacity
                 onPress={() => this._handlePress(rowData)}
                 style={{
-                  width: window.width * 90 / 375,
+                  width: window.width * 103 / 375,
                   height: window.width * 150 / 375,
                   justifyContent: 'space-between',
                   alignItems: 'flex-start',
-                  marginHorizontal: 14,
-                  marginVertical:20,
-                  backgroundColor:"#1A2A47",
-                  borderRadius:10
+                  marginHorizontal: 7,
+                  marginTop:10,
+                  backgroundColor:"#001232",
+                  borderRadius:7,
+                  marginBottom:20
+
                   
               }}
               >
                 <View style={{
-                  width: window.width * 90 / 375,
+                  width: window.width * 103 / 375,
                   height: window.width * 120 / 375,
                   borderRadius: 5,
                   overflow: 'hidden'
@@ -80,28 +82,29 @@ export default class VerticalCardSlider extends React.Component {
                   />
                 </View>
                 <View style={{
-                width: window.width * 90 / 375,
+                width: window.width * 103 / 375,
                 height: window.width * 20 / 375,
                 justifyContent: 'center',
                 paddingBottom:10,
                 paddingLeft:5,
                 alignItems: 'flex-start',
             }}>
-                    <Text style={[ {
-                      fontSize:5,
-                      color: '#fff',
-                      fontWeight: '300'
-                      }]}>
-                    {rowData.brand}
-                    </Text>
-                    <Text style={[ {
-                      fontSize:8,
-                      color: '#fff',
-                      fontWeight: '700'
-                    }]}
-                    numberOfLines={1}>
-                    {rowData.title}
-                    </Text>
+                <Text style={[ {
+                  fontSize:8,
+                  color: '#fff',
+                  fontWeight: '700'
+                }]}
+                numberOfLines={1}>
+                {rowData.brand}
+                </Text>
+                <Text style={[ {
+                  fontSize:5,
+                  color: '#fff',
+                  fontWeight: '300'
+                  }]}>
+                {rowData.title}
+                </Text>
+                    
                 </View>
               </TouchableOpacity>
             );

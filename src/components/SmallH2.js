@@ -18,9 +18,14 @@ export default function SmallH2 (props) {
   }
 
     return (
-        <View>
+        <View
+        style={{
+          marginVertical:5
+        }}
+        >
           <Text
             style={[GlobalStyles.headerText,{
+              marginVertical:15,
               color: props.darkText? 'black':'#FADC62'
             } ]}
             >
@@ -49,11 +54,11 @@ export default function SmallH2 (props) {
                   />
                 </View>
                 <View style={SliderStyles.contentSH2}>
-                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#fff'}]}>
+                <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}numberOfLines={1}>
                     {rowData.brand}
                     </Text>
-                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}
-                    numberOfLines={1}>
+                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#fff'}]}>
+
                     {rowData.title}
                     </Text>
                 </View>

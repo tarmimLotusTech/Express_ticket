@@ -27,7 +27,7 @@ export default class SmallH2 extends React.Component {
         <View>
           <Text
             style={[GlobalStyles.headerText,{
-              marginTop:10,
+              marginVertical:10,
               color: this.props.darkText? 'black':'#FADC62'
             } ]}
           >
@@ -45,26 +45,35 @@ export default class SmallH2 extends React.Component {
                 style={{
                   borderColor:'#00163D',
                   borderWidth:1,
-                  width: window.width /8,
-                  height: window.height / 7,
+                  width: window.width /6,
+                  height: window.height / 5,
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  margin:15,
+                  margin:8,
                   backgroundColor:"#bdc3c7",
-                  borderRadius:window.width / 16
+                  borderRadius:window.width / 14
                   
               }}
               >
                 <View style={{
-                  width: window.width /8 +8,
-                  height: window.width / 8 +8,
-                  borderRadius: window.width / 16 +3,
+                  width: window.width /6 +8,
+                  height: window.width / 6 +8,
+                  borderRadius: window.width / 12 +3,
                   overflow: 'hidden',
-                  marginBottom: 9
+                  marginTop:-3,
+                  borderWidth:2,
+                  backgroundColor:"#001A48",
+                  justifyContent:'center',
+                  borderColor:'#00163D',
+                  alignItems:'center'
               }}>
                   <Image
-                    style={GlobalStyles.imgFit}
-                    source={{uri:rowData.image}}
+                    style={{
+                      width: window.width/20,
+                      height: window.width/20,
+                      resizeMode: 'contain',
+                  }}
+                    source={require('../assets/icons/iconProfile.png')}
                   />
                 </View>
                 <View style={{
@@ -79,13 +88,24 @@ export default class SmallH2 extends React.Component {
                       [ GlobalStyles.centerTxt, {
                         fontWeight:'700',
                         fontSize: 8,
-                        color: 'black'
+                        color: 'black',
+                        marginBottom:10
                       }
                       ]}
                     numberOfLines={1}>
                     {rowData.brand}
                     </Text>
-                    <Text style={
+                    <Image
+                    style={{
+                      width: window.width/25,
+                      height: window.width/25,
+                      resizeMode: 'contain',
+                      marginTop:5,
+                      marginBottom:15
+                    }}
+                    source={require('../assets/icons/nextIconHome.png')}
+                  />
+                    {/* <Text style={
                       
                       [ GlobalStyles.centerTxt, {
                         fontWeight:'700',
@@ -96,7 +116,7 @@ export default class SmallH2 extends React.Component {
                       ]}
                     numberOfLines={1}>
                     {"\u21AA"}
-                    </Text>
+                    </Text> */}
                 </View>
               </TouchableOpacity>
             );

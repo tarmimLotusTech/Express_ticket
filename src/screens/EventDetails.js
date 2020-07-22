@@ -261,13 +261,16 @@ const EventDetails: () => React$Node = ({navigation}) => {
           }}
           >
             <Text
+            numberOfLines={2}
             style={{
-              fontSize:15,
+              fontSize:12,
+              marginBottom:20,
+              marginLeft:-10,
               color:'white',
               fontWeight:'700',
           }}
             >
-              {eventData.brand}{"\n"}
+              {eventData.title}{"\n"}{eventData.title}
             </Text>
           </View>
           <TouchableOpacity
@@ -296,10 +299,22 @@ const EventDetails: () => React$Node = ({navigation}) => {
           
         </View>
         <Text
+              style={{
+                color:'#00163D',
+                fontSize:18,
+                marginTop:-5,
+                marginLeft:23,
+                marginBottom:15,
+                fontWeight:'bold'
+              }}
+              >
+          Description
+        </Text>
+        <Text
             style={{
               fontSize: 12,
               color:'#00163D',
-              textAlign:'center',
+              textAlign:'left',
               margin:20,
               marginTop:-10
             }}
