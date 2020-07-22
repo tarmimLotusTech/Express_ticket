@@ -10,11 +10,7 @@ import {
   Text
 } from 'react-native';
 const window = Dimensions.get('window');
-import iconCountry from '../assets/icons/iconCountry.png';
-import iconCity from '../assets/icons/iconCity.png';
-import iconAddress from '../assets/icons/iconAddress.png';
-import iconMail from '../assets/icons/iconMail.png';
-import iconPhone from '../assets/icons/iconPhone.png';
+import iconDown from '../assets/icons/iconDown.png';
 import ImagePicker from 'react-native-image-picker';
 const options = {
   title: 'Select Image',
@@ -41,7 +37,19 @@ const EventDetails: () => React$Node = ({navigation}) => {
   function logOut(){
     navigation.navigate("AuthStack")
   }
-
+  const options=[{
+    title:"Details",
+    onPress:logOut
+  },
+  {
+    title:"Edit Profile",
+    onPress:logOut
+  },
+  {
+    title:"Logout",
+    onPress:logOut
+  }]
+  const [ menuDrop , setMenuDrop ] = useState(false)
   const [eventData,setEventData]= useState(
     {
       id:"1",
@@ -305,124 +313,13 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 borderColor:'black',
                 justifyContent:'center',
                 alignItems:'center'
-
               }}
-              onPress={()=> setProfDetail(eventData.country) }
+              onPress={()=>setMenuDrop(!menuDrop) }
               >
-                
                 <Image
                   style={styles.footerIcon}
-                  source={iconCountry}
+                  source={iconDown}
                 />
-                <Text
-                  style={styles.footerTxt}
-                >
-                  Country
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-              style={{
-                height:window.width/9,
-                width:window.width/9,
-                backgroundColor:'#fff',
-                marginHorizontal:10,
-                borderRadius:5,
-                borderWidth:1,
-                borderColor:'black',
-                justifyContent:'center',
-                alignItems:'center'
-
-              }}
-              onPress={()=>setProfDetail(eventData.city) }
-              >
-                
-                <Image
-                  style={styles.footerIcon}
-                  source={iconCity}
-                />
-                <Text
-                style={styles.footerTxt}
-              >
-                City
-              </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-              style={{
-                height:window.width/9,
-                width:window.width/9,
-                backgroundColor:'#fff',
-                marginHorizontal:10,
-                borderRadius:5,
-                borderWidth:1,
-                borderColor:'black',
-                justifyContent:'center',
-                alignItems:'center'
-
-              }}
-              onPress={()=>setProfDetail(eventData.address) }
-              >
-                
-                <Image
-                  style={styles.footerIcon}
-                  source={iconAddress}
-                />
-                <Text
-                  style={styles.footerTxt}
-                >
-                  Address
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-              style={{
-                height:window.width/9,
-                width:window.width/9,
-                backgroundColor:'#fff',
-                marginHorizontal:10,
-                borderRadius:5,
-                borderWidth:1,
-                borderColor:'black',
-                justifyContent:'center',
-                alignItems:'center'
-
-              }}
-              onPress={()=>setProfDetail(eventData.phone) }
-              >
-                
-                <Image
-                  style={styles.footerIcon}
-                  source={iconPhone}
-                />
-                <Text
-                  style={styles.footerTxt}
-                >
-                  Phone
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-              style={{
-                height:window.width/9,
-                width:window.width/9,
-                backgroundColor:'#fff',
-                marginHorizontal:10,
-                borderRadius:5,
-                borderWidth:1,
-                borderColor:'black',
-                justifyContent:'center',
-                alignItems:'center'
-
-              }}
-              onPress={()=>setProfDetail(eventData.mail) }
-              >
-                
-                <Image
-                  style={styles.footerIcon}
-                  source={iconMail}
-                />
-                <Text
-                    style={styles.footerTxt}
-                  >
-                    Email
-                  </Text>
               </TouchableOpacity>
             </View>
             {/* address row ends */}
@@ -431,28 +328,40 @@ const EventDetails: () => React$Node = ({navigation}) => {
         {/* Timer card ends */}
         <View
         style={{
-          backgroundColor:'#E6E8EA',
-          height:30,
-          borderWidth:1,
-          borderColor:'#6c5ce7',
-          width:window.width/1.3,
-          borderRadius:5,
-          marginBottom:5,
-          alignSelf:'center',
-          justifyContent:'center',
-          marginTop:-20,
+          marginTop:-20
         }}
         >
-            <Text
+        {
+          menuDrop?
+          options.map(option=><TouchableOpacity
             style={{
-              color:'#6c5ce7',
+              backgroundColor:'#E6E8EA',
+              height:30,
+              borderWidth:1,
+              borderColor:'#6c5ce7',
+              width:window.width/1.3,
+              borderRadius:5,
+              marginBottom:5,
               alignSelf:'center',
-              fontStyle:'italic',
-              fontSize:15,
-              fontWeight:'bold',
+              justifyContent:'center',
             }}
-            >{profDetail}</Text>
-            </View>
+            onPress={option.onPress}
+            >
+                <Text
+                style={{
+                  color:'#6c5ce7',
+                  alignSelf:'center',
+                  fontStyle:'italic',
+                  fontSize:15,
+                  fontWeight:'bold',
+                }}
+                >{option.title}</Text>
+            </TouchableOpacity>):<View/>
+        }
+        </View>
+        
+        
+        
         
         <View
         
@@ -553,9 +462,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   footerIcon: {
-		width: window.height / 60,
-		height: window.height / 60,
-		marginBottom: 5
+		width: window.height / 40,
+		height: window.height / 40,
 	},
   footer: {
     fontSize: 11,
