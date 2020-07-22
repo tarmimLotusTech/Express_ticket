@@ -188,7 +188,7 @@ function Login (props) {
         style={{
           height:window.height/10,
           width:window.width,
-          backgroundColor:"#313E55",
+          backgroundColor:"#130A56",
           justifyContent:'center'
         }}
         onPress={handleSubmit}

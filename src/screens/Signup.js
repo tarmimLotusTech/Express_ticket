@@ -367,7 +367,7 @@ function Login (props) {
         style={{
           height:window.height/8,
           width:window.width,
-          backgroundColor:"#313E55",
+          backgroundColor:"#130A56",
           justifyContent:'center'
         }}
         onPress={handleSubmit}
@@ -379,7 +379,7 @@ function Login (props) {
             alignSelf:'center'
           }}
           >
-            Signup
+            Register
           </Text>
         </TouchableOpacity>
       </View>
