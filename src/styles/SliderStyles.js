@@ -39,7 +39,7 @@ export default {
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         marginHorizontal: 10,
-        backgroundColor:"#313E55",
+        backgroundColor:"#001232",
         borderRadius:20,
         borderBottomColor:"#415D94",
         borderBottomWidth:1,
