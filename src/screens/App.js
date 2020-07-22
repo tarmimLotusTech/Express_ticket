@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -13,8 +13,15 @@ import SmallH2 from '../components/SmallH2'
 import Slideshow from '../components/Slideshow';
 import CategoryList from "../components/CategoryList";
 import SmallSquareSlider from "../components/SmallSquareSlider";
+import FetchService from '../services/FetchService';
 
 const App: () => React$Node = ({navigation}) => {
+  const [ categories, setCategories]=useState([])
+  useEffect(()=>{
+    FetchService("GET","api/category?page=1&limit=2&subCategory=true&sortOrder=-1&sort=added")
+    .then(res=>setCategories(res.data))
+    .catch(err=>console.log(err))
+  },[])
   const [data,setData]= useState([
     {
       id:"1",
@@ -78,7 +85,7 @@ const App: () => React$Node = ({navigation}) => {
             <CategoryList
             title="Categories"
             navigation={navigation}
-            data={data}
+            data={categories}
             />
             <SmallH2
             data={data}
