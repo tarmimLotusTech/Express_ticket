@@ -48,9 +48,10 @@ export default {
         
     },
     imageSH2: {
-        width: window.width * 140 / 375,
+        width: window.width * 130 / 375,
         height: window.width * 150 / 375,
         overflow: 'hidden',
+        padding:2,
         marginBottom: 9
     },
     contentSH2: {

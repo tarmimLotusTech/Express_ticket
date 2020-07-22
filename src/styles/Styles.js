@@ -80,9 +80,11 @@ export default {
 
     imgFit: {
         flex: 1,
-        width: undefined,
+        width: window.width * 100 / 375,
         height: undefined,
-        resizeMode: 'cover',
+        resizeMode:'center',
+        alignSelf:'center',
+        marginTop:-5,
         borderRadius:8
     }
 };
