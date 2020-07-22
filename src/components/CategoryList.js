@@ -41,7 +41,7 @@ export default class SmallH2 extends React.Component {
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("CategoryDetails",{id:rowData.brand})}
+                onPress={() => this.props.navigation.navigate("CategoryDetails",{id:rowData._id})}
                 style={{
                   borderColor:'#00163D',
                   borderWidth:1,
@@ -93,7 +93,7 @@ export default class SmallH2 extends React.Component {
                       }
                       ]}
                     numberOfLines={1}>
-                    {rowData.brand}
+                    {rowData.name}
                     </Text>
                     <Image
                     style={{
@@ -122,7 +122,7 @@ export default class SmallH2 extends React.Component {
             );
           }}
           keyExtractor={(item,index) => {
-            return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return item._id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
         </View>
     );

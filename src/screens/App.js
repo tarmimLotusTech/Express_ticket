@@ -18,7 +18,7 @@ import FetchService from '../services/FetchService';
 const App: () => React$Node = ({navigation}) => {
   const [ categories, setCategories]=useState([])
   useEffect(()=>{
-    FetchService("GET","api/category?page=1&limit=2&subCategory=true&sortOrder=-1&sort=added")
+    FetchService("GET","/api/category?page=1&limit=2&subCategory=true&sortOrder=-1&sort=added")
     .then(res=>setCategories(res.data))
     .catch(err=>console.log(err))
   },[])

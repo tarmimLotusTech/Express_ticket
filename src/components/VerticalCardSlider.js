@@ -10,6 +10,7 @@ import {
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
+import { BaseUrl } from "../env";
 const window = Dimensions.get('window');
 
 export default class VerticalCardSlider extends React.Component {
@@ -17,8 +18,8 @@ export default class VerticalCardSlider extends React.Component {
     super(props);
   }
 
-  _handlePress(item) {
-    this.props.navigation.navigate("EventDetails",{item})
+  _handlePress(id) {
+    this.props.navigation.navigate("EventDetails",{id})
   }
 
   render() {
@@ -55,7 +56,7 @@ export default class VerticalCardSlider extends React.Component {
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                onPress={() => this._handlePress(rowData)}
+                onPress={() => this._handlePress(rowData._id)}
                 style={{
                   width: window.width * 103 / 375,
                   height: window.width * 150 / 375,
@@ -78,7 +79,7 @@ export default class VerticalCardSlider extends React.Component {
               }}>
                   <Image
                     style={GlobalStyles.imgFit}
-                    source={{uri:rowData.image}}
+                    source={{uri:BaseUrl+rowData.cover.full}}
                   />
                 </View>
                 <View style={{
@@ -102,7 +103,7 @@ export default class VerticalCardSlider extends React.Component {
                   color: '#fff',
                   fontWeight: '300'
                   }]}>
-                {rowData.title}
+                {rowData.name}
                 </Text>
                     
                 </View>
@@ -110,7 +111,7 @@ export default class VerticalCardSlider extends React.Component {
             );
           }}
           keyExtractor={(item,index) => {
-            return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return new Date().getMilliseconds().toString()+index.toString()}}
             />
         </View>
     );

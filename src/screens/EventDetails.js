@@ -9,7 +9,8 @@ import {
   Image,
   Text,
   TouchableHighlight,
-  Modal
+  Modal,
+  ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconPlay from '../assets/icons/iconPlay.png';
@@ -22,15 +23,18 @@ import CategoryList from "../components/CategoryList"
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import VideoComponent from '../components/VIdeoComponent';
+import FetchService from '../services/FetchService';
+import { BaseUrl } from '../env';
 
 const EventDetails: () => React$Node = ({navigation}) => {
+  const [loading,setLoading]=useState(true)
   const [modalVisible, setModalVisible] = useState(false);
   const [vSource, setvSource]=useState('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')
   useEffect(()=>{
-    setEventData({
-      ...eventData,
-      ...navigation.state.params.item,
-      // details: navigation.state.params.item?navigation.state.params.item.details.substring(0, 90)+"...":""
+    FetchService("GET","/api/product/"+navigation.state.params.id)
+    .then(res=>{
+      setEventData(res)
+      setLoading(false)
     })
   },[navigation])
   function closeModal(){
@@ -137,7 +141,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
       ],
 
     })
-  return (
+    if (loading)
+    return <ActivityIndicator/>
+    return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
@@ -148,22 +154,25 @@ const EventDetails: () => React$Node = ({navigation}) => {
         style={styles.slideHolder}
         >
           <Image
-            source={{uri:eventData.image}}
+            source={{uri:BaseUrl+eventData.cover.full}}
             style={styles.imgFit}
           />
           <Text
             style={[{
                 top:window.height/3,
-            }, styles.sliderTextAbsolute,styles.sliderLargeText]}
+                fontSize:20,
+                fontWeight:'700'
+          
+            }, styles.sliderTextAbsolute]}
           >
-            {eventData.brand}
+            {eventData.name}
           </Text>
           <Text
             style={[{
                 top:window.height/3 +25
             }, styles.sliderTextAbsolute]}
             >
-              {eventData.title}
+              {eventData.model}
           </Text>
           
           <View
@@ -223,7 +232,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           onPress={()=>setModalVisible(true)}
           >
           <Image
-            source={{uri:eventData.image}}
+            source={{uri:BaseUrl+eventData.cover.full}}
           style={{
             width: window.width/2.5,
             height:window.width/2.5,
@@ -270,7 +279,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               fontWeight:'700',
           }}
             >
-              {eventData.title}{"\n"}{eventData.title}
+              {eventData.name}{"\n"}{eventData.model}
             </Text>
           </View>
           <TouchableOpacity
@@ -319,20 +328,20 @@ const EventDetails: () => React$Node = ({navigation}) => {
               marginTop:-10
             }}
             >
-              {eventData.details}
+              {eventData.description}
           </Text>
         {/* preview card ends */}
-        <SmallH2
+        {/* <SmallH2
             data={eventData.relatedEvents}
             navigation={navigation}
             darkText
             title="Related Events"
-        />
+        /> */}
         <CategoryList
-        title="Top Categories"
+        title="Related Categories"
         navigation={navigation}
         darkText
-        data={eventData.topCategory}
+        data={eventData.category}
         />
         </ScrollView>
       </SafeAreaView>
@@ -354,7 +363,7 @@ const styles = StyleSheet.create({
   imgFit: {
       width: window.width,
       height:window.height /2,
-      resizeMode: 'cover'
+      resizeMode: 'contain'
   },
   indicatorHolder: {
       width: window.width * 42 / 375,
@@ -385,7 +394,7 @@ const styles = StyleSheet.create({
   },
   sliderTextAbsolute: {
       position:"absolute",
-      color:'white',
+      color:'#00163D',
       left:window.width/10,
       
   },
