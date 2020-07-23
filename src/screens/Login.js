@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ImageBackground, Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
 import loginStyles from "../styles/loginStyles";
+import FetchService from "../services/FetchService";
+
 const window = Dimensions.get('window');
 
 function Login (props) {
@@ -8,7 +10,7 @@ function Login (props) {
   const [signupError, setSignupError]=useState('')
 
   const[password,setPassword]=useState('')
-  const [name,setName]=useState('')
+  const [username,setName]=useState('')
   const _keyboardDidShow = () => {
     setKeyFocus(true)
   };
@@ -36,7 +38,7 @@ function Login (props) {
 
   function handleSubmit() {
 
-    if (name.length<1){
+    if (username.length<1){
       setSignupError('insert email or username')
     }
     else if (password.length<1){
@@ -46,7 +48,15 @@ function Login (props) {
       setSignupError('password at least 8 characters')
     }
     else{
-      props.navigation.navigate("AppStack")
+      let body={
+        username,password
+      }
+      FetchService("POST","/customer/api/profile",3,body)
+      .then(res=>console.log("-=-==--=",res))
+      .catch(er=>setSignupError(er.toString()))
+      setTimeout(()=>{
+        props.navigation.navigate("AppStack")
+      },2000)
     }
   }
     return (
@@ -136,7 +146,7 @@ function Login (props) {
                 placeholderTextColor="#212121"
                 placeholder="Email or username"
                 autoFocus={true}
-                value={name}
+                value={username}
                 keyboardType="default"
                 style={loginStyles.txtInput}
                 onChangeText={setName}

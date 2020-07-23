@@ -25,7 +25,6 @@ const App: () => React$Node = ({navigation}) => {
       setCategories(res.data)
       FetchService("GET","/api/product?limit=10&page=1&sortOrder=added&sort=-1")
       .then(response=>{
-        console.log(response)
         setData(response.data)
         setLoading(false)
       })

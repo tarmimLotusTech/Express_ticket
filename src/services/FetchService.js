@@ -1,5 +1,5 @@
 import { BaseUrl, key } from '../env';
-export default function FetchService(method,type,params,triedCount=5){
+export default function FetchService(method,type, triedCount=5,body={},){
    function errorHandler(err){
     
     // this handler retries the request for 5 times in case server is unreachable
@@ -8,7 +8,7 @@ export default function FetchService(method,type,params,triedCount=5){
       throw err;
     }
     
-    return setDelay(1000).then(() => FetchService(method,params,retryCount));
+    return setDelay(1000).then(() => FetchService(method,type,retryCount,body));
     }
 
     function setDelay(d){
@@ -22,7 +22,7 @@ export default function FetchService(method,type,params,triedCount=5){
         Accept: "application/json",
         "Content-Type": "application/json"
       }
-    let options={method,headers}
+    let options= method=="POST"?{method,headers,body} : {method,headers}
 
     return fetch(url,options)
     .then(function(res) {

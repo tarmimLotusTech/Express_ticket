@@ -6,12 +6,13 @@ const window = Dimensions.get('window');
 import { 
   systemWeights
 } from 'react-native-typography';
+import FetchService from "../services/FetchService";
 
 function Login (props) {
   const [keyFocus,setKeyFocus]=useState(false)
   
-  const [fName,setFName]=useState('')
-  const [lName,setLName]=useState('')
+  const [firstName,setFName]=useState('')
+  const [lastName,setLName]=useState('')
   const [country,setCountry]=useState('')
   const [city,setCity]=useState('')
   const [address1,setAddress1]=useState('')
@@ -44,10 +45,10 @@ function Login (props) {
 
   function handleSubmit() {
 
-    if (fName.length<1){
+    if (firstName.length<1){
       setSignupError('insert first name')
     }
-    else if (lName.length<1){
+    else if (lastName.length<1){
       setSignupError('insert last name')
     }
     else if (country.length<1){
@@ -75,7 +76,15 @@ function Login (props) {
       setSignupError('passwords do not match')
     }
     else{
-      props.navigation.navigate("AppStack")
+      let body={
+        firstName,lastName,country,city,address1,password,password2,phone
+      }
+      FetchService("POST","/customer/api/auth/register",3,body)
+      .then(res=>console.log("-==-=-",res))
+      .catch(er=>setSignupError(er.toString()))
+      setTimeout(()=>{
+        // props.navigation.navigate("AppStack")
+      },2000)
     }
 
   }
@@ -169,7 +178,7 @@ function Login (props) {
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="First name"
-                value={fName}
+                value={firstName}
                 keyboardType="default"
                 style={[loginStyles.txtInputSignup,{
                   width: window.width*150/375,
@@ -182,7 +191,7 @@ function Login (props) {
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="Last name"
-                value={lName}
+                value={lastName}
                 keyboardType="default"
                 style={[loginStyles.txtInputSignup,{
                   width: window.width*150/375,
