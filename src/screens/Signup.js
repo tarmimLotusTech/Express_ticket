@@ -179,7 +179,7 @@ function Login (props) {
     setCountry(country)
     console.log("-0",country)
 
-    FetchService("GET",`api/geo/${country._id}/city`)
+    FetchService("GET",`/api/geo/${country._id}/city`)
     .then(res=>{
       console.log("--1",res)
        //set response data here
