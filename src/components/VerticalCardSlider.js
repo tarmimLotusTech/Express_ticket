@@ -1,39 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     FlatList,
     Image,
     Text,
     TouchableOpacity,
     View,
-    Dimensions
+    Dimensions,
+    ActivityIndicator
 } from "react-native";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
 import { BaseUrl } from "../env";
+import FetchService from '../services/FetchService';
+
 const window = Dimensions.get('window');
 
-export default class VerticalCardSlider extends React.Component {
-  constructor(props) {
-    super(props);
+export default function VerticalCardSlider (props) {
+  useEffect(()=>{
+    FetchService("GET",`/api/category/${props.id}/product?limit=${props.limit}&page=1&recursive=true&sortOrder=-1&sort=added`)
+        .then(products=>setData(products.data))
+        .then(()=>setLoading(false))
+  },[props])
+  const [loading, setLoading]=useState(true)
+  const [data,setData]=useState([])
+  function _handlePress(id) {
+    props.navigation.navigate("EventDetails",{id})
   }
+    if (loading)
+    return <ActivityIndicator/>
 
-  _handlePress(id) {
-    this.props.navigation.navigate("EventDetails",{id})
-  }
-
-  render() {
     return (
         <View>
           <Text
           style={[GlobalStyles.headerText,{
-            color: this.props.darkText? 'black':'#FADC62'
+            color: props.darkText? '#00102D':'#FADC62'
           } ]}
           >
-            {this.props.title}
+            {props.title}
           </Text>
           {
-            this.props.viewMore?
+            props.viewMore?
             <Text
               style={{
                 alignSelf:'flex-end',
@@ -42,7 +49,7 @@ export default class VerticalCardSlider extends React.Component {
                 fontSize:12,
                 fontWeight:'bold'
               }}
-              onPress={()=>this.props.navigation.navigate("CategoryDetails",{id:this.props.title})}
+              onPress={()=>props.navigation.navigate("CategoryDetails",{id:props.id,name:props.title})}
               >See all</Text>:<View/>
           }
           
@@ -51,12 +58,12 @@ export default class VerticalCardSlider extends React.Component {
           numColumns={3}
           ListFooterComponent={()=><View
           /> }
-          data={this.props.data}
+          data={data}
           contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                onPress={() => this._handlePress(rowData._id)}
+                onPress={() => _handlePress(rowData._id)}
                 style={{
                   width: window.width * 103 / 375,
                   height: window.width * 150 / 375,
@@ -96,14 +103,14 @@ export default class VerticalCardSlider extends React.Component {
                   fontWeight: '700'
                 }]}
                 numberOfLines={1}>
-                {rowData.brand}
+                {rowData.name}
                 </Text>
                 <Text style={[ {
                   fontSize:5,
                   color: '#fff',
                   fontWeight: '300'
                   }]}>
-                {rowData.name}
+                {rowData.model}
                 </Text>
                     
                 </View>
@@ -116,5 +123,5 @@ export default class VerticalCardSlider extends React.Component {
         </View>
     );
   }
-}
+
 
