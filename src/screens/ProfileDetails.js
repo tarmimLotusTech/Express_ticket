@@ -13,6 +13,10 @@ import {
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconBack from '../assets/icons/iconBack.png';
+import iconCountry from '../assets/icons/iconCountry.png';
+import iconCity from '../assets/icons/iconCity.png';
+import iconPhone from '../assets/icons/iconPhone.png';
+import iconMail from '../assets/icons/iconMail.png';
 const options = {
   title: 'Select Image',
   cancelButtonTitle:'Go back',
@@ -269,11 +273,15 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Text
-            style={styles.profileCardTitle}
-            >
-              Country
-            </Text>
+            <Image
+              style={[styles.footerIcon,{
+                width: window.height / 25,
+                height: window.height / 25,
+                alignSelf:'center',
+                marginLeft:-5
+              }]}
+              source={iconCountry}
+            />
             <Text
             style={styles.profileCardData}
             >
@@ -284,11 +292,15 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Text
-            style={styles.profileCardTitle}
-            >
-              City
-            </Text>
+            <Image
+              style={[styles.footerIcon,{
+                width: window.height / 20,
+                height: window.height / 18,
+                alignSelf:'center',
+                marginLeft:-10
+              }]}
+              source={iconCity}
+            />
             <Text
             style={styles.profileCardData}
             >
@@ -299,11 +311,14 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Text
-            style={styles.profileCardTitle}
-            >
-              Phone
-            </Text>
+            <Image
+              style={[styles.footerIcon,{
+                width: window.height / 25,
+                height: window.height / 25,
+                alignSelf:'center'
+              }]}
+              source={iconPhone}
+            />
             <Text
             style={styles.profileCardData}
             >
@@ -314,16 +329,19 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Text
-            style={styles.profileCardTitle}
-            >
-              Email
-            </Text>
+            <Image
+              style={[styles.footerIcon,{
+                width: window.height / 19,
+                height: window.height / 25,
+                alignSelf:'center'
+              }]}
+              source={iconMail}
+            />
             <Text
             numberOfLines={2}
             style={styles.profileCardData}
             >
-              dhakacity@dhakacity.com
+              dhakacity@d.com
             </Text>
           </View>
 
@@ -357,7 +375,8 @@ const styles = StyleSheet.create({
     borderRadius:5
   },
   profileCardTitle:{
-    fontSize:20
+    fontSize:20,
+    marginTop:5
   },
   profileCardData:{
     marginTop:25,
