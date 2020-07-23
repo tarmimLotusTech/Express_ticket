@@ -31,96 +31,96 @@ export default function VerticalCardSlider (props) {
     return <ActivityIndicator/>
 
     return (
-        <View>
+        data.length>0?<View>
+        <Text
+        style={[GlobalStyles.headerText,{
+          color: props.darkText? '#00102D':'#FADC62'
+        } ]}
+        >
+          {props.title}
+        </Text>
+        {
+          props.viewMore?
           <Text
-          style={[GlobalStyles.headerText,{
-            color: props.darkText? '#00102D':'#FADC62'
-          } ]}
-          >
-            {props.title}
-          </Text>
-          {
-            props.viewMore?
-            <Text
+            style={{
+              alignSelf:'flex-end',
+              marginRight:20,
+              marginTop:-20,
+              fontSize:12,
+              fontWeight:'bold'
+            }}
+            onPress={()=>props.navigation.navigate("CategoryDetails",{id:props.id,name:props.title})}
+            >See all</Text>:<View/>
+        }
+        
+        <FlatList
+        showsHorizontalScrollIndicator={false}
+        numColumns={3}
+        ListFooterComponent={()=><View
+        /> }
+        data={data}
+        contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
+        renderItem={({ item: rowData }) => {
+          return (
+            <TouchableOpacity
+              onPress={() => _handlePress(rowData._id)}
               style={{
-                alignSelf:'flex-end',
-                marginRight:20,
-                marginTop:-20,
-                fontSize:12,
-                fontWeight:'bold'
-              }}
-              onPress={()=>props.navigation.navigate("CategoryDetails",{id:props.id,name:props.title})}
-              >See all</Text>:<View/>
-          }
-          
-          <FlatList
-          showsHorizontalScrollIndicator={false}
-          numColumns={3}
-          ListFooterComponent={()=><View
-          /> }
-          data={data}
-          contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
-          renderItem={({ item: rowData }) => {
-            return (
-              <TouchableOpacity
-                onPress={() => _handlePress(rowData._id)}
-                style={{
-                  width: window.width * 103 / 375,
-                  height: window.width * 150 / 375,
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  marginHorizontal: 7,
-                  marginTop:10,
-                  backgroundColor:"#001232",
-                  borderRadius:7,
-                  marginBottom:20
-
-                  
-              }}
-              >
-                <View style={{
-                  width: window.width * 103 / 375,
-                  height: window.width * 120 / 375,
-                  borderRadius: 5,
-                  overflow: 'hidden'
-              }}>
-                  <Image
-                    style={GlobalStyles.imgFit}
-                    source={{uri:BaseUrl+rowData.cover.full}}
-                  />
-                </View>
-                <View style={{
                 width: window.width * 103 / 375,
-                height: window.width * 20 / 375,
-                justifyContent: 'center',
-                paddingBottom:10,
-                paddingLeft:5,
+                height: window.width * 150 / 375,
+                justifyContent: 'space-between',
                 alignItems: 'flex-start',
+                marginHorizontal: 7,
+                marginTop:10,
+                backgroundColor:"#001232",
+                borderRadius:7,
+                marginBottom:20
+
+                
+            }}
+            >
+              <View style={{
+                width: window.width * 103 / 375,
+                height: window.width * 120 / 375,
+                borderRadius: 5,
+                overflow: 'hidden'
             }}>
-                <Text style={[ {
-                  fontSize:8,
-                  color: '#fff',
-                  fontWeight: '700'
-                }]}
-                numberOfLines={1}>
-                {rowData.name}
-                </Text>
-                <Text style={[ {
-                  fontSize:5,
-                  color: '#fff',
-                  fontWeight: '300'
-                  }]}>
-                {rowData.model}
-                </Text>
-                    
-                </View>
-              </TouchableOpacity>
-            );
-          }}
-          keyExtractor={(item,index) => {
-            return new Date().getMilliseconds().toString()+index.toString()}}
-            />
-        </View>
+                <Image
+                  style={GlobalStyles.imgFit}
+                  source={{uri:BaseUrl+rowData.cover.full}}
+                />
+              </View>
+              <View style={{
+              width: window.width * 103 / 375,
+              height: window.width * 20 / 375,
+              justifyContent: 'center',
+              paddingBottom:10,
+              paddingLeft:5,
+              alignItems: 'flex-start',
+          }}>
+              <Text style={[ {
+                fontSize:8,
+                color: '#fff',
+                fontWeight: '700'
+              }]}
+              numberOfLines={1}>
+              {rowData.name}
+              </Text>
+              <Text style={[ {
+                fontSize:5,
+                color: '#fff',
+                fontWeight: '300'
+                }]}>
+              {rowData.model}
+              </Text>
+                  
+              </View>
+            </TouchableOpacity>
+          );
+        }}
+        keyExtractor={(item,index) => {
+          return new Date().getMilliseconds().toString()+index.toString()}}
+          />
+      </View>:<View/>
     );
   }
 
