@@ -7,11 +7,136 @@ import {
   systemWeights
 } from 'react-native-typography';
 import FetchService from "../services/FetchService";
-const cities=["Dhaka","Khulna","Ctg","Sylhet"]
+const testCities=[
+  {
+    "_id": "5e8218a9a0be4401500e4d27",
+    "objectId": "MEzedNnNVw",
+    "code": "AF",
+    "name": "Afghanistan",
+    "native": "افغانستان",
+    "phone": "93",
+    "continent": {
+        "_id": "5e821761311eb9259c0ba82d",
+        "objectId": "mSxk54vkg6",
+        "code": "AS",
+        "name": "Asia"
+    },
+    "capital": "Kabul",
+    "currency": "AFN",
+    "emoji": "🇦🇫",
+    "emojiU": "U+1F1E6 U+1F1EB",
+    "continentCode": "AS",
+    "continentName": "Asia"
+},
+{
+    "_id": "5e8218a9a0be4401500e4d2a",
+    "objectId": "8rTBsf4ObQ",
+    "code": "AL",
+    "name": "Albania",
+    "native": "Shqipëria",
+    "phone": "355",
+    "continent": {
+        "_id": "5e821761311eb9259c0ba82e",
+        "objectId": "28HX8qDZHw",
+        "code": "EU",
+        "name": "Europe"
+    },
+    "capital": "Tirana",
+    "currency": "ALL",
+    "emoji": "🇦🇱",
+    "emojiU": "U+1F1E6 U+1F1F1",
+    "continentCode": "EU",
+    "continentName": "Europe"
+},
+{
+    "_id": "5e8218a9a0be4401500e4d62",
+    "objectId": "8XKDe93BnC",
+    "code": "DZ",
+    "name": "Algeria",
+    "native": "الجزائر",
+    "phone": "213",
+    "continent": {
+        "_id": "5e821761311eb9259c0ba82c",
+        "objectId": "X2rEcTJnsE",
+        "code": "AF",
+        "name": "Africa"
+    },
+    "capital": "Algiers",
+    "currency": "DZD",
+    "emoji": "🇩🇿",
+    "emojiU": "U+1F1E9 U+1F1FF",
+    "continentCode": "AF",
+    "continentName": "Africa"
+},
+{
+    "_id": "5e8218a9a0be4401500e4d2f",
+    "objectId": "s6ejWUPV5j",
+    "code": "AS",
+    "name": "American Samoa",
+    "native": "American Samoa",
+    "phone": "1684",
+    "continent": {
+        "_id": "5e821761311eb9259c0ba831",
+        "objectId": "E6LHZzkHr6",
+        "code": "OC",
+        "name": "Oceania"
+    },
+    "capital": "Pago Pago",
+    "currency": "USD",
+    "emoji": "🇦🇸",
+    "emojiU": "U+1F1E6 U+1F1F8",
+    "continentCode": "OC",
+    "continentName": "Oceania"
+},
+{
+    "_id": "5e8218a9a0be4401500e4d25",
+    "objectId": "sv7fjDVISU",
+    "code": "AD",
+    "name": "Andorra",
+    "native": "Andorra",
+    "phone": "376",
+    "continent": {
+        "_id": "5e821761311eb9259c0ba82e",
+        "objectId": "28HX8qDZHw",
+        "code": "EU",
+        "name": "Europe"
+    },
+    "capital": "Andorra la Vella",
+    "currency": "EUR",
+    "emoji": "🇦🇩",
+    "emojiU": "U+1F1E6 U+1F1E9",
+    "continentCode": "EU",
+    "continentName": "Europe"
+},
+{
+    "_id": "5e8218a9a0be4401500e4d2c",
+    "objectId": "khAszEtDXl",
+    "code": "AO",
+    "name": "Angola",
+    "native": "Angola",
+    "phone": "244",
+    "continent": {
+        "_id": "5e821761311eb9259c0ba82c",
+        "objectId": "X2rEcTJnsE",
+        "code": "AF",
+        "name": "Africa"
+    },
+    "capital": "Luanda",
+    "currency": "AOA",
+    "emoji": "🇦🇴",
+    "emojiU": "U+1F1E6 U+1F1F4",
+    "continentCode": "AF",
+    "continentName": "Africa"
+}
+]
 
 function Login (props) {
   const [keyFocus,setKeyFocus]=useState(false)
   
+  const [countries, setCountries]=useState('')
+  const [cities, setCities]=useState('')
+  const [cityLoading, setCityLoading]=useState(true)
+  const [countryLoading, setCountryLoading]=useState(true)
   const [firstName,setFName]=useState('')
   const [lastName,setLName]=useState('')
   const [country,setCountry]=useState('')
@@ -33,7 +158,12 @@ function Login (props) {
   };
   useEffect(()=>{
     FetchService("GET","/api/geo/country")
-    .then(res=>console.log(res))
+    .then(res=>{
+      console.log(res)
+      setCountries(testCities) //set response data here
+    })
+    .then(()=>setCountryLoading(false))
+    
 
     Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
     Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
@@ -45,6 +175,21 @@ function Login (props) {
       Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
     }
   },[])
+  function findCity(country){
+    setCountry(country)
+    console.log("-0",country)
+
+    FetchService("GET",`api/geo/${country._id}/city`)
+    .then(res=>{
+      console.log("--1",res)
+       //set response data here
+    })
+    .catch(er=>console.log("--e",er))
+    .then(()=>setCities(testCities)) // set these after fetch
+    .then(()=>setCityLoading(false))
+    
+
+  }
 
   function handleSubmit() {
 
@@ -215,16 +360,20 @@ function Login (props) {
                   <Text
                   style={styles.pickerText}
                   >Select country</Text>
-                <Picker
-                  selectedValue={country}
-                  style={styles.pickerStyle}
-                  prompt="Select City"
-                  onValueChange={async (itemValue, itemIndex) =>setCountry(itemValue)}>
-                    <Picker.Item label={"All"} value={''} />
-                    {
-                      cities.map(city=><Picker.Item label={city} value={city} />)
-                    }
-                </Picker>
+                  {
+                    countryLoading?<Text>loading</Text>
+                    :<Picker
+                    selectedValue={country}
+                    style={styles.pickerStyle}
+                    prompt="Select Country"
+                    onValueChange={async (itemValue, itemIndex) =>findCity(itemValue)}>
+                      <Picker.Item label={"All"} value={''} />
+                      {
+                        countries.map(city=><Picker.Item label={city.name} value={city} />)
+                      }
+                    </Picker>
+                  }
+                
                 </View>
                 
                 <View
@@ -233,16 +382,21 @@ function Login (props) {
                   <Text
                   style={styles.pickerText}
                   >Select city</Text>
-                <Picker
-                  selectedValue={city}
-                  style={styles.pickerStyle}
-                  prompt="Select City"
-                  onValueChange={async (itemValue, itemIndex) =>setCity(itemValue)}>
-                    <Picker.Item label={"All"} value={''} />
-                    {
-                      cities.map(city=><Picker.Item label={city} value={city} />)
-                    }
-                </Picker>
+                  {
+                    cityLoading?
+                    <Text>first Select country </Text>
+                    :<Picker
+                    selectedValue={city}
+                    style={styles.pickerStyle}
+                    prompt="Select City"
+                    onValueChange={async (itemValue, itemIndex) =>setCity(itemValue)}>
+                      <Picker.Item label={"All"} value={''} />
+                      {
+                        cities.map(city=><Picker.Item label={city.name} value={city} />)
+                      }
+                  </Picker>
+
+                  }
                 </View>
             </View>
             <View>
