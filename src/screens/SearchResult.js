@@ -8,7 +8,8 @@ import {
   View,
   Image,
   KeyboardAvoidingView,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
 import { 
@@ -17,10 +18,12 @@ import {
 import SliderStyles from '../styles/SliderStyles';
 import GlobalStyles from '../styles/Styles';
 import {Picker} from '@react-native-community/picker';
+import { BaseUrl } from "../env";
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import FetchService from '../services/FetchService';
 
 const searchData=[
       {
@@ -167,27 +170,32 @@ class SearchResult extends Component  {
       data:[],
       city:'',
       date:'',
-      type:''
+      type:'',
+      loading:true
     };
   }
 
   componentDidMount(){
-    this.setState({
-      result:searchData,
-      data:searchData
+    FetchService("GET",`/api/search?query=${this.props.navigation.state.params.item}&sort=added&sortOrder=-1&limit=2&page=1`)
+    .then(res=>{
+      this.setState({
+        result:res.data,
+        data:res.data,
+        loading:false
+      })
     })
-
   }
   filterData=()=>{
     const {city,date,type,result}=this.state
     console.log(city,date,type,result.length)
-    let arr= result.filter(res=>res.city.toLowerCase().includes(city.toLowerCase())).filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
-    this.setState({data:arr})
+    // let arr= result.filter(res=>res.city.toLowerCase().includes(city.toLowerCase())).filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
+    // this.setState({data:arr})
   }
 
   render(){
     const {city,date,type,data}=this.state
-
+  if (this.state.loading)
+  return <ActivityIndicator/>
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -268,7 +276,7 @@ class SearchResult extends Component  {
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("EventDetails",{item})}
+                onPress={() => this.props.navigation.navigate("EventDetails",{id:item._id})}
                 style={{
                   width: window.width -40,
                   height: window.width * 80 / 375,
@@ -300,7 +308,7 @@ class SearchResult extends Component  {
                       resizeMode: 'cover',
                       borderRadius:8
                   }}
-                    source={{uri:item.image}}
+                    source={{uri:BaseUrl+item.cover.full}}
                   />
                 </View>
                 <View style={{
@@ -311,18 +319,18 @@ class SearchResult extends Component  {
                   padding:5
                 }}>
                     <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00163D'}]}>
-                    {item.brand}
+                    {item.name}
                     </Text>
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#00163D'}]}
                     numberOfLines={1}>
-                    {item.title}
+                    {item.model}
                     </Text>
                 </View>
               </TouchableOpacity>
             );
           }}
           keyExtractor={(item,index) => {
-            return item.id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
+            return item._id.toString()+new Date().getMilliseconds().toString()+index.toString()}}
             />
         
         

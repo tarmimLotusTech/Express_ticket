@@ -115,7 +115,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
         </View>
         <Text
         style={{
-          color:'black',
+          color:'grey',
           alignSelf:'center',
           fontSize:15,
           marginTop:5,
@@ -163,13 +163,13 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
                     
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
                       alignSelf:'center',
-                      color: '#00163D'}]}
+                      color: 'grey'}]}
                     numberOfLines={1}>
                     {item.term}
                     </Text>
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium,  {
                       alignSelf:'center',
-                      color: '#00163D'}]}
+                      color: 'grey'}]}
                     numberOfLines={1}>
                     {item.date}
                     </Text>
