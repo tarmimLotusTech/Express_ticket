@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard, ScrollView, Image} from "react-native";
+import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,StyleSheet, Keyboard, ScrollView, Image, Picker} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 
@@ -7,6 +7,7 @@ import {
   systemWeights
 } from 'react-native-typography';
 import FetchService from "../services/FetchService";
+const cities=["Dhaka","Khulna","Ctg","Sylhet"]
 
 function Login (props) {
   const [keyFocus,setKeyFocus]=useState(false)
@@ -31,6 +32,8 @@ function Login (props) {
     setKeyFocus(false)
   };
   useEffect(()=>{
+    FetchService("GET","/api/geo/country")
+    .then(res=>console.log(res))
 
     Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
     Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
@@ -206,34 +209,41 @@ function Login (props) {
               flexDirection:'row'
             }}
             >
-              <TextInput
-                underlineColorAndroid="#8d8d8d"
-                placeholderTextColor="#212121"
-                placeholder="Country"
-                value={country}
-                keyboardType="default"
-                style={[loginStyles.txtInputSignup,{
-                  width: window.width*150/375,
-
-                }]}
-                onChangeText={setCountry}
-                blurOnSubmit={false}
-
-                />
-                <TextInput
-                underlineColorAndroid="#8d8d8d"
-                placeholderTextColor="#212121"
-                placeholder="City"
-                value={city}
-                keyboardType="default"
-                style={[loginStyles.txtInputSignup,{
-                  width: window.width*150/375,
-
-                }]}
-                onChangeText={setCity}
-                blurOnSubmit={false}
-
-                />
+                <View
+                style={styles.pickerContainer}
+                >
+                  <Text
+                  style={styles.pickerText}
+                  >Select country</Text>
+                <Picker
+                  selectedValue={country}
+                  style={styles.pickerStyle}
+                  prompt="Select City"
+                  onValueChange={async (itemValue, itemIndex) =>setCountry(itemValue)}>
+                    <Picker.Item label={"All"} value={''} />
+                    {
+                      cities.map(city=><Picker.Item label={city} value={city} />)
+                    }
+                </Picker>
+                </View>
+                
+                <View
+                style={styles.pickerContainer}
+                >
+                  <Text
+                  style={styles.pickerText}
+                  >Select city</Text>
+                <Picker
+                  selectedValue={city}
+                  style={styles.pickerStyle}
+                  prompt="Select City"
+                  onValueChange={async (itemValue, itemIndex) =>setCity(itemValue)}>
+                    <Picker.Item label={"All"} value={''} />
+                    {
+                      cities.map(city=><Picker.Item label={city} value={city} />)
+                    }
+                </Picker>
+                </View>
             </View>
             <View>
               <TextInput
@@ -403,4 +413,23 @@ function Login (props) {
       </View>
     );
   }
+
+const styles = StyleSheet.create({
+  pickerText:{
+    fontSize:10,
+    alignSelf:'center',
+    marginTop:5
+  },
+  pickerContainer:{
+    backgroundColor:'#fff',
+    borderRadius:5,
+    height:50,
+    marginHorizontal:5
+  },
+  pickerStyle:{
+    height: 20,
+    width: window.width/2.5
+  }
+});
+
   export default Login

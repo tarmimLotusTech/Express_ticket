@@ -350,75 +350,60 @@ const EventDetails: () => React$Node = ({navigation}) => {
         {/* Timer card ends */}
         <View
         style={{
-          marginTop:-20
-        }}
-        >
-        {
-          menuDrop?
-          options.map(option=><TouchableOpacity
-            style={{
-              backgroundColor:'#E6E8EA',
-              margin:5,
-              justifyContent:'space-between',
-              paddingHorizontal:35,
-              alignItems:'center',
-              height:window.width/10,
-              width:window.width/1.3,
-              borderRadius:5,
-              alignSelf:'center',
-              flexDirection:'row'
-            }}
-            onPress={option.onPress}
-            >
-                <Text
-                style={{
-                  color:'#100746',
-                  alignSelf:'center',
-                  fontStyle:'italic',
-                  fontSize:15,
-                  fontWeight:'bold',
-                }}
-                >{option.title}</Text>
-                <Image
-                  style={styles.footerIcon}
-                  source={option.icon}
-                />
-            </TouchableOpacity>):<View/>
-        }
-        </View>
-        
-        <View
-        style={{
-          marginVertical:10
+          marginTop:-30,
         }}>
+          
           <SmallH2
           title="Previous Events"
           navigation={navigation}
           darkText
           data={data}
           />
+          {
+          menuDrop?
+          <View
+            style={{
+              position: 'absolute',
+              backgroundColor:'#E6E8EA',
+              width:window.width/1.5,
+              borderRadius:10,
+              right:10
+            }}
+            >{
+              options.map(option=>
+              
+                <TouchableOpacity
+                style={{
+                  margin:5,
+                  justifyContent:'space-between',
+                  paddingHorizontal:35,
+                  alignItems:'center',
+                  height:window.width/10,
+                  width:window.width/1.3,
+                  borderRadius:5,
+                  alignSelf:'center',
+                  flexDirection:'row'
+                }}
+                onPress={option.onPress}
+                >
+                    <Text
+                    style={{
+                      color:'#100746',
+                      alignSelf:'center',
+                      fontStyle:'italic',
+                      fontSize:15,
+                      fontWeight:'bold',
+                    }}
+                    >{option.title}</Text>
+                    <Image
+                      style={styles.footerIcon}
+                      source={option.icon}
+                    />
+                </TouchableOpacity>)
+                }</View>
+                :<View/>
+        }
         </View>
-        {/* <TouchableOpacity
-        style={{
-          height:window.height/10,
-          width:window.width/1.5,
-          alignSelf:'center',
-          borderRadius:10,
-          backgroundColor:"#182744",
-          justifyContent:'center'
-        }}
-        onPress={logOut}
-        >
-          <Text
-          style={{
-            fontSize:35,
-            color:'white',
-            alignSelf:'center'
-          }}
-          >
-            Logout
-          </Text>
-        </TouchableOpacity> */}
         </ScrollView>
       </SafeAreaView>
     </>
