@@ -48,14 +48,20 @@ const EventDetails: () => React$Node = ({navigation}) => {
   function logOut(){
     navigation.navigate("AuthStack")
   }
+  function editProfile(){
+    navigation.navigate("EditProfile")
+  }
+  function profileDetails(){
+
+  }
   const options=[{
     title:"Details",
-    onPress:logOut,
+    onPress:profileDetails,
     icon:iconProfileDetails
   },
   {
     title:"Edit Profile",
-    onPress:logOut,
+    onPress:editProfile,
     icon:iconEditProfile
   },
   {

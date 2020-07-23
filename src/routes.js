@@ -11,6 +11,7 @@ import Search from './screens/Search'
 import Category from './screens/AllCategories'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
+import EditProfile from './screens/EditProfile'
 import EventDetails from './screens/EventDetails'
 import CategoryDetails from "./screens/CategoryDetails";
 import SearchResult from "./screens/SearchResult";
@@ -122,7 +123,9 @@ const HomeStack = createCompatNavigatorFactory(createStackNavigator)(
 const ProfileStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Profile: { screen: Profile, navigationOptions:{headerShown:false}  },
-		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  }
+		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		EditProfile: { screen: EditProfile, navigationOptions:{headerShown:false } }
+
 	},
 	options
 );
