@@ -46,14 +46,13 @@ export default function SmallH2 (props) {
                 style={SliderStyles.itemSH2}
               >
                 <View style={{
-                    width: window.width * 140 / 375,
+                    width: window.width * 138 / 375,
                     height: window.width * 150 / 375,
                     overflow: 'hidden',
                     marginBottom: 9
                 }}>
                   <Image
                     style={[{
-                      
                       flex: 1,
                       width: undefined,
                       height: undefined,

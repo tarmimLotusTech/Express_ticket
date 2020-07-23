@@ -7,7 +7,8 @@ import {
   ScrollView,
   View,
   Image,
-  Text
+  Text,
+  ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconDown from '../assets/icons/iconDown.png';
@@ -27,13 +28,20 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import SmallH2 from "../components/SmallH2"
+import FetchService from '../services/FetchService';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EventDetails: () => React$Node = ({navigation}) => {
   useEffect(()=>{
-
+    FetchService("GET","/api/product?limit=15&page=1&sortOrder=added&sort=-1")
+      .then(response=>setData(response.data))
+      .then(()=>setLoading(false))
+      .catch(err=>console.log(err))
   },[navigation])
+  const [loading, setLoading] = useState(true)
+  const [data,setData]=useState([])
+
   function logOut(){
     navigation.navigate("AuthStack")
   }
@@ -218,6 +226,8 @@ const EventDetails: () => React$Node = ({navigation}) => {
       });
       
     }
+  if (loading)
+  return <ActivityIndicator/>
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -360,11 +370,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         }
         </View>
         
-        
-        
-        
         <View
-        
         style={{
           marginVertical:10
         }}>
@@ -372,7 +378,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           title="Previous Events"
           navigation={navigation}
           darkText
-          data={eventData.history}
+          data={data}
           />
         </View>
         {/* <TouchableOpacity

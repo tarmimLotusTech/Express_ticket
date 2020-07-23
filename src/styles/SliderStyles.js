@@ -45,6 +45,9 @@ export default {
         borderBottomWidth:1,
         borderLeftColor:"#00011B",
         borderLeftWidth:1,
+        borderRightColor:"#00011B",
+        borderRightWidth:1,
+        
         
     },
     imageSH2: {
