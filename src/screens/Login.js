@@ -202,7 +202,9 @@ function Login (props) {
         <View
         style={{
           margin:15,
-          justifyContent:'space-between'
+          justifyContent:'space-between',
+          width:window.width/2,
+          alignItems:'center'
         }}
         >
         <TouchableOpacity
