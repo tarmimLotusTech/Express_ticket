@@ -11,7 +11,10 @@ import {
   ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
-import iconDown from '../assets/icons/iconDown.png';
+import iconProfileMenu from '../assets/icons/iconProfileMenu.png';
+import iconLogout from '../assets/icons/iconLogout.png';
+import iconEditProfile from '../assets/icons/iconEditProfile.png';
+import iconProfileDetails from '../assets/icons/iconProfileDetails.png';
 import ImagePicker from 'react-native-image-picker';
 const options = {
   title: 'Select Image',
@@ -47,15 +50,18 @@ const EventDetails: () => React$Node = ({navigation}) => {
   }
   const options=[{
     title:"Details",
-    onPress:logOut
+    onPress:logOut,
+    icon:iconProfileDetails
   },
   {
     title:"Edit Profile",
-    onPress:logOut
+    onPress:logOut,
+    icon:iconEditProfile
   },
   {
     title:"Logout",
-    onPress:logOut
+    onPress:logOut,
+    icon:iconLogout
   }]
   const [ menuDrop , setMenuDrop ] = useState(false)
   const [eventData,setEventData]= useState(
@@ -307,7 +313,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
             <View
             style={{
               flexDirection:'row',
-              justifyContent:'space-evenly',
+              justifyContent:'flex-end',
               width:window.width/1.3,
               paddingTop:20
             }}
@@ -328,7 +334,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               >
                 <Image
                   style={styles.footerIcon}
-                  source={iconDown}
+                  source={iconProfileMenu}
                 />
               </TouchableOpacity>
             </View>
@@ -346,26 +352,31 @@ const EventDetails: () => React$Node = ({navigation}) => {
           options.map(option=><TouchableOpacity
             style={{
               backgroundColor:'#E6E8EA',
-              height:30,
-              borderWidth:1,
-              borderColor:'#6c5ce7',
+              margin:5,
+              justifyContent:'space-between',
+              paddingHorizontal:35,
+              alignItems:'center',
+              height:window.width/10,
               width:window.width/1.3,
               borderRadius:5,
-              marginBottom:5,
               alignSelf:'center',
-              justifyContent:'center',
+              flexDirection:'row'
             }}
             onPress={option.onPress}
             >
                 <Text
                 style={{
-                  color:'#6c5ce7',
+                  color:'#100746',
                   alignSelf:'center',
                   fontStyle:'italic',
                   fontSize:15,
                   fontWeight:'bold',
                 }}
                 >{option.title}</Text>
+                <Image
+                  style={styles.footerIcon}
+                  source={option.icon}
+                />
             </TouchableOpacity>):<View/>
         }
         </View>
