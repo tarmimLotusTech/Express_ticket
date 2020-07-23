@@ -8,14 +8,11 @@ import {
   View,
   Image,
   Text,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from 'react-native';
 const window = Dimensions.get('window');
-import iconProfileMenu from '../assets/icons/iconProfileMenu.png';
-import iconLogout from '../assets/icons/iconLogout.png';
-import iconEditProfile from '../assets/icons/iconEditProfile.png';
-import iconProfileDetails from '../assets/icons/iconProfileDetails.png';
-import ImagePicker from 'react-native-image-picker';
+import iconBack from '../assets/icons/iconBack.png';
 const options = {
   title: 'Select Image',
   cancelButtonTitle:'Go back',
@@ -30,46 +27,13 @@ const options = {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import SmallH2 from "../components/SmallH2"
 import FetchService from '../services/FetchService';
 
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
-const EventDetails: () => React$Node = ({navigation}) => {
+const ProfileDetails: () => React$Node = ({navigation}) => {
   useEffect(()=>{
-    FetchService("GET","/api/product?limit=15&page=1&sortOrder=added&sort=-1")
-      .then(response=>setData(response.data))
-      .then(()=>setLoading(false))
-      .catch(err=>console.log(err))
   },[navigation])
-  const [loading, setLoading] = useState(true)
-  const [data,setData]=useState([])
+  const [loading, setLoading] = useState(false)
 
-  function logOut(){
-    navigation.navigate("AuthStack")
-  }
-  function editProfile(){
-    navigation.navigate("EditProfile")
-  }
-  function profileDetails(){
-    navigation.navigate("ProfileDetails",{profileImage})
-  }
-  const options=[{
-    title:"Details",
-    onPress:profileDetails,
-    icon:iconProfileDetails
-  },
-  {
-    title:"Edit Profile",
-    onPress:editProfile,
-    icon:iconEditProfile
-  },
-  {
-    title:"Logout",
-    onPress:logOut,
-    icon:iconLogout
-  }]
-  const [ menuDrop , setMenuDrop ] = useState(false)
   const [eventData,setEventData]= useState(
     {
       id:"1",
@@ -218,26 +182,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
     })
     const [profileImage, setProfileImage]=useState({uri:eventData.image})
     const [ profDetail , setProfDetail ] = useState(eventData.mail)
-    function uploadImage(){
-      ImagePicker.showImagePicker(options, (response) => {
-        console.log('Response = ', response);
-      
-        if (response.didCancel) {
-          console.log('User cancelled image picker');
-        } else if (response.error) {
-          console.log('ImagePicker Error: ', response.error);
-        } else if (response.customButton) {
-          console.log('User tapped custom button: ', response.customButton);
-        } else {
-          const source = { uri: response.uri };
-      
-          // You can also display the image using data:
-          // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-          setProfileImage(source)
-        }
-      });
-      
-    }
   if (loading)
   return <ActivityIndicator/>
   return (
@@ -260,10 +204,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
         style={styles.slideHolder}
         >
           <Image
-            source={profileImage}
+            source={navigation.state.params.profileImage}
             style={styles.imgFit}
           />
-
           <View
           style={{
             width:window.height/18,
@@ -277,18 +220,16 @@ const EventDetails: () => React$Node = ({navigation}) => {
           }}
           >
             <TouchableOpacity
-              onPress={uploadImage}
+              onPress={()=>navigation.goBack()}
             >
-            <Text
-            style={{
-              alignSelf:'center',
-              color:"#fff",
-              fontWeight:'bold',
-              fontSize:35
-            }}
-            >
-              {"\u002B"}
-            </Text>
+              <Image
+                  style={[styles.footerIcon,{
+                    width: window.height / 25,
+		                height: window.height / 25,
+                    alignSelf:'center'
+                  }]}
+                  source={iconBack}
+                />
             </TouchableOpacity>
           </View>
           <View
@@ -315,110 +256,88 @@ const EventDetails: () => React$Node = ({navigation}) => {
               </Text>
               {eventData.title} ( {eventData.age} )
             </Text>
-            {/* address row starts*/}
-            <View
-            style={{
-              flexDirection:'row',
-              justifyContent:'flex-end',
-              width:window.width/1.3,
-              paddingTop:20
-            }}
-            >
-              <TouchableOpacity
-              style={{
-                height:window.width/9,
-                width:window.width/9,
-                backgroundColor:'#fff',
-                marginHorizontal:10,
-                borderRadius:5,
-                borderWidth:1,
-                borderColor:'black',
-                justifyContent:'center',
-                alignItems:'center'
-              }}
-              onPress={()=>setMenuDrop(!menuDrop) }
-              >
-                <Image
-                  style={styles.footerIcon}
-                  source={iconProfileMenu}
-                />
-              </TouchableOpacity>
-            </View>
-            {/* address row ends */}
+            
           </View>
         </View>
         {/* Timer card ends */}
         <View
         style={{
-          marginTop:-20
+          marginTop:-20,
+          height:window.height/2
         }}
         >
-        {
-          menuDrop?
-          options.map(option=><TouchableOpacity
-            style={{
-              backgroundColor:'#E6E8EA',
-              margin:5,
-              justifyContent:'space-between',
-              paddingHorizontal:35,
-              alignItems:'center',
-              height:window.width/10,
-              width:window.width/1.3,
-              borderRadius:5,
-              alignSelf:'center',
-              flexDirection:'row'
-            }}
-            onPress={option.onPress}
-            >
-                <Text
-                style={{
-                  color:'#100746',
-                  alignSelf:'center',
-                  fontStyle:'italic',
-                  fontSize:15,
-                  fontWeight:'bold',
-                }}
-                >{option.title}</Text>
-                <Image
-                  style={styles.footerIcon}
-                  source={option.icon}
-                />
-            </TouchableOpacity>):<View/>
-        }
-        </View>
-        
-        <View
-        style={{
-          marginVertical:10
-        }}>
-          <SmallH2
-          title="Previous Events"
-          navigation={navigation}
-          darkText
-          data={data}
-          />
-        </View>
-        {/* <TouchableOpacity
-        style={{
-          height:window.height/10,
-          width:window.width/1.5,
-          alignSelf:'center',
-          borderRadius:10,
-          backgroundColor:"#182744",
-          justifyContent:'center'
-        }}
-        onPress={logOut}
-        >
-          <Text
-          style={{
-            fontSize:35,
-            color:'white',
-            alignSelf:'center'
-          }}
+          <View
+          style={styles.profileCardContainer}
           >
-            Logout
-          </Text>
-        </TouchableOpacity> */}
+            <Text
+            style={styles.profileCardTitle}
+            >
+              Country
+            </Text>
+            <Text
+            style={styles.profileCardData}
+            >
+              Bangladesh
+            </Text>
+          </View>
+
+          <View
+          style={styles.profileCardContainer}
+          >
+            <Text
+            style={styles.profileCardTitle}
+            >
+              City
+            </Text>
+            <Text
+            style={styles.profileCardData}
+            >
+              Dhaka city 
+            </Text>
+          </View>
+
+          <View
+          style={styles.profileCardContainer}
+          >
+            <Text
+            style={styles.profileCardTitle}
+            >
+              Phone
+            </Text>
+            <Text
+            style={styles.profileCardData}
+            >
+              +880192837465
+            </Text>
+          </View>
+
+          <View
+          style={styles.profileCardContainer}
+          >
+            <Text
+            style={styles.profileCardTitle}
+            >
+              Email
+            </Text>
+            <Text
+            numberOfLines={2}
+            style={styles.profileCardData}
+            >
+              dhakacity@dhakacity.com
+            </Text>
+          </View>
+
+          
+
+          
+
+          
+
+          
+
+          
+        
+        </View>        
         </ScrollView>
       </SafeAreaView>
     </>
@@ -426,6 +345,24 @@ const EventDetails: () => React$Node = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  profileCardContainer:{
+    flexDirection:'row',
+    height:55,
+    width:window.width/1.4,
+    justifyContent:'space-around',
+    paddingHorizontal:20,
+    marginVertical:5,
+    alignSelf:'center',
+    backgroundColor:"#EAECEE",
+    borderRadius:5
+  },
+  profileCardTitle:{
+    fontSize:20
+  },
+  profileCardData:{
+    marginTop:25,
+    color:'grey'
+  },
   slideShow: {
     width: window.width,
     height: window.height /2.5,
@@ -534,4 +471,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EventDetails;
+export default ProfileDetails;
