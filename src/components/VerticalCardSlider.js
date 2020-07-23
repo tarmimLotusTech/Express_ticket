@@ -120,7 +120,22 @@ export default function VerticalCardSlider (props) {
         keyExtractor={(item,index) => {
           return new Date().getMilliseconds().toString()+index.toString()}}
           />
-      </View>:<View/>
+      </View>:<View
+      style={{
+        height:window.height,
+        justifyContent:'center',
+        alignItems:'center',
+      }}
+      >
+        <Text
+        numberOfLines={2}
+        style={{
+          fontSize:20,
+          textAlign:'center',
+          width:window.width/1.5
+        }}
+        >No {props.title} are happening now</Text>
+      </View>
     );
   }
 
