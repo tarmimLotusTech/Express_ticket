@@ -141,6 +141,26 @@ const EventDetails: () => React$Node = ({navigation}) => {
       ],
 
     })
+    const priceData=[
+      {
+        id:'1',
+        type:'Premium',
+        price:510,
+        available:120
+      },
+      {
+        id:'2',
+        type:'Gold',
+        price:710,
+        available:120
+      },
+      {
+        id:'3',
+        type:'Silver',
+        price:810,
+        available:120
+      },
+    ]
     if (loading)
     return <ActivityIndicator/>
     return (
@@ -201,6 +221,133 @@ const EventDetails: () => React$Node = ({navigation}) => {
           </View>
         </View>
         {/* Timer card ends */}
+        <View
+        style={{
+          width:window.width/1.1,
+          alignSelf:'center',
+          flexDirection:'row',
+          justifyContent:'space-between',
+          marginVertical:10
+        }}
+        >
+        {
+          priceData.map(price=>
+            <View>
+              <View
+                style={{
+                  height:window.width/10,
+                  width: window.width/3.6,
+                  borderRadius:7,
+                  backgroundColor: '#100746',
+                  justifyContent:'center',
+                  alignItems:'center',
+                  marginTop:10,
+                  marginBottom:5
+                }}
+              >
+                <Text
+                style={{
+                  color:'#fff',
+                  fontSize:18,
+                  fontWeight:'bold'
+                }}
+                >{price.type}</Text>
+              </View>
+
+              <View
+              style={{
+                height:window.height/5,
+                marginBottom:10,
+                borderRadius:7,
+                backgroundColor: '#100746',
+                justifyContent:"space-around",
+                paddingTop:15
+              }}
+              >
+                <Text
+                style={{
+                  color:'#fff',
+                  fontSize:25,
+                  alignSelf:'center',
+                  fontWeight:'bold',
+                  marginTop:window.height/70
+                }}
+                >${price.price} </Text>
+                <View
+                style={{
+                  height:window.height/70,
+                  marginTop:window.height/35,
+                  flexDirection:'row',
+                  justifyContent:'space-between'
+                }}
+                >
+                  <View
+                  style={{
+                    height:window.height/70,
+                    width:window.height/140,
+                    backgroundColor:'#fff',
+                    borderTopRightRadius: window.height/140,
+                    borderBottomRightRadius: window.height/140
+                  }}
+                  />
+                  <View
+                  style={{
+                    height:window.height/300,
+                    width: window.width/5,
+                    backgroundColor:'#fff',
+                    marginTop:4
+                  }}
+                  />
+
+                  <View
+                  style={{
+                    height:window.height/70,
+                    width:window.height/140,
+                    backgroundColor:'#fff',
+                    borderTopLeftRadius: window.height/140,
+                    borderBottomLeftRadius: window.height/140
+                  }}
+                  />
+                  
+                </View>
+                <Text
+                  style={{
+                    color:'grey',
+                    fontSize:12,
+                    alignSelf:'center',
+                    marginBottom:window.height/70
+
+                  }}
+                  >Available: {price.available}
+                  </Text>
+                </View>
+            
+            <TouchableOpacity
+            style={{
+              height:window.width/10,
+              width: window.width/4,
+              borderRadius:7,
+              backgroundColor: '#F1C100',
+              justifyContent:'center',
+              alignItems:'center',
+              alignSelf:'center'
+            }}
+            onPress={confirmBooking}
+            >
+              <Text
+              style={{
+                color:'black',
+                fontSize:18,
+                fontWeight:'bold'
+              }}
+              >
+                Book now
+              </Text>
+            </TouchableOpacity>
+            </View>
+            )
+        }
+        </View>
         <Modal
           animationType="slide"
           transparent={true}
@@ -215,8 +362,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         <View
         style={{
           marginHorizontal:10,
-          marginTop: -window.height/12,
-          marginBottom:window.height/18,
+          marginBottom:window.height/25,
           backgroundColor:'#00163D',
           borderRadius: 25,
           height:window.height/4,
@@ -225,7 +371,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         >
           <TouchableOpacity
           style={{
-            width: window.width/2.5,
+            width: window.width/2,
             height: window.width/2.5,
             margin:window.width/50,
             borderRadius:25,
@@ -235,7 +381,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           <Image
             source={{uri:BaseUrl+eventData.cover.full}}
           style={{
-            width: window.width/2.5,
+            width: window.width/2,
             height:window.width/2.5,
             resizeMode: 'cover',
             borderRadius:25,
@@ -246,7 +392,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
 					style={{
             position:'absolute',
             top:window.height / 12.5,
-            left:window.height / 12.5,
+            left:window.height / 9.5,
             width: window.height / 15,
             height: window.height / 15,
           }}
@@ -258,53 +404,31 @@ const EventDetails: () => React$Node = ({navigation}) => {
           style={{
             width:window.width/3.5,
             height:window.width/3.5,
-            flexDirection:'column'
+            alignSelf:'center',
+            justifyContent:'center'
           }}
           >
-          <View
-          style={{
-            width:window.width/2.2,
-            height:window.height/15,
-            justifyContent:'center',
-            margin:20,
-            paddingTop:window.height/15
-          }}
-          >
-            <Text
-            numberOfLines={2}
-            style={{
-              fontSize:12,
-              marginBottom:20,
-              marginLeft:-10,
-              color:'white',
-              fontWeight:'700',
-          }}
-            >
-              {eventData.name}{"\n"}{eventData.model}
-            </Text>
-          </View>
-          <TouchableOpacity
-            style={{
-              height:window.width/10,
-              width: window.width/2.4,
-              marginLeft:10,
-              borderRadius:7,
-              backgroundColor: '#fbc531',
-              justifyContent:'center',
-              alignItems:'center'
-            }}
-            onPress={confirmBooking}
-            >
               <Text
+              numberOfLines={2}
               style={{
-                color:'black',
-                fontSize:18,
-                fontWeight:'bold'
-              }}
+                fontSize:15,
+                color:'white',
+                fontWeight:'700',
+                alignSelf:'center'
+            }}
               >
-                Book now
+                {eventData.name}
               </Text>
-            </TouchableOpacity>
+              <Text
+                style={{
+                  fontSize:10,
+                  color:'white',
+                  fontWeight:'700',
+                  alignSelf:'center'
+                }}
+                >
+                {eventData.model}
+                </Text>
           </View>
           
         </View>
@@ -359,7 +483,7 @@ const styles = StyleSheet.create({
   },
   slideHolder: {
       width: window.width,
-      height: window.height /1.5
+      height: window.height /1.8,
   },
   imgFit: {
       width: window.width,
