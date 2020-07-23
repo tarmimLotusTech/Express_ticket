@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     paddingTop:20,
     paddingBottom:50,
     backgroundColor: "#fff",
+    minHeight:window.height
   },
   engine: {
     position: 'absolute',
