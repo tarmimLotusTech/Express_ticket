@@ -387,7 +387,7 @@ function Login (props) {
         >
           <Text
           style={{
-            fontSize:10,
+            fontSize:12,
             color:'#00163D',
             alignSelf:'center',
             fontWeight:'bold'

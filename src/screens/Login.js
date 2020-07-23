@@ -3,6 +3,10 @@ import { ImageBackground, Dimensions, Text, TextInput, TouchableOpacity, View ,B
 import loginStyles from "../styles/loginStyles";
 import FetchService from "../services/FetchService";
 
+import { 
+  systemWeights
+} from 'react-native-typography';
+
 const window = Dimensions.get('window');
 
 function Login (props) {
@@ -140,28 +144,52 @@ function Login (props) {
         <View style={loginStyles.loginContent}>
 
           {/* title and input starts */}
-          <View style={loginStyles.loginEmailTop}>
+          <View style={{
+            width: window.width,
+            height: window.height*200/667,
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            alignSelf: 'center'
+          }}>
               <TextInput
-                underlineColorAndroid="#8d8d8d"
+                // underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="Email or username"
                 autoFocus={true}
                 value={username}
                 keyboardType="default"
-                style={loginStyles.txtInput}
+                style={ {
+                  ...systemWeights.light,
+                  color: '#616161',
+                  width: window.width*305/375,
+                  height: window.width*56/375,
+                  fontSize: 16,
+                  paddingLeft: window.width*25/375,
+                  marginTop: 70,
+                  borderWidth:1,
+                  borderRadius:5
+                }}
                 onChangeText={setName}
                 blurOnSubmit={false}
 
                 />
-          </View>
-          <View style={loginStyles.loginEmailTop}>
               <TextInput
-                underlineColorAndroid="#8d8d8d"
+                // underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="Password"
                 value={password}
                 secureTextEntry={true}
-                style={[loginStyles.txtInput,{
+                style={[ {
+                ...systemWeights.light,
+                color: '#616161',
+                width: window.width*305/375,
+                height: window.width*56/375,
+                fontSize: 16,
+                paddingLeft: window.width*25/375,
+                marginBottom: 30,
+                borderWidth:1,
+                borderRadius:5
+              },{
                   marginTop:40
                 } ]}
                 onChangeText={setPassword}
@@ -173,18 +201,40 @@ function Login (props) {
         </ImageBackground>
         <View
         style={{
-          flexDirection:'row',
           margin:15,
           justifyContent:'space-between'
         }}
         >
         <TouchableOpacity
         style={{
+          height:window.height/20,
+          width:window.width/2.5,
+          alignSelf:'flex-start',
+          backgroundColor:"transparent",
+          justifyContent:'center',
+          marginBottom:20
+        }}
+        onPress={()=>props.navigation.navigate("Signup")}
+        >
+          <Text
+          style={{
+            fontSize:15,
+            color:'#00163D',
+            alignSelf:'center',
+            fontWeight:'bold'
+          }}
+          >
+            Create Account
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={{
           height:window.height/15,
           width:window.width/2.5,
           borderRadius:5,
           backgroundColor:"#130A56",
-          justifyContent:'center'
+          justifyContent:'center',
+          marginBottom:10
         }}
         onPress={handleSubmit}
         >
@@ -198,28 +248,7 @@ function Login (props) {
             Login
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        style={{
-          height:window.height/20,
-          width:window.width/2.5,
-          alignSelf:'center',
-          backgroundColor:"transparent",
-          justifyContent:'center',
-          marginBottom:10
-        }}
-        onPress={()=>props.navigation.navigate("Signup")}
-        >
-          <Text
-          style={{
-            fontSize:12,
-            color:'#00163D',
-            alignSelf:'center',
-            fontWeight:'bold'
-          }}
-          >
-            Create Account
-          </Text>
-        </TouchableOpacity>
+        
         </View>
       </View>
     );
