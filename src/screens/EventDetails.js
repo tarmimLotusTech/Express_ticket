@@ -8,12 +8,12 @@ import {
   View,
   Image,
   Text,
-  TouchableHighlight,
   Modal,
   ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconPlay from '../assets/icons/iconPlay.png';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {
   Colors,
@@ -35,7 +35,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
     FetchService("GET","/api/product/"+navigation.state.params.id)
     .then(res=>{
       setEventData(res)
-      setDate(res.date.split("-"))
+      // setDate(res.date.split("-"))
     })
     .then(()=>setLoading(false))
   },[navigation])
@@ -179,35 +179,58 @@ const EventDetails: () => React$Node = ({navigation}) => {
             source={{uri:BaseUrl+eventData.cover.full}}
             style={styles.imgFit}
           />
+          <LinearGradient
+              colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)']}
+              style={{
+                position:'absolute',
+                top:window.height/4.8,
+                width:window.width,
+                height:window.height/3.3,
+                justifyContent:'space-between'
+              }}
+            >
+          <View
+          style={{
+            marginTop:window.height/7,
+            height:window.height/11,
+            marginLeft:window.width/15,
+            justifyContent:'space-evenly'
+
+          }}
+          >
           <Text
-            style={[{
-                top:window.height/2.8,
+            style={{
                 fontSize:20,
-                fontWeight:'700'
-          
-            }, styles.sliderTextAbsolute]}
+                fontWeight:'700',
+                color:'#fff',
+            }}
           >
             {eventData.name}
           </Text>
           <Text
-            style={[{
-                top:window.height/2.8 +25
-            }, styles.sliderTextAbsolute]}
+            style={{
+              fontSize:12,
+              color:'#fff',
+            }}
             >
-              {eventData.model}
+              {eventData.model}model
           </Text>
-          
+          </View>
           <View
           style={{
               height:window.height /10,
               backgroundColor:'#00163D',
               borderRadius:window.height/25,
               justifyContent:'center',
-              position:"absolute",
-              top:window.height/2.2,
+              alignSelf:'flex-end',
+              marginBottom:-window.height/20,
+              // mar
+              // marginTop:window.height/4.2,
+              // position:"absolute",
+              // top:window.height/2.2,
+              // alignSelf:'flex-end',
               width:window.width,
               alignItems:'center',
-              opacity:0.8
           }}
           >
             <Text
@@ -221,6 +244,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 10      :   20    :       30
             </Text>
           </View>
+          </LinearGradient>
         </View>
         {/* Timer card ends */}
         <View
@@ -490,7 +514,8 @@ const styles = StyleSheet.create({
   },
   slideHolder: {
       width: window.width,
-      height: window.height /1.8,
+      height: window.height /1.9,
+      marginBottom:15
   },
   imgFit: {
       width: window.width,
@@ -525,9 +550,9 @@ const styles = StyleSheet.create({
       fontWeight:'700'
   },
   sliderTextAbsolute: {
-      position:"absolute",
+      // position:"absolute",
       color:'#00163D',
-      left:window.width/10,
+      // left:window.width/10,
       
   },
   scrollView: {
