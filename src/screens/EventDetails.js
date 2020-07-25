@@ -29,13 +29,15 @@ import { BaseUrl } from '../env';
 const EventDetails: () => React$Node = ({navigation}) => {
   const [loading,setLoading]=useState(true)
   const [modalVisible, setModalVisible] = useState(false);
+  const [date,setDate]=useState([])
   const [vSource, setvSource]=useState('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')
   useEffect(()=>{
     FetchService("GET","/api/product/"+navigation.state.params.id)
     .then(res=>{
       setEventData(res)
-      setLoading(false)
+      setDate(res.date.split("-"))
     })
+    .then(()=>setLoading(false))
   },[navigation])
   function closeModal(){
     setModalVisible(false)
@@ -226,12 +228,13 @@ const EventDetails: () => React$Node = ({navigation}) => {
           width:window.width/1.1,
           alignSelf:'center',
           flexDirection:'row',
-          justifyContent:'space-between',
-          marginVertical:10
+          justifyContent:'space-around',
+          marginVertical:10,
+          marginBottom:30
         }}
         >
         {
-          priceData.map(price=>
+          eventData.pricing.map(price=>
             <View>
               <View
                 style={{
@@ -251,7 +254,11 @@ const EventDetails: () => React$Node = ({navigation}) => {
                   fontSize:18,
                   fontWeight:'bold'
                 }}
-                >{price.type}</Text>
+                >{
+                  Object.entries(price.attribute).length?
+                  Object.entries(price.attribute)[0][0]
+                  :"Regular"
+                }</Text>
               </View>
 
               <View
@@ -272,7 +279,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                   fontWeight:'bold',
                   marginTop:window.height/70
                 }}
-                >${price.price} </Text>
+                >${price.price.regular} </Text>
                 <View
                 style={{
                   height:window.height/70,
@@ -318,7 +325,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                     marginBottom:window.height/70
 
                   }}
-                  >Available: {price.available}
+                  >Available: {price.stock.available}
                   </Text>
                 </View>
             
