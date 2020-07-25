@@ -181,7 +181,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           />
           <Text
             style={[{
-                top:window.height/3,
+                top:window.height/2.8,
                 fontSize:20,
                 fontWeight:'700'
           
@@ -191,7 +191,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           </Text>
           <Text
             style={[{
-                top:window.height/3 +25
+                top:window.height/2.8 +25
             }, styles.sliderTextAbsolute]}
             >
               {eventData.model}
@@ -256,7 +256,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 }}
                 >{
                   Object.entries(price.attribute).length?
-                  Object.entries(price.attribute)[0][0]
+                  Object.entries(price.attribute)[0][1]
                   :"Regular"
                 }</Text>
               </View>
