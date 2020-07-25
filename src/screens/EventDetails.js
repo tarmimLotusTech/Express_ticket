@@ -43,8 +43,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
     setModalVisible(false)
     navigation.navigate("Home")
   }
-  function confirmBooking(){
-    setModalVisible(true)
+  function confirmBooking(item){
+    navigation.navigate("TicketDetails",{item,cover:BaseUrl+eventData.cover.full})
+
   }
   const [eventData,setEventData]= useState(
     {
@@ -363,7 +364,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               alignItems:'center',
               alignSelf:'center'
             }}
-            onPress={confirmBooking}
+            onPress={()=> confirmBooking(price)}
             >
               <Text
               style={{

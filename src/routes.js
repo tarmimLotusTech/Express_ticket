@@ -16,6 +16,7 @@ import ProfileDetails from './screens/ProfileDetails'
 import EventDetails from './screens/EventDetails'
 import CategoryDetails from "./screens/CategoryDetails";
 import SearchResult from "./screens/SearchResult";
+import TicketDetails from "./screens/TicketDetails"
 
 const window = Dimensions.get('window');
 
@@ -115,6 +116,7 @@ const HomeStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Home: { screen: Home, navigationOptions:{headerShown:false}  },
 		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		TicketDetails: { screen: TicketDetails, navigationOptions:{headerShown:false}  },
 		CategoryDetails: { screen: CategoryDetails, navigationOptions:{headerShown:false}  }
 
 	},
@@ -125,6 +127,7 @@ const ProfileStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Profile: { screen: Profile, navigationOptions:{headerShown:false}  },
 		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		TicketDetails: { screen: TicketDetails, navigationOptions:{headerShown:false}  },
 		EditProfile: { screen: EditProfile, navigationOptions:{headerShown:false } },
 		ProfileDetails: { screen: ProfileDetails, navigationOptions:{headerShown:false } }
 
@@ -136,6 +139,7 @@ const CategoryStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Category: { screen: Category, navigationOptions:{headerShown:false}  },
 		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		TicketDetails: { screen: TicketDetails, navigationOptions:{headerShown:false}  },
 		CategoryDetails: { screen: CategoryDetails, navigationOptions:{headerShown:false}  }
 	},
 	options
@@ -145,6 +149,7 @@ const SearchStack = createCompatNavigatorFactory(createStackNavigator)(
 	{
 		Search: { screen: Search, navigationOptions:{headerShown:false}  },
 		EventDetails: { screen: EventDetails, navigationOptions:{headerShown:false}  },
+		TicketDetails: { screen: TicketDetails, navigationOptions:{headerShown:false}  },
 		SearchResult: { screen: SearchResult, navigationOptions:{headerShown:false}  }
 	},
 	options
