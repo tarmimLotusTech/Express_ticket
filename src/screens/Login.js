@@ -55,12 +55,15 @@ function Login (props) {
       let body={
         username,password
       }
-      FetchService("POST","/customer/api/profile",3,body)
-      .then(res=>console.log("-=-==--=",res))
-      .catch(er=>setSignupError(er.toString()))
-      setTimeout(()=>{
-        props.navigation.navigate("AppStack")
-      },2000)
+      FetchService("POST","/customer/auth/login",3,body)
+      .then(res=>{
+        console.log(res)
+        if(res.success){
+          props.navigation.navigate("AppStack")
+        }
+        else throw Object.entries(res)[0][1]
+      })
+      .catch(er=>setSignupError(er))
     }
   }
     return (
@@ -157,7 +160,7 @@ function Login (props) {
                 placeholder="Email or username"
                 autoFocus={true}
                 value={username}
-                keyboardType="default"
+                keyboardType="email-address"
                 style={ {
                   ...systemWeights.light,
                   color: '#616161',
