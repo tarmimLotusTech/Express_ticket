@@ -27,7 +27,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
   style={{
     padding:10,
     height:window.height/6,
-    width:window.width/3
+    width:window.width/3,
+    marginBottom:-35,
+    marginTop:10
   }}
   >
     <Text
@@ -88,24 +90,33 @@ const EventDetails: () => React$Node = ({navigation}) => {
               numberOfLines={2}
               style={{
                 marginTop:25,
-                fontSize:25,
+                fontSize:20,
                 color:'#100846',
                 alignSelf:'center',
                 fontWeight:'bold',
                 textAlign:'center'
               }}
-              >Loveseat Wedding and Event Planning</Text>
+            >Loveseat Wedding{'\n'} and Event Planning</Text>
               <View
               style={styles.ticketCard}>
+                <View
+                style={{
+                  // padding:5
+                }}
+                >
                 <TextBox title={"Order Date"} text={today} />
                 <TextBox title={"Event Date"} text={today} />
-              </View>
-
-              <View
-              style={styles.ticketCard}>
+                </View>
+                <View
+                style={{
+                  // padding:5
+                }}
+                >
                 <TextBox title={"Address"} text={"1/1-a, Gulshan, dhaka,bangladesh"} />
                 <TextBox title={"Price Detail"} text={"Premium\n$250\nquantity: 02"} />
+                </View>
               </View>
+
 
               <View
               style={{
@@ -114,7 +125,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 width:window.width/1.3,
                 alignSelf:'center',
                 borderRadius:20,
-                marginVertical:20,
                 marginBottom:50,
                 alignItems:'center'
               }}>
@@ -208,15 +218,15 @@ const EventDetails: () => React$Node = ({navigation}) => {
 const styles = StyleSheet.create({
   ticketCard:{
     backgroundColor:'white',
-    elevation:10,
-    height:window.height/6,
+    elevation:7,
+    height:window.height/3,
     width:window.width/1.3,
     alignSelf:'center',
     borderRadius:20,
     marginVertical:20,
     flexDirection:'row',
     justifyContent:'space-around',
-
+    padding:10
   },
   slideShow: {
     width: window.width,
