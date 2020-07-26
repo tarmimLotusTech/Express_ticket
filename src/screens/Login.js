@@ -57,7 +57,6 @@ function Login (props) {
       }
       FetchService("POST","/customer/auth/login",3,body)
       .then(res=>{
-        console.log(res)
         if(res.success){
           props.navigation.navigate("AppStack")
         }
