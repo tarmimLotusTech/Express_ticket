@@ -11,6 +11,7 @@ import {
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
 const window = Dimensions.get('window');
+import { BaseUrl } from "../env";
 
 export default class SmallH2 extends React.Component {
   constructor(props) {
@@ -66,14 +67,16 @@ export default class SmallH2 extends React.Component {
                   justifyContent:'center',
                   borderColor:'#00163D',
                   alignItems:'center'
-              }}>
+              }}>{
+                console.log(rowData)
+              }
                   <Image
                     style={{
-                      width: window.width/20,
-                      height: window.width/20,
+                      width: window.width/12,
+                      height: window.width/12,
                       resizeMode: 'contain',
                   }}
-                    source={require('../assets/icons/iconProfile.png')}
+                    source={{uri:BaseUrl+rowData.icon}}
                   />
                 </View>
                 <View style={{

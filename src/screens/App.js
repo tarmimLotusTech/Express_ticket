@@ -20,10 +20,10 @@ const App: () => React$Node = ({navigation}) => {
   const [ categories, setCategories]=useState([])
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
-    FetchService("GET","/api/category?page=1&limit=10&subCategory=true&sortOrder=-1&sort=added")
+    FetchService("GET","/api/category")
     .then(res=>{
       setCategories(res.data)
-      FetchService("GET","/api/product?limit=10&page=1&sortOrder=added&sort=-1")
+      FetchService("GET","/api/product")
       .then(response=>{
         setData(response.data)
         setLoading(false)
