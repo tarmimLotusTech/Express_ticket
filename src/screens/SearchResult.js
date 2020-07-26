@@ -9,7 +9,8 @@ import {
   Image,
   KeyboardAvoidingView,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  TextInput
 } from 'react-native';
 const window = Dimensions.get('window');
 import { 
@@ -35,6 +36,9 @@ class SearchResult extends Component  {
     this.state = {
       result: [],
       data:[],
+      selectedCategory:'',
+      categories:[],
+      venue:'',
       city:'',
       date:'',
       type:'',
@@ -43,24 +47,49 @@ class SearchResult extends Component  {
   }
 
   componentDidMount(){
-    FetchService("GET",`/api/search?query=${this.props.navigation.state.params.item}&sort=added&sortOrder=-1&limit=2&page=1`)
+    FetchService("GET",`/api/search?query=${this.props.navigation.state.params.item}`)
     .then(res=>{
       this.setState({
         result:res.data,
-        data:res.data,
-        loading:false
+        data:res.data
       })
+      FetchService("GET","/api/category")
+      .then(res=>this.setState({
+        categories:res.data,
+        loading:false
+      }))
     })
   }
   filterData=()=>{
-    const {city,date,type,result}=this.state
-    console.log(city,date,type,result.length)
-    // let arr= result.filter(res=>res.city.toLowerCase().includes(city.toLowerCase())).filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
-    // this.setState({data:arr})
+    const {date,result,selectedCategory,venue}=this.state
+    console.log(venue)
+    // console.log(city,date,type,result.length)
+    let arr= result.filter(res=>res.primaryCategory.includes(selectedCategory)).filter(res=>res.venue? res.venue.includes(venue):false)
+    // .filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
+    this.setState({
+      data:
+      venue==''?
+      result:
+      arr
+    })
+  }
+  filterVenue=(venue)=>{
+    this.setState({venue})
+    const {date,result,selectedCategory}=this.state
+    console.log(venue)
+    // console.log(city,date,type,result.length)
+    let arr= result.filter(res=>res.primaryCategory.includes(selectedCategory)).filter(res=>res.venue? res.venue.includes(venue.toLowerCase()):false)
+    // .filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
+    this.setState({
+      data:
+      venue==''?
+      result:
+      arr
+    })
   }
 
   render(){
-    const {city,date,type,data}=this.state
+    const {city,date,type,data,categories,selectedCategory,venue}=this.state
   if (this.state.loading)
   return <ActivityIndicator/>
   return (
@@ -85,6 +114,44 @@ class SearchResult extends Component  {
             >
               <Text
               style={styles.pickerText}
+              >Select Category</Text>
+            <Picker
+              selectedValue={selectedCategory}
+              style={styles.pickerStyle}
+              prompt="Select Category"
+              onValueChange={async (itemValue, itemIndex) =>this.setState({selectedCategory:itemValue},this.filterData)}>
+                <Picker.Item label={"All"} value={''} />
+                {
+                  categories.map(category=><Picker.Item label={category.name} value={category._id} />)
+                }
+            </Picker>
+            </View>
+            <TextInput
+              // underlineColorAndroid="#8d8d8d"
+              placeholderTextColor="#212121"
+              placeholder="Search venue"
+              value={venue}
+              keyboardType="default"
+              style={{
+                ...systemWeights.light,
+                backgroundColor:'#fff',
+                borderRadius:5,
+                margin:5,
+                height: window.height/15,
+                width: window.width/3.3,
+                fontSize: 10,
+                paddingLeft: window.width*20/375,
+                // marginTop: 70,
+                // borderWidth:1,
+              }}
+              onChangeText={txt=>this.filterVenue(txt)}
+              blurOnSubmit={false}
+            />
+            {/* <View
+            style={styles.pickerContainer}
+            >
+              <Text
+              style={styles.pickerText}
               >Select city</Text>
             <Picker
               selectedValue={city}
@@ -96,7 +163,7 @@ class SearchResult extends Component  {
                   cities.map(city=><Picker.Item label={city} value={city} />)
                 }
             </Picker>
-            </View>
+            </View> */}
             <View
             style={styles.pickerContainer}
             >
@@ -111,23 +178,6 @@ class SearchResult extends Component  {
                 <Picker.Item label={"All"} value={''} />
                 {
                   dates.map(date=><Picker.Item label={date} value={date} />)
-                }
-            </Picker>
-            </View>
-            <View
-            style={styles.pickerContainer}
-            >
-              <Text
-              style={styles.pickerText}
-              >Select Type</Text>
-            <Picker
-              selectedValue={type}
-              style={styles.pickerStyle}
-              prompt="Select Type"
-              onValueChange={async (itemValue, itemIndex) =>this.setState({type:itemValue},this.filterData)}>
-                <Picker.Item label={"All"} value={''} />
-                {
-                  types.map(type=><Picker.Item label={type} value={type} />)
                 }
             </Picker>
             </View>
