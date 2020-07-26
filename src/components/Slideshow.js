@@ -7,6 +7,7 @@ import {
     View,
     Text
 } from "react-native";
+import LinearGradient from 'react-native-linear-gradient';
 
 import ImageSlider from 'react-native-image-slider';
 import { BaseUrl } from "../env";
@@ -39,7 +40,7 @@ export default class Slideshow extends React.Component {
                             source={{uri:BaseUrl+item.cover.full}}
                             style={styles.imgFit}
                         />
-                        <Text
+                        {/* <Text
                         style={[{
                             top:window.height/3.5,
                         }, styles.sliderTextAbsolute,styles.sliderLargeText]}
@@ -74,7 +75,67 @@ export default class Slideshow extends React.Component {
                                 Get your tickets
                             </Text>
                         </View>
+                        </TouchableOpacity> */}
+                        <LinearGradient
+                            colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)']}
+                            style={{
+                                position:'absolute',
+                                top:window.height/5.4,
+                                width:window.width,
+                                height:window.height/4,
+                                justifyContent:'space-between'
+                            }}
+                            >
+                        <View
+                        style={{
+                            marginTop:window.height/7,
+                            height:window.height/11,
+                            marginLeft:window.width/15,
+                            justifyContent:'space-evenly'
+
+                        }}
+                        >
+                        <Text
+                            style={{
+                                fontSize:20,
+                                fontWeight:'700',
+                                color:'#fff',
+                            }}
+                        >
+                            {item.name}
+                        </Text>
+                        <Text
+                            style={{
+                            fontSize:12,
+                            color:'#fff',
+                            }}
+                            >
+                            model: {item.model}
+                        </Text>
+                        </View>
+                        <TouchableOpacity
+                        key={index}
+                        onPress={() => this._handlePress(item._id)}
+                        >
+
+                        <View
+                        style={{
+                            height:window.width * 50/ 375,
+                            backgroundColor:'#1A2A47',
+                            borderBottomLeftRadius:25,
+                            borderBottomRightRadius:25,
+                            justifyContent:'center',
+                            alignItems:'center'
+                        }}
+                        >
+                            <Text
+                            style={styles.sliderLargeText}
+                            >
+                                Get your tickets
+                            </Text>
+                        </View>
                         </TouchableOpacity>
+                        </LinearGradient>
                     </View>
                 )}
                 customButtons={() => (
