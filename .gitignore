@@ -34,7 +34,7 @@ local.properties
 node_modules/
 npm-debug.log
 yarn-error.log
-
+id_rsa_lotus*
 # BUCK
 buck-out/
 \.buckd/
