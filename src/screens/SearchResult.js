@@ -203,10 +203,7 @@ class SearchResult extends Component  {
                   marginHorizontal: 10,
                   backgroundColor:"#fff",
                   borderRadius:10,
-                  borderBottomColor:"#415D94",
-                  borderBottomWidth:1,
-                  borderLeftColor:"#415D94",
-                  borderLeftWidth:1,
+                  elevation:5,
                   flexDirection: 'row'
               }}
               >
@@ -227,7 +224,9 @@ class SearchResult extends Component  {
                   }}
                     source={{uri:BaseUrl+item.cover.full}}
                   />
-                </View>
+                </View>{
+                  console.log(item)
+                }
                 <View style={{
                   width: window.width -40,
                   height: window.width * 70 / 375,
@@ -235,13 +234,25 @@ class SearchResult extends Component  {
                   alignItems: 'flex-start',
                   padding:5
                 }}>
-                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00163D'}]}>
-                    {item.name}
-                    </Text>
                     <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#00163D'}]}
                     numberOfLines={1}>
-                    {item.model}
+                    {item.name}
                     </Text>
+                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00163D'}]}>
+                    organiser: {item.brand}
+                    </Text>
+                    <View
+                    style={{
+                      flexDirection:'row'
+                    }}
+                    >
+                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00163D'}]}>
+                    {item.date}{'  '}
+                    </Text>
+                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#00163D'}]}>
+                    venue: {item.venue}
+                    </Text>
+                    </View>
                 </View>
               </TouchableOpacity>
             );
