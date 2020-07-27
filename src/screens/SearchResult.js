@@ -10,7 +10,8 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   ActivityIndicator,
-  TextInput
+  TextInput,
+  Platform
 } from 'react-native';
 const window = Dimensions.get('window');
 import { 
@@ -20,27 +21,61 @@ import SliderStyles from '../styles/SliderStyles';
 import GlobalStyles from '../styles/Styles';
 import {Picker} from '@react-native-community/picker';
 import { BaseUrl } from "../env";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import FetchService from '../services/FetchService';
 
-const dates=["20-10-20","10-10-20","11-10-20"]
-const cities=["Dhaka","Khulna","Ctg","Sylhet"]
-const types=["sports","concert","party","meeting"]
-
 class SearchResult extends Component  {
+
+  onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || this.state.date;
+
+    this.setState({
+      show: Platform.OS === 'ios',
+      date:currentDate
+    })
+  };
+  formatDate =(e,date)=>{
+    const currentDate = date.getFullYear()+"-"+(date.getMonth()+1<10?`0${date.getMonth()+1}`:date.getMonth()+1)+"-"+date.getDate() || this.state.date;
+    this.setState({
+      show: Platform.OS === 'ios',
+      date:currentDate
+    },()=>this.filterData())
+  }
+
+  showMode = currentMode => {
+    this.setState({
+      date: '',
+      show:true,
+      mode:currentMode
+    })
+  };
+
+  showDatepicker = () => {
+    this.showMode('date');
+  };
+
+  // showTimepicker = () => {
+  //   showMode('time');
+  // };
+
+
+
   constructor(props) {
     super(props);
     this.state = {
+      date: '',
+      mode:'date',
+      show:false,
       result: [],
       data:[],
       selectedCategory:'',
       categories:[],
       venue:'',
       city:'',
-      date:'',
       type:'',
       loading:true
     };
@@ -62,29 +97,16 @@ class SearchResult extends Component  {
   }
   filterData=()=>{
     const {date,result,selectedCategory,venue}=this.state
-    console.log(venue)
-    // console.log(city,date,type,result.length)
-    let arr= result.filter(res=>res.primaryCategory.includes(selectedCategory)).filter(res=>res.venue? res.venue.includes(venue):false)
-    // .filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
+    let arr= result.filter(res=>res.primaryCategory.includes(selectedCategory))
+    .filter(res=>res.venue? res.venue.includes(venue):true)
+    .filter(res=>res.date.includes(date))
     this.setState({
-      data:
-      venue==''?
-      result:
-      arr
+      data:arr
     })
   }
   filterVenue=(venue)=>{
-    this.setState({venue})
-    const {date,result,selectedCategory}=this.state
-    console.log(venue)
-    // console.log(city,date,type,result.length)
-    let arr= result.filter(res=>res.primaryCategory.includes(selectedCategory)).filter(res=>res.venue? res.venue.includes(venue.toLowerCase()):false)
-    // .filter(res=>res.date.toLowerCase().includes(date.toLowerCase())).filter(res=>res.type.toLowerCase().includes(type.toLowerCase()))
-    this.setState({
-      data:
-      venue==''?
-      result:
-      arr
+    this.setState({venue},()=>{
+      this.filterData()
     })
   }
 
@@ -141,46 +163,33 @@ class SearchResult extends Component  {
                 width: window.width/3.3,
                 fontSize: 10,
                 paddingLeft: window.width*20/375,
+                elevation:5
                 // marginTop: 70,
                 // borderWidth:1,
               }}
               onChangeText={txt=>this.filterVenue(txt)}
               blurOnSubmit={false}
-            />
-            {/* <View
-            style={styles.pickerContainer}
-            >
-              <Text
-              style={styles.pickerText}
-              >Select city</Text>
-            <Picker
-              selectedValue={city}
-              style={styles.pickerStyle}
-              prompt="Select City"
-              onValueChange={async (itemValue, itemIndex) =>this.setState({city:itemValue},this.filterData)}>
-                <Picker.Item label={"All"} value={''} />
-                {
-                  cities.map(city=><Picker.Item label={city} value={city} />)
-                }
-            </Picker>
-            </View> */}
-            <View
-            style={styles.pickerContainer}
+            />            
+            <TouchableOpacity
+            style={[styles.pickerContainer,{
+              width: window.width/3.3
+            }]}
+            onPress={this.showDatepicker}
             >
               <Text
               style={styles.pickerText}
               >Select Date</Text>
-            <Picker
-              selectedValue={date}
-              style={styles.pickerStyle}
-              prompt="Select Date"
-              onValueChange={async (itemValue, itemIndex) =>this.setState({date:itemValue},this.filterData)}>
-                <Picker.Item label={"All"} value={''} />
-                {
-                  dates.map(date=><Picker.Item label={date} value={date} />)
-                }
-            </Picker>
-            </View>
+            {this.state.show && (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={new Date()}
+                mode={this.state.mode}
+                is24Hour={true}
+                display="default"
+                onChange={this.formatDate}
+              />
+            )}
+            </TouchableOpacity>
         </View>
         <FlatList
           data={data}
@@ -224,9 +233,7 @@ class SearchResult extends Component  {
                   }}
                     source={{uri:BaseUrl+item.cover.full}}
                   />
-                </View>{
-                  console.log(item)
-                }
+                </View>
                 <View style={{
                   width: window.width -40,
                   height: window.width * 70 / 375,
@@ -272,12 +279,14 @@ const styles = StyleSheet.create({
   pickerText:{
     fontSize:10,
     alignSelf:'center',
-    marginTop:5
+    color:'grey'
   },
   pickerContainer:{
     backgroundColor:'#fff',
     borderRadius:5,
-    margin:5
+    margin:5,
+    elevation:5,
+    justifyContent:'center'
   },
   pickerStyle:{
     height: 20,
