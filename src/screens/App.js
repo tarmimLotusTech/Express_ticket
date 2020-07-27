@@ -21,14 +21,10 @@ const App: () => React$Node = ({navigation}) => {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
     FetchService("GET","/api/category")
-    .then(res=>{
-      setCategories(res.data)
-      FetchService("GET","/api/product")
-      .then(response=>{
-        setData(response.data)
-        setLoading(false)
-      })
-    })
+    .then(res=>setCategories(res.data))
+    .then(()=>FetchService("GET","/api/product"))
+    .then(response=>setData(response.data))
+    .then(()=>setLoading(false))
     .catch(err=>console.log(err))
   },[])
   const [data,setData]= useState([])
