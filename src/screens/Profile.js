@@ -220,7 +220,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
     const [ profDetail , setProfDetail ] = useState(eventData.mail)
     function uploadImage(){
       ImagePicker.showImagePicker(options, (response) => {
-        console.log('Response = ', response);
       
         if (response.didCancel) {
           console.log('User cancelled image picker');

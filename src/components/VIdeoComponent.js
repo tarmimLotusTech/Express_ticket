@@ -163,10 +163,6 @@ export default class VideoComponent extends Component {
     });
   }
 
-  _videoShare = () => {
-    console.log ("Video Shared");
-  }
-
   _renderTitle () {
     return (
       <Text

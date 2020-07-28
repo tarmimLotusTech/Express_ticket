@@ -67,9 +67,7 @@ export default class SmallH2 extends React.Component {
                   justifyContent:'center',
                   borderColor:'#00163D',
                   alignItems:'center'
-              }}>{
-                console.log(rowData)
-              }
+              }}>
                   <Image
                     style={{
                       width: window.width/12,

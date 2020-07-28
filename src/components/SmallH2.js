@@ -16,7 +16,6 @@ const window = Dimensions.get('window');
 export default function SmallH2 (props) {
   useEffect(()=>{},[props])
   function _handlePress(id) {
-    console.log(id)
     props.navigation.navigate("EventDetails",{id})
   }
 
