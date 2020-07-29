@@ -234,7 +234,8 @@ class SearchResult extends Component  {
                       resizeMode: 'cover',
                       borderRadius:8
                   }}
-                    source={{uri:BaseUrl+item.cover.full}}
+                    source={{uri:
+                      item.cover?BaseUrl+item.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"}}
                   />
                 </View>
                 <View style={{
