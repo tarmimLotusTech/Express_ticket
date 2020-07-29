@@ -44,7 +44,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
     navigation.navigate("Home")
   }
   function confirmBooking(item){
-    navigation.navigate("TicketDetails",{item,cover:BaseUrl+eventData.cover.full})
+    navigation.navigate("Checkout",{id:eventData._id ,item,cover:BaseUrl+eventData.cover.full})
 
   }
   const [eventData,setEventData]= useState({})
