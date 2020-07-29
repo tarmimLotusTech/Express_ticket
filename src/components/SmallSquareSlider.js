@@ -66,7 +66,10 @@ export default class SmallH2 extends React.Component {
               }}>
                   <Image
                     style={GlobalStyles.imgFit}
-                    source={{uri:BaseUrl+rowData.cover.full}}
+                    source={{uri:
+                      rowData.cover?
+                      BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+                  }}
                   />
                 </View>
               </TouchableOpacity>

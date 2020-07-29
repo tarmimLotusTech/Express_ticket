@@ -37,7 +37,10 @@ export default class Slideshow extends React.Component {
                     style={[style, styles.slideHolder]}
                     >
                         <Image
-                            source={{uri:BaseUrl+item.cover.full}}
+                            source={{uri:
+                                item.cover?
+                                BaseUrl+item.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+                            }}
                             style={styles.imgFit}
                         />
                         {/* <Text
