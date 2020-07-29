@@ -307,7 +307,11 @@ const EventDetails: () => React$Node = ({navigation}) => {
           disabled={true}
           >
           <Image
-            source={{uri:BaseUrl+eventData.image[0].full}}
+            source={{uri:
+              eventData.image[0]?
+              BaseUrl+eventData.image[0].full
+              :"https://app.imagineradio.io/media/album/art/default.jpg"
+          }}
           style={{
             width: window.width/2,
             height:window.width/2.5,
