@@ -113,7 +113,10 @@ class SearchResult extends Component  {
   render(){
     const {city,date,type,data,categories,selectedCategory,venue}=this.state
   if (this.state.loading)
-  return <ActivityIndicator/>
+  return <ActivityIndicator size="large" color="#00163D" style={{
+    alignSelf:'center',
+    marginTop:'80%'
+  }} />
   return (
     <>
       <StatusBar barStyle="dark-content" />

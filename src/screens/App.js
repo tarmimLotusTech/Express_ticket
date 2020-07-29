@@ -29,7 +29,10 @@ const App: () => React$Node = ({navigation}) => {
   },[])
   const [data,setData]= useState([])
   if (loading)
-  return <ActivityIndicator/>
+  return <ActivityIndicator size="large" color="#00163D" style={{
+    alignSelf:'center',
+    marginTop:'80%'
+  }} />
   return (
     <>
       <StatusBar barStyle="dark-content" />

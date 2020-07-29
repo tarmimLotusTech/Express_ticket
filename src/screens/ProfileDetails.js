@@ -187,7 +187,10 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
     const [profileImage, setProfileImage]=useState({uri:eventData.image})
     const [ profDetail , setProfDetail ] = useState(eventData.mail)
   if (loading)
-  return <ActivityIndicator/>
+  return <ActivityIndicator size="large" color="#00163D" style={{
+    alignSelf:'center',
+    marginTop:'80%'
+  }} />
   return (
     <>
       <StatusBar barStyle="dark-content" />

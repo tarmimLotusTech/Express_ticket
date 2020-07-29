@@ -25,7 +25,10 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
   const [loading,setLoading]=useState(true)
   const [data,setData]=useState([])
 if (loading)
-return <ActivityIndicator/>
+return <ActivityIndicator size="large" color="#00163D" style={{
+    alignSelf:'center',
+    marginTop:'80%'
+  }} />
   return (
     <>
       <StatusBar barStyle="dark-content" />

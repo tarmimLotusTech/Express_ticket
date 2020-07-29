@@ -28,7 +28,10 @@ export default function VerticalCardSlider (props) {
     props.navigation.navigate("EventDetails",{id})
   }
     if (loading)
-    return <ActivityIndicator/>
+    return <ActivityIndicator size="large" color="#00163D" style={{
+    alignSelf:'center',
+    marginTop:'80%'
+  }} />
 
     return (
         data.length>0?<View>
@@ -86,8 +89,10 @@ export default function VerticalCardSlider (props) {
             }}>
                 <Image
                   style={GlobalStyles.imgFit}
-                  source={{uri:BaseUrl+rowData.cover.full}}
-                />
+                  source={{uri:
+                    rowData.cover?
+                    BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+                }}                />
               </View>
               <View style={{
               width: window.width * 103 / 375,

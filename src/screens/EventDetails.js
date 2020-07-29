@@ -44,12 +44,17 @@ const EventDetails: () => React$Node = ({navigation}) => {
     navigation.navigate("Home")
   }
   function confirmBooking(item){
-    navigation.navigate("Checkout",{id:eventData._id ,item,cover:BaseUrl+eventData.cover.full})
+    navigation.navigate("Checkout",{id:eventData._id ,item,cover:eventData.cover?
+      BaseUrl+eventData.cover.full
+      :"https://app.imagineradio.io/media/album/art/default.jpg"})
 
   }
   const [eventData,setEventData]= useState({})
     if (loading)
-    return <ActivityIndicator/>
+    return <ActivityIndicator size="large" color="#00163D" style={{
+    alignSelf:'center',
+    marginTop:'80%'
+  }} />
     return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -61,7 +66,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
         style={styles.slideHolder}
         >
           <Image
-            source={{uri:BaseUrl+eventData.cover.full}}
+            source={{uri:
+              eventData.cover?
+              BaseUrl+eventData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+            }}
             style={styles.imgFit}
           />
           <LinearGradient
@@ -394,7 +402,8 @@ const EventDetails: () => React$Node = ({navigation}) => {
               >
           Organiser
         </Text>
-      <View
+      {
+        eventData.brand.name?<View
         style={{
           marginHorizontal:10,
           marginBottom:window.height/25,
@@ -447,7 +456,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
           disabled={true}
           >
           <Image
-            source={{uri:BaseUrl+eventData.brand.cover.full}}
+            source={{uri:eventData.brand.cover?
+              BaseUrl+eventData.brand.cover.full
+              :"https://app.imagineradio.io/media/album/art/default.jpg"}}
           style={{
             width: window.width/2,
             height:window.width/3,
@@ -471,6 +482,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
           
           
         </View>
+        :<View/>}
         
         <CategoryList
         title="Related Categories"
