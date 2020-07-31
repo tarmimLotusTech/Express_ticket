@@ -21,8 +21,8 @@ function Checkout (props) {
   const [city,setCity]=useState('Dhaka')
   const [address1,setAddress1]=useState('Gulshan')
   const [address2,setAddress2]=useState('Gulshan')
-  const [phone,setPhone]=useState('11111111')
-  const [email,setEmail]=useState('z@z.com')
+  const [phone,setPhone]=useState('9999')
+  const [email,setEmail]=useState('z@z.zz')
   const [password,setPassword]=useState('11111111')
   const [password2,setPassword2]=useState('11111111')
   const [signupError, setSignupError]=useState('Error: **Some Data are autofilled')
@@ -95,7 +95,7 @@ function Checkout (props) {
     }
     else{
       let body={
-        billingAddress:{firstName,lastName:firstName,country:country.name,city:city.name,address1,address2,phone,email,zipCode,additionalInfo},
+        billingAddress:{firstName,lastName:"last "+firstName,country:country.name,city:city.name,address1,address2,phone,email,zipCode,additionalInfo},
         password,
         password2,
         createAccount:true,
@@ -108,12 +108,12 @@ function Checkout (props) {
       FetchService("POST","/api/checkout",3,body,false)
       .then(res=>{
         console.log(res)
-        if(res.msg){
-          // props.navigation.navigate("TicketDetails",{item:params.item,cover:params.cover})
+        if(res.inserted){
+          props.navigation.navigate("TicketDetails",{inserted:res.inserted ,item:params.item, eventData:params.eventData})
         }
         else throw (Object.entries(res)[0][0]+" : "+Object.entries(res)[0][1])
       })
-      .catch(er=>console.log(er))
+      .catch(er=>console.log("error-==",er))
     }
 
   }

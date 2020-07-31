@@ -18,10 +18,12 @@ export default function FetchService(method,type, triedCount=5,jsonBody={},formI
     let url = BaseUrl+type
 
     let headers =
-      {
-        Accept: "*/*",
-        "Content-Type": "multipart/form-data",
-      }
+    {
+      Accept: "*/*",
+      "Content-Type": formInput?
+      "multipart/form-data":
+      "application/json",
+    }
       let body  = new FormData();
       if (formInput && method=="POST"){
         for(const name in jsonBody) {
@@ -31,10 +33,14 @@ export default function FetchService(method,type, triedCount=5,jsonBody={},formI
       else{
         body=jsonBody
       }
-    let options= method=="POST"?{method,headers,body} : {method,headers}
+
+    let options= method=="POST"?{method,headers,body:JSON.stringify(jsonBody)} : {method,headers}
 
     return fetch(url,options)
-    .then((data)=>data.json())
-    .catch(errorHandler)
+            .then((data)=>{
+
+              return data.json()
+            })
+            .catch(errorHandler)
 
 }

@@ -44,9 +44,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
     navigation.navigate("Home")
   }
   function confirmBooking(item){
-    navigation.navigate("Checkout",{id:eventData._id ,item,cover:eventData.cover?
-      BaseUrl+eventData.cover.full
-      :"https://app.imagineradio.io/media/album/art/default.jpg"})
+    navigation.navigate("Checkout",{eventData, id:eventData._id ,item})
 
   }
   const [eventData,setEventData]= useState({})

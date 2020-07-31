@@ -18,7 +18,6 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import FetchService from '../services/FetchService';
 import { BaseUrl } from '../env';
 
 const EventDetails: () => React$Node = ({navigation}) => {
@@ -50,15 +49,17 @@ const EventDetails: () => React$Node = ({navigation}) => {
       {props.text}
     </Text>
   </View>
-  const {item,cover}=navigation.state.params
+  const {item,eventData,inserted}=navigation.state.params
   const [loading,setLoading]=useState(false)
+  const [ billingAddress,setBillingAddress]=useState("")
   const [modalVisible, setModalVisible] = useState(false);
   const [date,setDate]=useState([])
   useEffect(()=>{
-    console.log(cover)
+    console.log(item,"--",eventData,"--",inserted)
+    let addrStr= inserted[0].billingAddress.address1 +" "+ inserted[0].billingAddress.address2 +"\n"+ inserted[0].billingAddress.city +" "+ inserted[0].billingAddress.country
+    setBillingAddress (addrStr)
   },[navigation])
 
-  const [eventData,setEventData]= useState(item)
   let newdate=new Date()
   const today= newdate.getDate()+" - "+newdate.getMonth()+" - "+newdate.getFullYear()
 
@@ -74,7 +75,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Image
-            source={{uri:cover}}
+            source={{uri:eventData.cover?
+              BaseUrl+eventData.cover.full
+              :"https://app.imagineradio.io/media/album/art/default.jpg"}}
             style={styles.imgFit}
           />
           <View
@@ -115,8 +118,8 @@ const EventDetails: () => React$Node = ({navigation}) => {
                   // padding:5
                 }}
                 >
-                <TextBox title={"Address"} text={"1/1-a, Gulshan, dhaka,bangladesh"} />
-                <TextBox title={"Price Detail"} text={"Premium\n$250\nquantity: 02"} />
+                <TextBox title={"Address"} text={billingAddress} />
+                <TextBox title={"Price Detail"} text={`${item.attribute.type}\n$${item.price.regular}\nquantity: ${inserted[0].products[0].quantity}`} />
                 </View>
               </View>
 
@@ -165,7 +168,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 />
                 </View>
                 <Image
-                source={{uri:cover}}
+                source={{uri:BaseUrl+"/"+inserted[0].qrCode.app}}
                 style={{
                   width: window.width/3,
                   height:window.height /5,
