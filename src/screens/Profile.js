@@ -16,6 +16,7 @@ import iconLogout from '../assets/icons/iconLogout.png';
 import iconEditProfile from '../assets/icons/iconEditProfile.png';
 import iconProfileDetails from '../assets/icons/iconProfileDetails.png';
 import ImagePicker from 'react-native-image-picker';
+import AsyncStorage from '@react-native-community/async-storage';
 const options = {
   title: 'Select Image',
   cancelButtonTitle:'Go back',
@@ -37,10 +38,19 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EventDetails: () => React$Node = ({navigation}) => {
   useEffect(()=>{
-    FetchService("GET","/api/product?limit=15&page=1&sortOrder=added&sort=-1")
-      .then(response=>setData(response.data))
-      .then(()=>setLoading(false))
-      .catch(err=>console.log(err))
+    AsyncStorage.getItem('sesToken')
+    .then(sesToken=>{
+      if (sesToken){
+        console.log(sesToken)
+        FetchService("GET","/api/product?limit=15&page=1&sortOrder=added&sort=-1")
+        .then(response=>setData(response.data))
+        .then(()=>setLoading(false))
+        .catch(err=>console.log(err))
+      }
+      else {
+        navigation.navigate("AuthStack")
+      }
+    })
   },[navigation])
   const [loading, setLoading] = useState(true)
   const [data,setData]=useState([])
