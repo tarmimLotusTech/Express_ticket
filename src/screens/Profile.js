@@ -45,6 +45,8 @@ const EventDetails: () => React$Node = ({navigation}) => {
         FetchService("GET","/api/product?limit=15&page=1&sortOrder=added&sort=-1")
         .then(response=>setData(response.data))
         .then(()=>setLoading(false))
+        // .then(()=>FetchService("GET","customer/api/profile/",3,(sessionToken=sesToken)))
+        // .then(res=>console.log(res,"profile---"))
         .catch(err=>console.log(err))
       }
       else {
