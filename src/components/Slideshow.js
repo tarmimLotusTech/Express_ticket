@@ -112,9 +112,7 @@ export default class Slideshow extends React.Component {
                             fontSize:12,
                             color:'#fff',
                             }}
-                            >{
-                                console.log(item)
-                            }
+                            >
                             venue: {item.venue}
                         </Text>
                         </View>
