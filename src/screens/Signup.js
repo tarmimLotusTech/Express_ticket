@@ -98,7 +98,9 @@ function Login (props) {
         }
         else throw (Object.entries(res)[0][0]+" : "+Object.entries(res)[0][1])
       })
-      .catch(er=>setSignupError(er))
+      .catch(er=>{
+        // setSignupError(er)
+      })
     }
 
   }
