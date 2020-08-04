@@ -1,4 +1,5 @@
 import { BaseUrl, key } from '../env';
+import AsyncStorage from '@react-native-community/async-storage';
 export default function FetchService(method,type, triedCount=5,jsonBody={},formInput=true){
   function errorHandler(err){
     console.log(err)
@@ -31,16 +32,22 @@ export default function FetchService(method,type, triedCount=5,jsonBody={},formI
         }
       }
       else{
-        body=jsonBody
+        body=JSON.stringify(jsonBody)
       }
 
-    let options= method=="POST"?{method,headers,body:JSON.stringify(jsonBody)} : {method,headers}
+    let options= method=="POST"?{method,headers,body} : {method,headers}
 
     return fetch(url,options)
-            .then((data)=>{
-
-              return data.json()
-            })
-            .catch(errorHandler)
+      .then(async (data)=>{
+        // console.log(data,options)
+        // for (var header of data.headers.entries()){
+        //   if (header[0].includes('set-cookie')){
+        //     let str=header[1].split(";")[0]
+        //     await AsyncStorage.setItem('sesToken',str);
+        //   }
+        // }
+        return data.json()
+      })
+      .catch(errorHandler)
 
 }
