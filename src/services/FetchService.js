@@ -34,8 +34,9 @@ export default function FetchService(method,type, triedCount=5,jsonBody={},formI
       else{
         body=JSON.stringify(jsonBody)
       }
+      let cache = "force-cache"
 
-    let options= method=="POST"?{method,headers,body} : {method,headers}
+    let options= method=="POST"?{method,headers,body,cache} : {method,headers,cache}
 
     return fetch(url,options)
       .then(async (data)=>{
