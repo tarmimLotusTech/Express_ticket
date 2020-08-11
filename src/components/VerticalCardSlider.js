@@ -43,7 +43,7 @@ export default function VerticalCardSlider (props) {
           {props.title}
         </Text>
         {
-          props.viewMore?
+          props.viewMore && data.length>3?
           <Text
             style={{
               alignSelf:'flex-end',
