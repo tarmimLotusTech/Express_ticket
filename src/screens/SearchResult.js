@@ -6,7 +6,6 @@ import {
   StatusBar,
   Text,
   View,
-  Image,
   KeyboardAvoidingView,
   TouchableOpacity,
   ActivityIndicator,
@@ -22,6 +21,7 @@ import GlobalStyles from '../styles/Styles';
 import {Picker} from '@react-native-community/picker';
 import { BaseUrl } from "../env";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import FastImage from "react-native-fast-image";
 
 import {
   Colors,
@@ -226,7 +226,7 @@ class SearchResult extends Component  {
                   margin:5,
                   overflow: 'hidden',
               }}>
-                  <Image
+                  <FastImage
                     style={{
                       flex: 1,
                       width: undefined,
@@ -234,7 +234,9 @@ class SearchResult extends Component  {
                       resizeMode: 'cover',
                       borderRadius:8
                   }}
-                    source={{uri:
+                    source={{
+                      priority: FastImage.priority.high,
+                      uri:
                       item.cover?BaseUrl+item.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"}}
                   />
                 </View>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
     FlatList,
-    Image,
     Text,
     TouchableOpacity,
     View,
     Dimensions,
     ActivityIndicator
 } from "react-native";
+import FastImage from "react-native-fast-image";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
@@ -87,9 +87,14 @@ export default function VerticalCardSlider (props) {
                 borderRadius: 5,
                 overflow: 'hidden'
             }}>
-                <Image
-                  style={GlobalStyles.imgFit}
-                  source={{uri:
+                  <FastImage
+                  style={[GlobalStyles.imgFit,{
+                    width: window.width * 103 / 375,
+                    height: window.width * 120 / 375,
+                  }]}
+                  source={{
+                    priority: FastImage.priority.high,
+                    uri:
                     rowData.cover?
                     BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
                 }}                />

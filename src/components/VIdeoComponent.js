@@ -2,15 +2,12 @@
 
 import moment from "moment";
 import React, { Component } from 'react';
-import { ActivityIndicator, BackHandler, Dimensions, Image, Platform, Slider, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, BackHandler, Dimensions, Platform, Slider, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 import { systemWeights } from 'react-native-typography';
 import Video from 'react-native-video';
 import ToogleFull from "../assets/icons/exit.png";
-
-
-
-
+import FastImage from "react-native-fast-image";
 
 const window = Dimensions.get('window');
 
@@ -191,7 +188,7 @@ export default class VideoComponent extends Component {
         }
         onPress={()=>{ this._toggleScreen() }}
       >
-        <Image
+                  <FastImage
           style={styles.toogleScreenIcon}
           source={ToogleFull}
         />
@@ -322,7 +319,7 @@ export default class VideoComponent extends Component {
                 style={[styles.controllerBtn, styles.controllerBtnPlay]}
                 onPress={() => { this.onReplay() }}
               >
-                <Image
+                  <FastImage
                   style={styles.controllerBtnIconPlay}
                   source={Reload}
                 />
@@ -335,11 +332,15 @@ export default class VideoComponent extends Component {
                 style={[styles.controllerBtn, styles.controllerBtnPlay]}
                 onPress={() => { this._tooglePlay() }}
               >
-                <Image
+                  <FastImage
                   style={styles.controllerBtnIconPlay}
                   source={this.state.paused ?
-                    { uri: "ir_player_btn_play" } :
-                    { uri: "ir_player_btn_pause" }
+                    { 
+                      priority: FastImage.priority.high,
+                      uri: "ir_player_btn_play" } :
+                    { 
+                      priority: FastImage.priority.high,
+                      uri: "ir_player_btn_pause" }
                   }
                 />
               </TouchableOpacity>

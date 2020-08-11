@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground, Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard,Image} from "react-native";
+import { ImageBackground, Dimensions, Text, TextInput, TouchableOpacity, View ,BackHandler, Keyboard} from "react-native";
 import loginStyles from "../styles/loginStyles";
 import FetchService from "../services/FetchService";
+import FastImage from "react-native-fast-image";
 
 import { 
   systemWeights
@@ -67,12 +68,6 @@ function Login (props) {
   }
     return (
       <View style={loginStyles.loginCont}>
-        {/* background image starts */}
-          {/* <Image
-            style={loginStyles.loginBG}
-            source={require("../res/img/pixabay_logo.png")}
-          /> */}
-        {/* background image ends */}
 
         {
           !keyFocus?
@@ -85,7 +80,7 @@ function Login (props) {
               borderBottomRightRadius:window.width/12
             }}>
 
-        <Image
+          <FastImage
             style={{
               flex: 1,
               width: 150,

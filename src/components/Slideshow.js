@@ -1,13 +1,13 @@
 import React from "react";
 import {
     Dimensions,
-    Image,
     StyleSheet,
     TouchableOpacity,
     View,
     Text
 } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from "react-native-fast-image";
 
 import ImageSlider from 'react-native-image-slider';
 import { BaseUrl } from "../env";
@@ -36,8 +36,10 @@ export default class Slideshow extends React.Component {
                     <View
                     style={[style, styles.slideHolder]}
                     >
-                        <Image
-                            source={{uri:
+                      <FastImage
+                            source={{
+                                priority: FastImage.priority.high,
+                                uri:
                                 item.cover?
                                 BaseUrl+item.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
                             }}

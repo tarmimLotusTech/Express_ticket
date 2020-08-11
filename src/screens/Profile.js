@@ -6,7 +6,6 @@ import {
   StatusBar,
   ScrollView,
   View,
-  Image,
   Text,
   ActivityIndicator
 } from 'react-native';
@@ -17,7 +16,7 @@ import iconEditProfile from '../assets/icons/iconEditProfile.png';
 import iconProfileDetails from '../assets/icons/iconProfileDetails.png';
 import ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-community/async-storage';
-const options = {
+const pickerOptions = {
   title: 'Select Image',
   cancelButtonTitle:'Go back',
   cameraType:'front',
@@ -33,6 +32,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import SmallH2 from "../components/SmallH2"
 import FetchService from '../services/FetchService';
+import FastImage from "react-native-fast-image";
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -231,7 +231,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
     const [profileImage, setProfileImage]=useState({uri:eventData.image})
     const [ profDetail , setProfDetail ] = useState(eventData.mail)
     function uploadImage(){
-      ImagePicker.showImagePicker(options, (response) => {
+      ImagePicker.showImagePicker(pickerOptions, (response) => {
       
         if (response.didCancel) {
           console.log('User cancelled image picker');
@@ -273,7 +273,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         <View
         style={styles.slideHolder}
         >
-          <Image
+          <FastImage
             source={profileImage}
             style={styles.imgFit}
           />
@@ -352,7 +352,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               }}
               onPress={()=>setMenuDrop(!menuDrop) }
               >
-                <Image
+                <FastImage
                   style={styles.footerIcon}
                   source={iconProfileMenu}
                 />
@@ -409,7 +409,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                       fontWeight:'bold',
                     }}
                     >{option.title}</Text>
-                    <Image
+                  <FastImage
                       style={styles.footerIcon}
                       source={option.icon}
                     />

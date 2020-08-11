@@ -6,7 +6,6 @@ import {
   StatusBar,
   ScrollView,
   View,
-  Image,
   Text,
   Modal,
   ActivityIndicator
@@ -14,6 +13,7 @@ import {
 const window = Dimensions.get('window');
 import iconPlay from '../assets/icons/iconPlay.png';
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from "react-native-fast-image";
 
 import {
   Colors,
@@ -63,8 +63,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
         <View
         style={styles.slideHolder}
         >
-          <Image
-            source={{uri:
+          <FastImage
+            source={{
+              priority: FastImage.priority.high,
+              uri:
               eventData.cover?
               BaseUrl+eventData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
             }}
@@ -304,8 +306,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
           onPress={()=>setModalVisible(true)}
           disabled={true}
           >
-          <Image
-            source={{uri:
+          <FastImage
+            source={{
+              priority: FastImage.priority.high,
+              uri:
               eventData.image[0]?
               BaseUrl+eventData.image[0].full
               :"https://app.imagineradio.io/media/album/art/default.jpg"
@@ -318,16 +322,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
 
         }}
           />
-          {/* <Image
-					style={{
-            position:'absolute',
-            top:window.height / 12.5,
-            left:window.height / 9.5,
-            width: window.height / 15,
-            height: window.height / 15,
-          }}
-					source={iconPlay}
-				/> */}
           </TouchableOpacity>
           
           <View
@@ -457,8 +451,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
           onPress={()=>setModalVisible(true)}
           disabled={true}
           >
-          <Image
-            source={{uri:eventData.brand.cover?
+          <FastImage
+            source={{
+              priority: FastImage.priority.high,
+              uri:eventData.brand.cover?
               BaseUrl+eventData.brand.cover.full
               :"https://app.imagineradio.io/media/album/art/default.jpg"}}
           style={{
@@ -469,16 +465,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
 
         }}
           />
-          {/* <Image
-					style={{
-            position:'absolute',
-            top:window.height / 12.5,
-            left:window.height / 9.5,
-            width: window.height / 15,
-            height: window.height / 15,
-          }}
-					source={iconPlay}
-				/> */}
           </TouchableOpacity>
           
           

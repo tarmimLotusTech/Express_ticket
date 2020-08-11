@@ -6,7 +6,6 @@ import {
   StatusBar,
   ScrollView,
   View,
-  Image,
   Text,
   ActivityIndicator,
   TouchableOpacity
@@ -17,17 +16,8 @@ import iconCountry from '../assets/icons/iconCountry.png';
 import iconCity from '../assets/icons/iconCity.png';
 import iconPhone from '../assets/icons/iconPhone.png';
 import iconMail from '../assets/icons/iconMail.png';
-const options = {
-  title: 'Select Image',
-  cancelButtonTitle:'Go back',
-  cameraType:'front',
-  mediaType:'photo',
-  quality:1,
-  storageOptions: {
-    skipBackup: true,
-    path: 'express_ticket',
-  },
-};
+import FastImage from "react-native-fast-image";
+
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
@@ -50,139 +40,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
       address:'Dhaka, bangladesh, Dhaka',
       phone:'0987654',
       mail:'sdhb@hk',
-      details:"",
-      history:[
-        {
-          id:"1",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"10-10-20",
-          city:'Dhaka',
-          title:"Dhaka-10-sports",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"sports"
-        },
-        {
-          id:"2",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"11-10-20",
-          city:'Dhaka',
-          title:"Dhaka-11-sports",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"sports"
-        },
-        {
-          id:"3",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"10-10-20",
-          city:'Dhaka',
-          title:"Dhaka -10-concert",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"concert"
-        },
-        {
-          id:"4",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"20-10-20",
-          city:'Dhaka',
-          title:"Dhaka-20-concert",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"concert"
-        },
-        {
-          id:"5",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          date:"20-10-20",
-          brand:"Bata",
-          city:'Dhaka',
-          title:"Dhaka-20-sports",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"sports"
-        },
-        {
-          id:"6",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Samsung",
-          city:'Khulna',
-          date:"11-10-20",
-          title:"Khulna-11-concert",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"concert"
-        },
-        {
-          id:"7",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Samsung",
-          city:'Khulna',
-          date:"11-10-20",
-          title:"Khulna -11-sports",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"sports"
-        },
-        {
-          id:"8",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Apple",
-          city:'Sylhet',
-          date:"11-10-20",
-          title:"Sylhet-11-party",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"party"
-        },
-        {
-          id:"9",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Apple",
-          city:'Sylhet',
-          date:"20-10-20",
-          title:"Sylhet-20-party",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"party"
-        },
-        {
-          id:"10",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Apple",
-          city:'Sylhet',
-          date:"20-10-20",
-          title:"Sylhet-20-meeting",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"meeting"
-        },
-        {
-          id:"11",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"20-10-20",
-          city:'Ctg',
-          title:"Ctg-20-meeting",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"meeting"
-        },
-        {
-          id:"12",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"10-10-20",
-          city:'Ctg',
-          title:"Ctg-20-meeting",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"meeting"
-        },
-        {
-          id:"13",
-          image: "https://app.imagineradio.io/media/album/art/default.jpg",
-          brand:"Bata",
-          date:"20-10-20",
-          city:'Ctg',
-          title:"Ctg-20-concert",
-          details:" Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,  ",
-          type:"concert"
-        }
-  ]
+      details:""
     })
     const [profileImage, setProfileImage]=useState({uri:eventData.image})
     const [ profDetail , setProfDetail ] = useState(eventData.mail)
@@ -210,7 +68,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
         <View
         style={styles.slideHolder}
         >
-          <Image
+          <FastImage
             source={navigation.state.params.profileImage}
             style={styles.imgFit}
           />
@@ -229,7 +87,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
             <TouchableOpacity
               onPress={()=>navigation.goBack()}
             >
-              <Image
+                <FastImage
                   style={[styles.footerIcon,{
                     width: window.height / 25,
 		                height: window.height / 25,
@@ -276,7 +134,8 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Image
+            <FastImage
+
               style={[styles.footerIcon,{
                 width: window.height / 25,
                 height: window.height / 25,
@@ -295,7 +154,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Image
+            <FastImage
               style={[styles.footerIcon,{
                 width: window.height / 20,
                 height: window.height / 18,
@@ -314,7 +173,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Image
+            <FastImage
               style={[styles.footerIcon,{
                 width: window.height / 25,
                 height: window.height / 25,
@@ -332,7 +191,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
           <View
           style={styles.profileCardContainer}
           >
-            <Image
+            <FastImage
               style={[styles.footerIcon,{
                 width: window.height / 19,
                 height: window.height / 25,

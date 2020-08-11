@@ -6,13 +6,13 @@ import {
   StatusBar,
   ScrollView,
   View,
-  Image,
   Text,
   ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconTicketHome from '../assets/icons/iconTicketHome.png';
 import ticket from '../assets/images/ticket.png'
+import FastImage from "react-native-fast-image";
 
 import {
   Colors,
@@ -74,8 +74,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Image
-            source={{uri:eventData.cover?
+          <FastImage
+            source={{
+              priority: FastImage.priority.high,
+              uri:eventData.cover?
               BaseUrl+eventData.cover.full
               :"https://app.imagineradio.io/media/album/art/default.jpg"}}
             style={styles.imgFit}
@@ -156,7 +158,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                     >
                       Ticket
                     </Text>
-                  <Image
+              <FastImage
                 source={ticket}
                 style={{
                   width: window.width/5,
@@ -167,8 +169,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 }}
                 />
                 </View>
-                <Image
-                source={{uri:BaseUrl+"/"+inserted[0].qrCode.app}}
+              <FastImage
+                source={{
+                  priority: FastImage.priority.high,
+                  uri:BaseUrl+"/"+inserted[0].qrCode.app}}
                 style={{
                   width: window.width/3,
                   height:window.height /5,
@@ -194,7 +198,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
             }}
             onPress={()=>navigation.navigate("Home")}
             >
-            <Image
+            <FastImage
               style={{
                 width: window.height / 40,
                 height: window.height / 40,

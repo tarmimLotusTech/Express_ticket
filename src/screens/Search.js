@@ -7,7 +7,6 @@ import {
   Text,
   View,
   TextInput,
-  Image,
   KeyboardAvoidingView,
   TouchableOpacity
 } from 'react-native';
@@ -22,6 +21,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import FastImage from "react-native-fast-image";
 
 const CategoryDetails: () => React$Node = ({navigation}) => {
   const [searchtext, setSearchText]=useState('')
@@ -107,7 +107,7 @@ const CategoryDetails: () => React$Node = ({navigation}) => {
           <TouchableOpacity
           onPress={onSubmit}
           >
-          <Image
+        <FastImage
 					style={styles.footerIcon}
 					source={iconSearchDark}
 				  />

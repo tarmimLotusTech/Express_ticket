@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,StyleSheet,Picker, Keyboard, ScrollView, Image} from "react-native";
+import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,StyleSheet,Picker, Keyboard, ScrollView} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
+import FastImage from "react-native-fast-image";
 
 import { 
   systemWeights
@@ -133,7 +134,7 @@ function Checkout (props) {
           borderBottomRightRadius:window.width/12
         }}>
 
-          <Image
+          <FastImage
             style={{
               flex: 1,
               width: 150,

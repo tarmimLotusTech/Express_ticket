@@ -79,12 +79,7 @@ export default {
     // typo styles
 
     imgFit: {
-        flex: 1,
-        width: window.width * 100 / 375,
-        height: undefined,
         resizeMode:'center',
-        alignSelf:'center',
-        marginTop:-5,
-        borderRadius:8
+        alignSelf:'center'
     }
 };

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import {
     FlatList,
-    Image,
     Text,
     TouchableOpacity,
     View,
     Dimensions
 } from "react-native";
 import { BaseUrl } from "../env";
+import FastImage from "react-native-fast-image";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
@@ -49,18 +49,20 @@ export default function SmallH2 (props) {
                     height: window.width * 150 / 375,
                     overflow: 'hidden',
                     marginBottom: 9
+
                 }}>
-                  <Image
+                  <FastImage
                     style={[{
-                      flex: 1,
-                      width: undefined,
-                      height: undefined,
+                      width: window.width * 138 / 375,
+                      height: window.width * 150 / 375,
                       resizeMode:'cover',
                       borderTopLeftRadius:20,
                       borderTopRightRadius:20,
                       margin:1
                     }]}
-                    source={{uri:
+                    source={{
+                      priority: FastImage.priority.high,
+                      uri:
                       rowData.cover?
                       BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
                   }}

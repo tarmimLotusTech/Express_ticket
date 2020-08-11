@@ -1,12 +1,12 @@
 import React from "react";
 import {
     FlatList,
-    Image,
     Text,
     TouchableOpacity,
     View,
     Dimensions
 } from "react-native";
+import FastImage from "react-native-fast-image";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
@@ -68,13 +68,15 @@ export default class SmallH2 extends React.Component {
                   borderColor:'#00163D',
                   alignItems:'center'
               }}>
-                  <Image
+                  <FastImage
                     style={{
                       width: window.width/12,
                       height: window.width/12,
                       resizeMode: 'contain',
                   }}
-                    source={{uri:BaseUrl+rowData.icon}}
+                    source={{
+                      priority: FastImage.priority.high,
+                      uri:BaseUrl+rowData.icon}}
                   />
                 </View>
                 <View style={{
@@ -96,7 +98,7 @@ export default class SmallH2 extends React.Component {
                     numberOfLines={1}>
                     {rowData.name}
                     </Text>
-                    <Image
+                    <FastImage
                     style={{
                       width: window.width/25,
                       height: window.width/25,

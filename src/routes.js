@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet,SafeAreaView,TouchableOpacity,Image,Text,Dimensions} from "react-native"
+import {StyleSheet,SafeAreaView,TouchableOpacity,Text,Dimensions} from "react-native"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { createCompatNavigatorFactory, createSwitchNavigator } from '@react-navigation/compat';
@@ -18,6 +18,7 @@ import CategoryDetails from "./screens/CategoryDetails";
 import SearchResult from "./screens/SearchResult";
 import TicketDetails from "./screens/TicketDetails"
 import Checkout from "./screens/Checkout"
+import FastImage from "react-native-fast-image";
 
 const window = Dimensions.get('window');
 
@@ -41,7 +42,7 @@ function MyTabBar({ state,navigation }) {
 					:navigation.navigate("HomeStack")					
 				}
 			>
-				<Image
+                  <FastImage
 					style={styles.footerIcon}
 					source={iconHome}
 				/>
@@ -60,7 +61,7 @@ function MyTabBar({ state,navigation }) {
 				:navigation.navigate("CategoryStack")
 			}
 			>
-				<Image
+                  <FastImage
 					style={styles.footerIcon}
 					source={iconCategory}
 				/>
@@ -79,7 +80,7 @@ function MyTabBar({ state,navigation }) {
 					:navigation.navigate("ProfileStack")
 				}
 			>
-				<Image
+                  <FastImage
 					style={styles.footerIcon}
 					source={iconProfile}
 				/>
@@ -98,7 +99,7 @@ function MyTabBar({ state,navigation }) {
 					:navigation.navigate("SearchStack")
 				}
 			>
-				<Image
+                  <FastImage
 					style={styles.footerIcon}
 					source={iconSearch}
 				/>

@@ -1,13 +1,13 @@
 import React from "react";
 import {
     FlatList,
-    Image,
     Text,
     TouchableOpacity,
     View,
     Dimensions
 } from "react-native";
 import { BaseUrl } from "../env";
+import FastImage from "react-native-fast-image";
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
@@ -45,15 +45,12 @@ export default class SmallH2 extends React.Component {
           renderItem={({ item: rowData }) => {
             return (
               <TouchableOpacity
-                // onPress={() => this._handlePress(this.props.itemClick,rowData.id)}
                 style={{
                   width: window.width /5,
                   height: window.width /5,
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
                   marginHorizontal: 10,
                   backgroundColor:"#1A2A47",
-                  borderRadius:10,
+                  borderRadius:5
                   
               }}
               >
@@ -61,12 +58,16 @@ export default class SmallH2 extends React.Component {
                   width: window.width /5,
                   height: window.width /5,
                   borderRadius: 5,
-                  overflow: 'hidden',
-                  marginBottom: 9
+                  overflow: 'hidden'
               }}>
-                  <Image
-                    style={GlobalStyles.imgFit}
-                    source={{uri:
+                  <FastImage
+                    style={[GlobalStyles.imgFit,{
+                      width: window.width /5,
+                      height: window.width /5,    
+                    }]}
+                    source={{
+                      priority: FastImage.priority.high,
+                      uri:
                       rowData.cover?
                       BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
                   }}
