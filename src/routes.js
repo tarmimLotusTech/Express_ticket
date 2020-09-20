@@ -26,6 +26,7 @@ import iconHome from './assets/icons/iconHome.png';
 import iconCategory from './assets/icons/iconCategory.png';
 import iconProfile from './assets/icons/iconProfile.png';
 import iconSearch from './assets/icons/iconSearch.png';
+import AsyncStorage from "@react-native-community/async-storage";
 
 
 function MyTabBar({ state,navigation }) {
@@ -74,10 +75,19 @@ function MyTabBar({ state,navigation }) {
 
 			<TouchableOpacity
 				style={styles.footerTab}
-				onPress={() =>
-					state.index==2?
-					navigation.navigate("Profile")
-					:navigation.navigate("ProfileStack")
+				onPress={() =>{
+					AsyncStorage.getItem('userToken')
+					.then(sesToken=>{
+						if (sesToken){
+							state.index==2?
+							navigation.navigate("Profile")
+							:navigation.navigate("ProfileStack")
+						}
+						else {
+							navigation.navigate("AuthStack")
+						}
+					})
+				}
 				}
 			>
                   <FastImage
