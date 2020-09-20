@@ -8,7 +8,8 @@ import {
   View,
   Text,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 const window = Dimensions.get('window');
 import iconBack from '../assets/icons/iconBack.png';
@@ -17,6 +18,8 @@ import iconCity from '../assets/icons/iconCity.png';
 import iconPhone from '../assets/icons/iconPhone.png';
 import iconMail from '../assets/icons/iconMail.png';
 import FastImage from "react-native-fast-image";
+import avatarIcon from '../assets/images/avatarIcon.png';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Colors,
@@ -28,21 +31,26 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
   },[navigation])
   const [loading, setLoading] = useState(false)
 
-  const [eventData,setEventData]= useState(
-    {
-      id:"1",
-      image: "https://app.imagineradio.io/media/album/art/default.jpg",
-      brand:"Student",
-      title:"name",
-      age:21,
-      country:'Bangladesh',
-      city:'Dhaka',
-      address:'Dhaka, bangladesh, Dhaka',
-      phone:'0987654',
-      mail:'sdhb@hk',
-      details:""
+  const [eventData,setEventData]= useState({})
+  function getProduct(){
+    AsyncStorage.getItem('userToken')
+    .then(sesToken=>{
+      if (sesToken){
+        FetchService("GET","/customer/api/profile")
+        .then(response=>setEventData(response))
+        .then(()=>setLoading(false))
+        .catch(err=>console.log(err))
+      }
+      else {
+        navigation.navigate("AuthStack")
+      }
     })
-    const [profileImage, setProfileImage]=useState({uri:eventData.image})
+  }
+  useEffect(()=>{
+    const unsubscribe = navigation.addListener('focus',getProduct)
+    return unsubscribe;
+  },[navigation])
+    const [profileImage, setProfileImage]=useState(avatarIcon)
     const [ profDetail , setProfDetail ] = useState(eventData.mail)
   if (loading)
   return <ActivityIndicator size="large" color="#00163D" style={{
@@ -68,8 +76,8 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
         <View
         style={styles.slideHolder}
         >
-          <FastImage
-            source={navigation.state.params.profileImage}
+          <Image
+            source={profileImage}
             style={styles.imgFit}
           />
           <View
@@ -114,12 +122,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
             <Text
             style={styles.sliderLargeText}
             >
-              <Text
-              style={styles.footer}
-              >
-                {eventData.brand}{'  '}
-              </Text>
-              {eventData.title} ( {eventData.age} )
+              {eventData.firstName}{'  '}{eventData.lastName}
             </Text>
             
           </View>
@@ -147,7 +150,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
             <Text
             style={styles.profileCardData}
             >
-              Bangladesh
+              {eventData.country}
             </Text>
           </View>
 
@@ -166,7 +169,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
             <Text
             style={styles.profileCardData}
             >
-              Dhaka city 
+              {eventData.city} 
             </Text>
           </View>
 
@@ -184,7 +187,7 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
             <Text
             style={styles.profileCardData}
             >
-              +880192837465
+              {eventData.phone}
             </Text>
           </View>
 
@@ -203,20 +206,9 @@ const ProfileDetails: () => React$Node = ({navigation}) => {
             numberOfLines={2}
             style={styles.profileCardData}
             >
-              dhakacity@d.com
+              {eventData.email}
             </Text>
           </View>
-
-          
-
-          
-
-          
-
-          
-
-          
-        
         </View>        
         </ScrollView>
       </SafeAreaView>
@@ -261,7 +253,8 @@ const styles = StyleSheet.create({
       height:window.height /2.4,
       borderTopLeftRadius:40,
       borderTopRightRadius:40,
-      resizeMode: 'cover'
+      resizeMode: 'contain',
+      margin:10
   },
   indicator: {
       width: window.width * 4 / 375,
