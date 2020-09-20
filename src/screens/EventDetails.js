@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ const window = Dimensions.get('window');
 import iconPlay from '../assets/icons/iconPlay.png';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from "react-native-fast-image";
+import SendAnalytics from '../services/SendAnalytics';
 
 import {
   Colors,
@@ -29,16 +30,47 @@ import { BaseUrl } from '../env';
 const EventDetails: () => React$Node = ({navigation}) => {
   const [loading,setLoading]=useState(true)
   const [modalVisible, setModalVisible] = useState(false);
-  const [date,setDate]=useState([])
+  const [ day , setDay ] = useState('')
+  const [ hour , setHour ] = useState('')
+  const [ minute , setMinute ] = useState('')
   const [vSource, setvSource]=useState('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')
+  const _scrollView = useRef()
+
   useEffect(()=>{
-    FetchService("GET","/api/product/"+navigation.state.params.id)
+    setLoading(true)
+    const {id} = navigation.state.params
+    SendAnalytics(navigation,id,"product")
+    _scrollView.current?.scrollTo({
+      y: 0,
+      animated: true,
+    });
+    FetchService("GET","/api/product/"+id)
     .then(res=>{
+      console.log(res)
       setEventData(res)
-      // setDate(res.date.split("-"))
+      setInterval(() => getTimeUntil(res.time || res.time!=''?res.time:res.date), 1000);
+
     })
     .then(()=>setLoading(false))
   },[navigation])
+  function concatZero(num) {
+    return num < 10 ? "0" + num : num;
+  }
+  function getTimeUntil(deadline) {
+    const time = Date.parse(deadline) - Date.parse(new Date());
+    if (time < 0) {
+      setDay('00')
+      setHour('00')
+      setMinute('00')
+    } else {
+        const minutes = Math.floor((time / 1000 / 60) % 60);
+        const hours = Math.floor((time / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(time / (1000 * 60 * 60 * 24));
+        setHour(concatZero(hours))
+        setDay(concatZero(days))
+        setMinute(concatZero(minutes))
+    }
+  }
   function closeModal(){
     setModalVisible(false)
     navigation.navigate("Home")
@@ -59,7 +91,9 @@ const EventDetails: () => React$Node = ({navigation}) => {
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+          style={styles.scrollView}
+          ref={_scrollView}
+          >
         <View
         style={styles.slideHolder}
         >
@@ -134,7 +168,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               >
                 Day                   Hour                      Minute{"\n"}
               </Text>
-                10      :   20    :       30
+                {day}      :   {hour}    :       {minute}
             </Text>
           </View>
           </LinearGradient>
