@@ -105,7 +105,6 @@ function EditProfile ({navigation}) {
       }
       FetchService("POST","/customer/api/profile/update",3,body)
       .then(res=>{
-        console.log(res)
         if(res.success){
           navigation.navigate("Profile")
         }
