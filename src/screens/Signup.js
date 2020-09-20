@@ -82,8 +82,8 @@ function Login (props) {
     else if (password.length<1){
       setSignupError('insert password')
     }
-    else if (password.length<8){
-      setSignupError('password at least 8 characters')
+    else if (password.length<3){
+      setSignupError('password at least 3 characters')
     }
     else if (password!==password2){
       setSignupError('passwords do not match')
