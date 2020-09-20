@@ -1,6 +1,6 @@
 import { BaseUrl, key } from '../env';
 import AsyncStorage from '@react-native-community/async-storage';
-export default function FetchService(method,type, triedCount=5,jsonBody={},formInput=true){
+export default async function FetchService(method,type, triedCount=5,jsonBody={},formInput=true){
   function errorHandler(err){
     console.log(err)
     // this handler retries the request for 5 times in case server is unreachable
@@ -15,15 +15,20 @@ export default function FetchService(method,type, triedCount=5,jsonBody={},formI
     function setDelay(d){
       return new Promise((resolve) => setTimeout(resolve, d));
     }
-
+    const Authorization = await AsyncStorage.getItem("userToken")
     let url = BaseUrl+type
-
-    let headers =
+    let headers =  Authorization?
     {
       Accept: "*/*",
       "Content-Type": formInput?
       "multipart/form-data":
       "application/json",
+      Authorization
+    }:{
+      Accept: "*/*",
+      "Content-Type": formInput?
+      "multipart/form-data":
+      "application/json"
     }
       let body  = new FormData();
       if (formInput && method=="POST"){
@@ -40,14 +45,23 @@ export default function FetchService(method,type, triedCount=5,jsonBody={},formI
 
     return fetch(url,options)
       .then(async (data)=>{
-        // console.log(data,options)
-        // for (var header of data.headers.entries()){
-        //   if (header[0].includes('set-cookie')){
-        //     let str=header[1].split(";")[0]
-        //     await AsyncStorage.setItem('sesToken',str);
-        //   }
-        // }
-        return data.json()
+        if(data.status == 401 || data.status == 403) {
+          AsyncStorage.removeItem("userToken")
+        }
+        if(url!==BaseUrl+"/api/analytics"){
+          return data.json()
+        }
+        else {
+          if(data.ok)
+          return {added:"added"}
+          else throw data
+        }
+      })
+      .then(response=>{
+        if (response.token){
+          AsyncStorage.setItem("userToken",response.token)
+        }
+        return response
       })
       .catch(errorHandler)
 
