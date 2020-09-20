@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,6 +6,7 @@ import {
   StatusBar
 } from 'react-native';
 const window = Dimensions.get('window');
+import SendAnalytics from '../services/SendAnalytics';
 
 import {
   Colors,
@@ -13,6 +14,10 @@ import {
 import VerticalCardSlider from "../components/VerticalCardSlider";
 
 const CategoryDetails: () => React$Node = ({navigation}) => {
+  const {id}=navigation.state.params
+  useEffect(()=>{
+    SendAnalytics(navigation,id,'category')
+  },[navigation])
   return (
     <>
       <StatusBar barStyle="dark-content" />
