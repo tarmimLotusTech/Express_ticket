@@ -9,7 +9,7 @@ import {
 } from 'react-native-typography';
 import FetchService from "../services/FetchService";
 
-function Login (props) {
+function Signup (props) {
   const [keyFocus,setKeyFocus]=useState(false)
   
   const [countries, setCountries]=useState('')
@@ -94,7 +94,7 @@ function Login (props) {
       }
       FetchService("POST","/customer/auth/register",3,body)
       .then(res=>{
-        if(res.msg){
+        if(res.token){
           props.navigation.navigate("AppStack")
         }
         else throw (Object.entries(res)[0][0]+" : "+Object.entries(res)[0][1])
@@ -238,7 +238,7 @@ function Login (props) {
                     onValueChange={async (itemValue, itemIndex) =>findCity(itemValue)}>
                       <Picker.Item label={"All"} value={''} />
                       {
-                        countries.map(city=><Picker.Item label={city.name} value={city} />)
+                        countries.map(city=><Picker.Item key={city._id} label={city.name} value={city} />)
                       }
                     </Picker>
                   }
@@ -261,7 +261,7 @@ function Login (props) {
                     onValueChange={async (itemValue, itemIndex) =>setCity(itemValue)}>
                       <Picker.Item label={"All"} value={''} />
                       {
-                        cities.map(city=><Picker.Item label={city.name} value={city} />)
+                        cities.map(city=><Picker.Item key={city._id} label={city.name} value={city} />)
                       }
                   </Picker>
 
@@ -455,4 +455,4 @@ const styles = StyleSheet.create({
   }
 });
 
-  export default Login
+  export default Signup
