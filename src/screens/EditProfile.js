@@ -3,25 +3,49 @@ import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,Ba
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 import FastImage from "react-native-fast-image";
+import AsyncStorage from '@react-native-community/async-storage';
+import FetchService from '../services/FetchService';
 
-import { 
-  systemWeights
-} from 'react-native-typography';
-
-function EditProfile (props) {
+function EditProfile ({navigation}) {
+  function getProduct(){
+    AsyncStorage.getItem('userToken')
+    .then(sesToken=>{
+      if (sesToken){
+        FetchService("GET","/customer/api/profile")
+        .then(response=>{
+          setFName(response.firstName)
+          setLName(response.lastName)
+          setCountry(response.country)
+          setCity(response.city)
+          setAddress1(response.address1)
+          setAddress2(response.address2)
+          setPhone(response.phone)
+          setEmail(response.email)
+        })
+        .catch(err=>console.log(err))
+      }
+      else {
+        navigation.navigate("AuthStack")
+      }
+    })
+  }
+  useEffect(()=>{
+    const unsubscribe = navigation.addListener('focus',getProduct)
+    return unsubscribe;
+  },[navigation])
   const [keyFocus,setKeyFocus]=useState(false)
   
-  const [fName,setFName]=useState('FName')
-  const [lName,setLName]=useState('Lname')
-  const [country,setCountry]=useState('Bangladesh')
-  const [city,setCity]=useState('Dhaka')
-  const [address1,setAddress1]=useState('Gulshan')
+  const [firstName,setFName]=useState('')
+  const [lastName,setLName]=useState('')
+  const [country,setCountry]=useState('')
+  const [city,setCity]=useState('')
+  const [address1,setAddress1]=useState('')
   const [address2,setAddress2]=useState('')
-  const [phone,setPhone]=useState('1029384756')
-  const [email,setEmail]=useState('z@z.com')
+  const [phone,setPhone]=useState('')
+  const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
   const [password2,setPassword2]=useState('')
-  const [signupError, setSignupError]=useState('Error: **Some Data are autofilled')
+  const [signupError, setSignupError]=useState('')
   
   const _keyboardDidShow = () => {
     setKeyFocus(true)
@@ -45,10 +69,10 @@ function EditProfile (props) {
 
   function handleSubmit() {
 
-    if (fName.length<1){
+    if (firstName.length<1){
       setSignupError('insert first name')
     }
-    else if (lName.length<1){
+    else if (lastName.length<1){
       setSignupError('insert last name')
     }
     else if (country.length<1){
@@ -63,20 +87,30 @@ function EditProfile (props) {
     else if (phone.length<1){
       setSignupError('insert phone number')
     }
-    else if (email.length<1){
-      setSignupError('insert email')
-    }
-    else if (password.length<1){
-      setSignupError('insert password')
-    }
-    else if (password.length<8){
-      setSignupError('password at least 8 characters')
-    }
-    else if (password!==password2){
-      setSignupError('passwords do not match')
-    }
+    // else if (email.length<1){
+    //   setSignupError('insert email')
+    // }
+    // else if (password.length<1){
+    //   setSignupError('insert password')
+    // }
+    // else if (password.length<8){
+    //   setSignupError('password at least 8 characters')
+    // }
+    // else if (password!==password2){
+    //   setSignupError('passwords do not match')
+    // }
     else{
-      props.navigation.navigate("Profile")
+      let body={
+        firstName,lastName,country:country.name,city:city.name,address1,address2,phone,email
+      }
+      FetchService("POST","/customer/api/profile/update",3,body)
+      .then(res=>{
+        console.log(res)
+        if(res.success){
+          navigation.navigate("Profile")
+        }
+        else setSignupError(Object.entries(res)[0][0]+" : "+Object.entries(res)[0][1])
+      })
     }
 
   }
@@ -171,7 +205,7 @@ function EditProfile (props) {
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="First name"
-                value={fName}
+                value={firstName}
                 keyboardType="default"
                 style={[loginStyles.txtInputSignup,{
                   width: window.width*150/375,
@@ -184,7 +218,7 @@ function EditProfile (props) {
                 underlineColorAndroid="#8d8d8d"
                 placeholderTextColor="#212121"
                 placeholder="Last name"
-                value={lName}
+                value={lastName}
                 keyboardType="default"
                 style={[loginStyles.txtInputSignup,{
                   width: window.width*150/375,
@@ -298,7 +332,7 @@ function EditProfile (props) {
 
                 />
             </View>
-            <View
+            {/* <View
             style={{
               flexDirection:'row'
             }}
@@ -337,7 +371,7 @@ function EditProfile (props) {
                 blurOnSubmit={false}
 
                 />
-            </View>
+            </View> */}
           </View>
           {/* title and input ends */}
           <View

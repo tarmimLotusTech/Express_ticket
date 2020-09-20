@@ -27,8 +27,6 @@ import {
 import FetchService from '../services/FetchService';
 
 const ProfileDetails: () => React$Node = ({navigation}) => {
-  useEffect(()=>{
-  },[navigation])
   const [loading, setLoading] = useState(false)
 
   const [eventData,setEventData]= useState({})
