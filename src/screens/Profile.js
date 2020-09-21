@@ -19,6 +19,7 @@ import iconProfileDetails from '../assets/icons/iconProfileDetails.png';
 import ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-community/async-storage';
 import avatarIcon from '../assets/images/avatarIcon.png';
+import editPasswordIcon from '../assets/icons/editPassword.png';
 const pickerOptions = {
   title: 'Select Image',
   cancelButtonTitle:'Go back',
@@ -73,6 +74,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
     setMenuDrop(false)
     navigation.navigate("ProfileDetails",{eventData})
   }
+  function editPassword(){
+    setMenuDrop(false)
+    navigation.navigate("ChangePassword")
+  }
   const options=[{
     title:"Details",
     onPress:profileDetails,
@@ -87,6 +92,11 @@ const EventDetails: () => React$Node = ({navigation}) => {
     title:"Logout",
     onPress:logOut,
     icon:iconLogout
+  },
+  {
+    title:"Change Password",
+    onPress:editPassword,
+    icon:editPasswordIcon
   }]
   const [ menuDrop , setMenuDrop ] = useState(false)
   const [eventData,setEventData]= useState({})

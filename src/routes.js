@@ -19,6 +19,7 @@ import SearchResult from "./screens/SearchResult";
 import TicketDetails from "./screens/TicketDetails"
 import Checkout from "./screens/Checkout"
 import FastImage from "react-native-fast-image";
+import ChangePassword from './screens/ChangePassword'
 
 const window = Dimensions.get('window');
 
@@ -143,7 +144,8 @@ const ProfileStack = createCompatNavigatorFactory(createStackNavigator)(
 		TicketDetails: { screen: TicketDetails, navigationOptions:{headerShown:false}  },
 		EditProfile: { screen: EditProfile, navigationOptions:{headerShown:false } },
 		Checkout: { screen: Checkout, navigationOptions:{headerShown:false}  },
-		ProfileDetails: { screen: ProfileDetails, navigationOptions:{headerShown:false } }
+		ProfileDetails: { screen: ProfileDetails, navigationOptions:{headerShown:false } },
+		ChangePassword: { screen: ChangePassword, navigationOptions:{headerShown:false}  },
 
 	},
 	options
