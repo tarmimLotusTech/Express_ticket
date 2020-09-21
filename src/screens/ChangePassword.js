@@ -44,7 +44,7 @@ const ChangePassword: () => React$Node = (props) => {
       newPassword,
       newPassword2:newPassword
     }
-    FetchService(props.navigation,"POST","/customer/api/profile/changePassword",1,body,false)
+    FetchService("POST","/customer/api/profile/changePassword",1,body,false)
     .then(res=>{
       console.log(res)
       if(res.success){

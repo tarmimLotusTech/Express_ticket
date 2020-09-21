@@ -11,7 +11,7 @@ export default function SendAnalytics (navigation,item,type){
         osVersion:Platform.constants.Release,
         device:Platform.isTV?"TV":"Mobile"
     }
-    FetchService(navigation,"POST","/api/analytics",1,body,false)
+    FetchService("POST","/api/analytics",1,body,false)
     .then(res=>console.log(type,"--",res))
     .catch(err=>console.log("ere=-=-=-",err))
     }
