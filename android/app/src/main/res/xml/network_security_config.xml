@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">expressticket.sl</domain>
+        <domain includeSubdomains="true">expressticket.sl:5000</domain>
+        <domain includeSubdomains="true">15.188.224.238</domain>
+        <domain includeSubdomains="true">15.188.224.238:5000</domain>
+    </domain-config>
+</network-security-config>
