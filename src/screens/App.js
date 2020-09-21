@@ -19,14 +19,20 @@ import FetchService from '../services/FetchService';
 const App: () => React$Node = ({navigation}) => {
   const [ categories, setCategories]=useState([])
   const [loading, setLoading] = useState(true)
+  const [ offerData , setOfferData ] = useState([])
+  const [ brandData , setBrandData ] = useState([])
   useEffect(()=>{
     FetchService("GET","/api/category")
     .then(res=>setCategories(res.data))
     .then(()=>FetchService("GET","/api/product"))
     .then(response=>setData(response.data))
+    // .then(()=>FetchService("GET","/api/product/offer"))
+    // .then(response=>setOfferData(response.data))
+    .then(()=>FetchService("GET","/api/brand/?image=1"))
+    .then(response=>setBrandData(response.data))
     .then(()=>setLoading(false))
     .catch(err=>console.log(err))
-  },[])
+  },[navigation])
   const [data,setData]= useState([])
   if (loading)
   return <ActivityIndicator size="large" color="#00163D" style={{
@@ -60,7 +66,7 @@ const App: () => React$Node = ({navigation}) => {
             title="Popular Now"
             />
             <SmallSquareSlider
-            data={data}
+            data={brandData}
             navigation={navigation}
             title="Partners"
             />
