@@ -9,16 +9,14 @@ import {
 
 import GlobalStyles from '../styles/Styles';
 import SliderStyles from '../styles/SliderStyles';
-import FetchService from "../services/FetchService";
 const window = Dimensions.get('window');
+import { BaseUrl } from "../env";
+import FastImage from "react-native-fast-image";
 
 export default function HistorySlider (props) {
   useEffect(()=>{},[props])
   function _handlePress(item) {
-    FetchService("GET",'/api/product/'+item.products[0]._id)
-    .then(response=>{
-      props.navigation.navigate("TicketDetails",{inserted:[item] ,item:response.pricing[response.pricing.findIndex(i=>i._id===item.products[0].variation)], eventData:response})
-    })
+      props.navigation.navigate("TicketDetails",{inserted:[item] ,item:item.products[0].detail.pricing[item.products[0].detail.pricing.findIndex(i=>i._id===item.products[0].variation)], eventData:item.products[0].detail})
   }
 
     return (
@@ -39,37 +37,57 @@ export default function HistorySlider (props) {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={props.data}
-          contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1]}
+          contentContainerStyle={[GlobalStyles.spacer, SliderStyles.holderSH1,{
+            height:window.width*210/375
+          }]}
           renderItem={({ item: rowData }) => {
-            let addrStr= rowData.address.address1 +" "+ rowData.address.address2 +"\n"+ rowData.address.city +" "+ rowData.address.country
             return (
               <TouchableOpacity
                 onPress={() => _handlePress(rowData)}
                 style={{
                   width: window.width * 140 / 375,
-                  height: window.width /4,
+                  height: window.width * 200 / 375,
+                  justifyContent: 'space-between',
                   alignItems: 'flex-start',
                   marginHorizontal: 10,
                   backgroundColor:"#001232",
-                  borderRadius:10,
-                  padding:10
-              }}
+                  borderRadius:15,
+                  elevation:6
+                }}
               >
-                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}numberOfLines={1}>
-                    {rowData.added.split("T")[0]}
+                <View style={{
+                    width: window.width * 139 / 375,
+                    height: window.width * 150 / 375,
+                    overflow: 'hidden',
+                    marginBottom: 9
+
+                }}>
+                  <FastImage
+                    style={[{
+                      width: window.width * 139 / 375,
+                      height: window.width * 150 / 375,
+                      resizeMode:'cover',
+                      borderTopLeftRadius:15,
+                      borderTopRightRadius:15,
+                      margin:1
+                    }]}
+                    source={{
+                      priority: FastImage.priority.high,
+                      uri:
+                      rowData.products[0].detail.cover?
+                      BaseUrl+rowData.products[0].detail.cover.full:BaseUrl+"/images/logo-app.png"
+                  }}
+                  />
+                </View>
+                <View style={SliderStyles.contentSH2}>
+                <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}numberOfLines={1}>
+                    {rowData.products[0].detail.name}
                     </Text>
-                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}
-                    >
-                    Address:
+                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#fff'}]}>
+
+                    {rowData.products[0].detail.date.split("T")[0]}
                     </Text>
-                    <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#fff'}]}
-                    numberOfLines={2}
-                    >
-                    {addrStr}
-                    </Text>
-                    <Text style={[GlobalStyles.caption, GlobalStyles.medium, GlobalStyles.leftTxt, {color: '#fff'}]}numberOfLines={1}>
-                    {rowData.totalPrice} $
-                    </Text>
+                </View>
               </TouchableOpacity>
             );
           }}
