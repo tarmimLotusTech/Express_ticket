@@ -96,7 +96,7 @@ export default function VerticalCardSlider (props) {
                     priority: FastImage.priority.high,
                     uri:
                     rowData.cover?
-                    BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+                    BaseUrl+rowData.cover.full:BaseUrl+"/images/logo-app.png"
                 }}                />
               </View>
               <View style={{

@@ -102,7 +102,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               priority: FastImage.priority.high,
               uri:
               eventData.cover?
-              BaseUrl+eventData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+              BaseUrl+eventData.cover.full:BaseUrl+"/images/logo-app.png"
             }}
             style={styles.imgFit}
           />
@@ -346,7 +346,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               uri:
               eventData.image[0]?
               BaseUrl+eventData.image[0].full
-              :"https://app.imagineradio.io/media/album/art/default.jpg"
+              :BaseUrl+"/images/logo-app.png"
           }}
           style={{
             width: window.width/2,
@@ -490,7 +490,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               priority: FastImage.priority.high,
               uri:eventData.brand.cover?
               BaseUrl+eventData.brand.cover.full
-              :"https://app.imagineradio.io/media/album/art/default.jpg"}}
+              :BaseUrl+"/images/logo-app.png"}}
           style={{
             width: window.width/2,
             height:window.width/3,

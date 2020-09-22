@@ -79,7 +79,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
               priority: FastImage.priority.high,
               uri:eventData.cover?
               BaseUrl+eventData.cover.full
-              :"https://app.imagineradio.io/media/album/art/default.jpg"}}
+              :BaseUrl+"/images/logo-app.png"}}
             style={styles.imgFit}
           />
           <View

@@ -237,7 +237,7 @@ class SearchResult extends Component  {
                     source={{
                       priority: FastImage.priority.high,
                       uri:
-                      item.cover?BaseUrl+item.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"}}
+                      item.cover?BaseUrl+item.cover.full:BaseUrl+"/images/logo-app.png"}}
                   />
                 </View>
                 <View style={{

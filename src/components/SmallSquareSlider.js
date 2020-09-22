@@ -69,7 +69,7 @@ export default class SmallH2 extends React.Component {
                       priority: FastImage.priority.high,
                       uri:
                       rowData.cover?
-                      BaseUrl+rowData.cover.full:"https://app.imagineradio.io/media/album/art/default.jpg"
+                      BaseUrl+rowData.cover.full:BaseUrl+"/images/logo-app.png"
                   }}
                   />
                 </View>
