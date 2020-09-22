@@ -56,7 +56,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
   const [date,setDate]=useState([])
   useEffect(()=>{
     console.log(item,"--",eventData,"--",inserted)
-    let addrStr= inserted[0].billingAddress.address1 +" "+ inserted[0].billingAddress.address2 +"\n"+ inserted[0].billingAddress.city +" "+ inserted[0].billingAddress.country
+    let addrStr= inserted[0].address.address1 +" "+ inserted[0].address.address2 +"\n"+ inserted[0].address.city +" "+ inserted[0].address.country
     setBillingAddress (addrStr)
   },[navigation])
 
@@ -113,7 +113,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 }}
                 >
                 <TextBox title={"Order Date"} text={today} />
-                <TextBox title={"Event Date"} text={today} />
+                <TextBox title={"Event Date"} text={eventData.date.split('T')[0]} />
                 </View>
                 <View
                 style={{
@@ -121,7 +121,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 }}
                 >
                 <TextBox title={"Address"} text={billingAddress} />
-                <TextBox title={"Price Detail"} text={`${item.attribute.type}\n$${item.price.regular}\nquantity: ${inserted[0].products[0].quantity}`} />
+                <TextBox title={"Price Detail"} text={`${Object.values(item.attribute)[0]}\n$${item.price.regular}\nquantity: ${inserted[0].products[0].quantity}`} />
                 </View>
               </View>
 
