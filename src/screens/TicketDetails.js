@@ -104,7 +104,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
                 fontWeight:'bold',
                 textAlign:'center'
               }}
-            >Loveseat Wedding{'\n'} and Event Planning</Text>
+            >{eventData.name}</Text>
               <View
               style={styles.ticketCard}>
                 <View

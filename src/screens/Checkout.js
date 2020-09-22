@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,StyleSheet,Picker, Keyboard, ScrollView} from "react-native";
+import { ImageBackground,Dimensions, Text, TextInput, TouchableOpacity, View ,StyleSheet,Picker, Keyboard, ScrollView, Linking} from "react-native";
 import loginStyles from "../styles/loginStyles";
 const window = Dimensions.get('window');
 import FastImage from "react-native-fast-image";
@@ -128,9 +128,9 @@ function Checkout ({navigation}) {
       }
       FetchService("POST","/api/checkout",3,body,false)
       .then(res=>{
-        console.log(res)
-        if(res.inserted){
-          navigation.navigate("TicketDetails",{inserted:res.inserted ,item:params.item, eventData:params.eventData})
+        if(res.length){
+          Linking.openURL(res[0].payment.payment_url)
+          navigation.navigate("TicketDetails",{inserted:res ,item:params.item, eventData:params.eventData})
         }
         else setSignupError(res.error)
       })
