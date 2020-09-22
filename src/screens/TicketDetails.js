@@ -55,7 +55,6 @@ const EventDetails: () => React$Node = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [date,setDate]=useState([])
   useEffect(()=>{
-    console.log(item,"--",eventData,"--",inserted)
     let addrStr= inserted[0].address.address1 +" "+ inserted[0].address.address2 +"\n"+ inserted[0].address.city +" "+ inserted[0].address.country
     setBillingAddress (addrStr)
   },[navigation])

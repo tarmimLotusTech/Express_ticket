@@ -34,7 +34,7 @@ const pickerOptions = {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import SmallH2 from "../components/SmallH2"
+import SmallH2 from "../components/HistorySlider"
 import FetchService from '../services/FetchService';
 import FastImage from "react-native-fast-image";
 
@@ -45,8 +45,10 @@ const EventDetails: () => React$Node = ({navigation}) => {
       if (sesToken){
         FetchService("GET","/customer/api/profile")
         .then(response=>setEventData(response))
-        .then(()=>FetchService("GET","/api/product"))
-        .then(response=>setData(response.data))
+        .then(()=>FetchService("GET","/customer/api/order"))
+        .then(res=>{
+          setData(res.data)
+        })
         .then(()=>setLoading(false))
         .catch(err=>console.log(err))
       }
@@ -233,7 +235,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
         }}>
           
           <SmallH2
-          title="Previous Events"
+          title="Purchase History"
           navigation={navigation}
           darkText
           data={data}
