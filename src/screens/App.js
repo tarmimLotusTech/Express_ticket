@@ -26,8 +26,8 @@ const App: () => React$Node = ({navigation}) => {
     .then(res=>setCategories(res.data))
     .then(()=>FetchService("GET","/api/product"))
     .then(response=>setData(response.data))
-    // .then(()=>FetchService("GET","/api/product/offer"))
-    // .then(response=>setOfferData(response.data))
+    .then(()=>FetchService("GET","/api/product/popular"))
+    .then(response=>setOfferData(response.data))
     .then(()=>FetchService("GET","/api/brand/?image=1"))
     .then(response=>setBrandData(response.data))
     .then(()=>setLoading(false))
@@ -61,7 +61,7 @@ const App: () => React$Node = ({navigation}) => {
             title="Upcoming events"
             />
             <SmallH2
-            data={data}
+            data={offerData}
             navigation={navigation}
             title="Popular Now"
             />
