@@ -85,7 +85,7 @@ export default function HistorySlider (props) {
                     </Text>
                     <Text style={[GlobalStyles.body2, GlobalStyles.light, GlobalStyles.leftTxt, {color: '#fff'}]}>
 
-                    {rowData.products[0].detail.date.split("T")[0]}
+                    {rowData.products[0].detail.date?rowData.products[0].detail.date.split("T")[0]:""}
                     </Text>
                 </View>
               </TouchableOpacity>
