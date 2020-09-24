@@ -9,7 +9,21 @@ import {
 } from 'react-native-typography';
 import FetchService from "../services/FetchService";
 import AsyncStorage from '@react-native-community/async-storage';
-
+const SLeone={
+  capital: "Freetown",
+  code: "SL",
+  continent: {_id: "5e821761311eb9259c0ba82c", objectId: "X2rEcTJnsE", code: "AF", name: "Africa"},
+  continentCode: "AF",
+  continentName: "Africa",
+  currency: "SLL",
+  emoji: "🇸🇱",
+  emojiU: "U+1F1F8 U+1F1F1",
+  name: "Sierra Leone",
+  native: "Sierra Leone",
+  objectId: "xzEkRDMtUU",
+  phone: "232",
+  _id: "5e8218a9a0be4401500e4def",
+}
 function Checkout ({navigation}) {
   const [keyFocus,setKeyFocus]=useState(false)
   
@@ -19,7 +33,7 @@ function Checkout ({navigation}) {
   const [countryLoading, setCountryLoading]=useState(true)
   const [firstName,setFName]=useState('')
   const [quantity,setQuantity]=useState("1")
-  const [country,setCountry]=useState('')
+  const [country,setCountry]=useState(SLeone)
   const [city,setCity]=useState('')
   const [address1,setAddress1]=useState('')
   const [address2,setAddress2]=useState('')
@@ -44,6 +58,8 @@ function Checkout ({navigation}) {
     FetchService("GET","/api/geo/country")
     .then(res=>setCountries(res))
     .then(()=>setCountryLoading(false))
+    .then(()=>setCountry(SLeone))
+    .then(()=>findCity(SLeone))
 
     Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
     Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
@@ -54,8 +70,6 @@ function Checkout ({navigation}) {
         FetchService("GET","/customer/api/profile")
         .then(response=>{
           setFName(response.firstName + " "+ response.lastName)
-          setCountry(response.country)
-          setCity(response.city)
           setAddress1(response.address1)
           setAddress2(response.address2)
           setPhone(response.phone)
@@ -72,10 +86,9 @@ function Checkout ({navigation}) {
     const unsubscribe = navigation.addListener('focus',getProduct)
     return unsubscribe;
   },[navigation])
-  function findCity(country){
-    setCountry(country)
-
-    FetchService("GET",`/api/geo/${country._id}/city`)
+  function findCity(countr){
+    setCountry(countr)
+    FetchService("GET",`/api/geo/${countr._id}/city`)
     .then(res=>setCities(res))
     .then(()=>setCityLoading(false))
     .catch(er=>console.log("--e",er))
