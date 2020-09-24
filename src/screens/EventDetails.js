@@ -11,7 +11,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 const window = Dimensions.get('window');
-import iconPlay from '../assets/icons/iconPlay.png';
+import HTML from "react-native-render-html";
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from "react-native-fast-image";
 import SendAnalytics from '../services/SendAnalytics';
@@ -402,17 +402,14 @@ const EventDetails: () => React$Node = ({navigation}) => {
               >
           Description
         </Text>
-        <Text
-            style={{
-              fontSize: 12,
-              color:'#00163D',
-              textAlign:'left',
-              margin:20,
-              marginTop:-10
-            }}
-            >
-              {eventData.description}
-          </Text>
+        <HTML
+          html={eventData.description}
+          containerStyle={{
+            width:window.width/1.5,
+            alignSelf:'center',
+            justifyContent:'center'
+          }}
+        />
         {/* preview card ends */}
         {/* <SmallH2
             data={eventData.relatedEvents}
