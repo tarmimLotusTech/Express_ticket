@@ -1,4 +1,4 @@
 module.exports={
-    BaseUrl: "http://expressticket.sl",
+    BaseUrl: "http://15.188.224.238:5000",
     key: ""
 }
