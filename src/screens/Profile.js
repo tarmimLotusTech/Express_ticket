@@ -67,6 +67,7 @@ const EventDetails: () => React$Node = ({navigation}) => {
   function logOut(){
     setMenuDrop(false)
     navigation.navigate("AuthStack")
+    AsyncStorage.removeItem("userToken")
   }
   function editProfile(){
     setMenuDrop(false)
